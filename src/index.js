@@ -6,19 +6,37 @@ const applyConfig = (config) => {
     {
       id: 'titleVariationId',
       isDefault: false,
-      title: 'Title only summary variation',
+      title: 'Title only summary',
+      template: CustomSummaryListingBlockTemplate,
+    },
+    {
+      id: 'titleDateVariationId',
+      isDefault: false,
+      title: 'Title & publication date summary',
       template: CustomSummaryListingBlockTemplate,
     },
     {
       id: 'leftThumbTitleVariationId',
       isDefault: false,
-      title: 'Left thumb title summary',
+      title: 'Left thumb & title summary',
       template: CustomSummaryListingBlockTemplate,
     },
     {
       id: 'rightThumbTitleVariationId',
       isDefault: false,
-      title: 'Right thumb title summary',
+      title: 'Right thumb & title summary',
+      template: CustomSummaryListingBlockTemplate,
+    },
+    {
+      id: 'leftThumbTitleDateVariationId',
+      isDefault: false,
+      title: 'Left thumb, title publication date summary',
+      template: CustomSummaryListingBlockTemplate,
+    },
+    {
+      id: 'rightThumbTitleDateVariationId',
+      isDefault: false,
+      title: 'Right thumb, title publication date summary',
       template: CustomSummaryListingBlockTemplate,
     },
   ];

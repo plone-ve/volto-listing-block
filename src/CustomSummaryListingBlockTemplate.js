@@ -3,6 +3,7 @@ import DefaultImageSVG from '@plone/volto/components/manage/Blocks/Listing/defau
 import { flattenToAppURL } from '@plone/volto/helpers';
 import { isInternalURL } from '@plone/volto/helpers/Url/Url';
 import config from '@plone/volto/registry';
+import moment from 'moment';
 import PropTypes from 'prop-types';
 import React from 'react';
 
@@ -40,6 +41,14 @@ const CustomSummaryListingBlockTemplate = ({
                     <h3>{item.title ? item.title : item.id}</h3>
                   </div>
                 )}
+                {variation === 'titleDateVariationId' && (
+                  <div className="listing-body">
+                    <h3>{item.title ? item.title : item.id}</h3>
+                    {item.effective && (
+                      <p>{moment(item.effective).format('ll')}</p>
+                    )}
+                  </div>
+                )}
                 {variation === 'leftThumbTitleVariationId' && (
                   <>
                     <img
@@ -62,7 +71,49 @@ const CustomSummaryListingBlockTemplate = ({
                   <>
                     <div className="listing-body">
                       <h3>{item.title ? item.title : item.id}</h3>
-                      {/* <p>{item.pubdate}</p> */}
+                    </div>
+                    <img
+                      style={{ marginLeft: 'auto' }}
+                      src={
+                        item[settings.listingPreviewImageField]
+                          ? flattenToAppURL(
+                              item[settings.listingPreviewImageField].scales
+                                .preview.download,
+                            )
+                          : DefaultImageSVG
+                      }
+                      alt={item.title}
+                    />
+                  </>
+                )}
+                {variation === 'leftThumbTitleDateVariationId' && (
+                  <>
+                    <img
+                      src={
+                        item[settings.listingPreviewImageField]
+                          ? flattenToAppURL(
+                              item[settings.listingPreviewImageField].scales
+                                .preview.download,
+                            )
+                          : DefaultImageSVG
+                      }
+                      alt={item.title}
+                    />
+                    <div className="listing-body">
+                      <h3>{item.title ? item.title : item.id}</h3>
+                      {item.effective && (
+                        <p>{moment(item.effective).format('ll')}</p>
+                      )}
+                    </div>
+                  </>
+                )}
+                {variation === 'rightThumbTitleDateVariationId' && (
+                  <>
+                    <div className="listing-body">
+                      <h3>{item.title ? item.title : item.id}</h3>
+                      {item.effective && (
+                        <p>{moment(item.effective).format('ll')}</p>
+                      )}
                     </div>
                     <img
                       style={{ marginLeft: 'auto' }}
