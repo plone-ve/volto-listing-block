@@ -32,5 +32,3 @@
     "cypress:open": "../../../node_modules/cypress/bin/cypress open"
   }
 }
-}
-}
