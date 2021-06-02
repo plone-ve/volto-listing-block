@@ -4,40 +4,40 @@ const applyConfig = (config) => {
   config.blocks.blocksConfig.listing.variations = [
     ...config.blocks.blocksConfig.listing.variations,
     {
-      id: 'titleVariationId',
+      id: 'customSummaryVariationId',
       isDefault: false,
-      title: 'Title only summary',
+      title: 'Custom summary',
       template: CustomSummaryListingBlockTemplate,
-    },
-    {
-      id: 'titleDateVariationId',
-      isDefault: false,
-      title: 'Title & publication date summary',
-      template: CustomSummaryListingBlockTemplate,
-    },
-    {
-      id: 'leftThumbTitleVariationId',
-      isDefault: false,
-      title: 'Left thumb & title summary',
-      template: CustomSummaryListingBlockTemplate,
-    },
-    {
-      id: 'rightThumbTitleVariationId',
-      isDefault: false,
-      title: 'Right thumb & title summary',
-      template: CustomSummaryListingBlockTemplate,
-    },
-    {
-      id: 'leftThumbTitleDateVariationId',
-      isDefault: false,
-      title: 'Left thumb, title publication date summary',
-      template: CustomSummaryListingBlockTemplate,
-    },
-    {
-      id: 'rightThumbTitleDateVariationId',
-      isDefault: false,
-      title: 'Right thumb, title publication date summary',
-      template: CustomSummaryListingBlockTemplate,
+      schemaEnhancer: ({ schema, formData, intl }) => {
+        schema.fieldsets[0].fields = [
+          ...schema.fieldsets[0].fields,
+          'imageOnRightSide',
+          'hasImage',
+          'hasDate',
+          'hasDescription',
+        ];
+
+        schema.properties = {
+          ...schema.properties,
+          hasImage: {
+            title: 'Image',
+            type: 'boolean',
+          },
+          imageOnRightSide: {
+            title: 'Image on Right (Default is Left)',
+            type: 'boolean',
+          },
+          hasDate: {
+            title: 'Publication date',
+            type: 'boolean',
+          },
+          hasDescription: {
+            title: 'Description',
+            type: 'boolean',
+          },
+        };
+        return schema;
+      },
     },
   ];
 

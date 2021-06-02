@@ -13,11 +13,21 @@ const CustomSummaryListingBlockTemplate = ({
   linkHref,
   isEditMode,
   variation,
+  imageOnRightSide,
+  hasImage,
+  hasTitle,
+  hasDate,
+  hasDescription,
 }) => {
   let link = null;
   let href = linkHref?.[0]?.['@id'] || '';
 
   const { settings } = config;
+  console.log({ imageOnRightSide });
+  console.log({ hasImage });
+  console.log({ hasTitle });
+  console.log({ hasDate });
+  console.log({ hasDescription });
 
   if (isInternalURL(href)) {
     link = (
@@ -29,6 +39,29 @@ const CustomSummaryListingBlockTemplate = ({
     link = <a href={href}>{linkTitle || href}</a>;
   }
 
+  const makeTextBody = (item) => (
+    <div className="listing-body">
+      <h3>{item.title ? item.title : item.id}</h3>
+      {hasDate && item.effective && (
+        <p>{moment(item.effective).format('ll')}</p>
+      )}
+      {hasDescription && <p>{item.description}</p>}
+    </div>
+  );
+  const makeImage = (item, style) => (
+    <img
+      style={style}
+      src={
+        item[settings.listingPreviewImageField]
+          ? flattenToAppURL(
+              item[settings.listingPreviewImageField].scales.preview.download,
+            )
+          : DefaultImageSVG
+      }
+      alt={item.title}
+    />
+  );
+
   return (
     <>
       <div className="items">
@@ -36,98 +69,20 @@ const CustomSummaryListingBlockTemplate = ({
           items.map((item) => (
             <div className="listing-item" key={item['@id']}>
               <ConditionalLink item={item} condition={!isEditMode}>
-                {variation === 'titleVariationId' && (
-                  <div className="listing-body">
-                    <h3>{item.title ? item.title : item.id}</h3>
-                  </div>
-                )}
-                {variation === 'titleDateVariationId' && (
-                  <div className="listing-body">
-                    <h3>{item.title ? item.title : item.id}</h3>
-                    {item.effective && (
-                      <p>{moment(item.effective).format('ll')}</p>
-                    )}
-                  </div>
-                )}
-                {variation === 'leftThumbTitleVariationId' && (
-                  <>
-                    <img
-                      src={
-                        item[settings.listingPreviewImageField]
-                          ? flattenToAppURL(
-                              item[settings.listingPreviewImageField].scales
-                                .preview.download,
-                            )
-                          : DefaultImageSVG
-                      }
-                      alt={item.title}
-                    />
-                    <div className="listing-body">
-                      <h3>{item.title ? item.title : item.id}</h3>
-                    </div>
-                  </>
-                )}
-                {variation === 'rightThumbTitleVariationId' && (
-                  <>
-                    <div className="listing-body">
-                      <h3>{item.title ? item.title : item.id}</h3>
-                    </div>
-                    <img
-                      style={{ marginLeft: 'auto' }}
-                      src={
-                        item[settings.listingPreviewImageField]
-                          ? flattenToAppURL(
-                              item[settings.listingPreviewImageField].scales
-                                .preview.download,
-                            )
-                          : DefaultImageSVG
-                      }
-                      alt={item.title}
-                    />
-                  </>
-                )}
-                {variation === 'leftThumbTitleDateVariationId' && (
-                  <>
-                    <img
-                      src={
-                        item[settings.listingPreviewImageField]
-                          ? flattenToAppURL(
-                              item[settings.listingPreviewImageField].scales
-                                .preview.download,
-                            )
-                          : DefaultImageSVG
-                      }
-                      alt={item.title}
-                    />
-                    <div className="listing-body">
-                      <h3>{item.title ? item.title : item.id}</h3>
-                      {item.effective && (
-                        <p>{moment(item.effective).format('ll')}</p>
-                      )}
-                    </div>
-                  </>
-                )}
-                {variation === 'rightThumbTitleDateVariationId' && (
-                  <>
-                    <div className="listing-body">
-                      <h3>{item.title ? item.title : item.id}</h3>
-                      {item.effective && (
-                        <p>{moment(item.effective).format('ll')}</p>
-                      )}
-                    </div>
-                    <img
-                      style={{ marginLeft: 'auto' }}
-                      src={
-                        item[settings.listingPreviewImageField]
-                          ? flattenToAppURL(
-                              item[settings.listingPreviewImageField].scales
-                                .preview.download,
-                            )
-                          : DefaultImageSVG
-                      }
-                      alt={item.title}
-                    />
-                  </>
+                {hasImage ? (
+                  imageOnRightSide ? (
+                    <>
+                      {makeTextBody(item)}
+                      {makeImage(item, { marginLeft: 'auto' })}
+                    </>
+                  ) : (
+                    <>
+                      {makeImage(item, null)}
+                      {makeTextBody(item)}
+                    </>
+                  )
+                ) : (
+                  <>{makeTextBody(item)}</>
                 )}
               </ConditionalLink>
             </div>
