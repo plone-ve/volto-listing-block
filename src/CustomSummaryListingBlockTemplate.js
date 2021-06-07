@@ -12,32 +12,22 @@ const CustomSummaryListingBlockTemplate = ({
   linkTitle,
   linkHref,
   isEditMode,
-  variation,
   imageOnRightSide,
   hasImage,
   hasTitle,
   hasDate,
   hasDescription,
 }) => {
-  let link = null;
   let href = linkHref?.[0]?.['@id'] || '';
 
   const { settings } = config;
-  console.log({ imageOnRightSide });
-  console.log({ hasImage });
-  console.log({ hasTitle });
-  console.log({ hasDate });
-  console.log({ hasDescription });
-
-  if (isInternalURL(href)) {
-    link = (
-      <ConditionalLink to={flattenToAppURL(href)} condition={!isEditMode}>
-        {linkTitle || href}
-      </ConditionalLink>
-    );
-  } else if (href) {
-    link = <a href={href}>{linkTitle || href}</a>;
-  }
+  const link = isInternalURL(href) ? (
+    <ConditionalLink to={flattenToAppURL(href)} condition={!isEditMode}>
+      {linkTitle || href}
+    </ConditionalLink>
+  ) : href ? (
+    <a href={href}>{linkTitle || href}</a>
+  ) : null;
 
   const makeTextBody = (item) => (
     <div className="listing-body">
@@ -48,6 +38,7 @@ const CustomSummaryListingBlockTemplate = ({
       {hasDescription && <p>{item.description}</p>}
     </div>
   );
+
   const makeImage = (item, style) => (
     <img
       style={style}
