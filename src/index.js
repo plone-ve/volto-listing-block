@@ -1,4 +1,4 @@
-import CustomGalleryListingBlockTemplate from './CustomGalleryListingBlockTemplate';
+import CustomCardsGalleryTemplate from './CustomCardsGalleryTemplate';
 import CustomSummaryListingBlockTemplate from './CustomSummaryListingBlockTemplate';
 
 const applyConfig = (config) => {
@@ -41,10 +41,10 @@ const applyConfig = (config) => {
       },
     },
     {
-      id: 'customGalleryVariationId',
+      id: 'customCardsGalleryVariationId',
       isDefault: false,
-      title: 'Custom Gallery',
-      template: CustomGalleryListingBlockTemplate,
+      title: 'Custom cards gallery',
+      template: CustomCardsGalleryTemplate,
       schemaEnhancer: ({ schema, formData, intl }) => {
         schema.fieldsets[0].fields = [
           ...schema.fieldsets[0].fields,

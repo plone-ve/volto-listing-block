@@ -18,8 +18,26 @@ describe('Blocks Tests', () => {
 
     // Add block
     cy.get('.ui.basic.icon.button.block-add-button').first().click();
-    cy.get('.blocks-chooser .title').contains('Media').click();
-    cy.get('.content.active.media .button.image').contains('Image').click();
+    cy.get('.blocks-chooser .title').contains('Common').click();
+    cy.get('.content.active.common .button.listing')
+      .contains('Listing')
+      .click();
+
+    // Select Custom summary Variation
+    cy.get('#field-variation').click().contains('Custom summary').click();
+
+    // Test for switches
+    cy.contains('Image on Right (Default is Left)');
+    cy.contains('Image');
+    cy.contains('Publication date');
+    cy.contains('Description');
+
+    // Select Custom Gallery Variation
+    cy.get('#field-variation').click().contains('Custom cards gallery').click();
+
+    // Test for switches
+    cy.contains('Publication date');
+    cy.contains('Description');
 
     // Save
     cy.get('#toolbar-save').click();
@@ -27,6 +45,6 @@ describe('Blocks Tests', () => {
 
     // then the page view should contain our changes
     cy.contains('My Add-on Page');
-    cy.get('.block.image');
+    cy.get('.block.listing');
   });
 });

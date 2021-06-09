@@ -7,9 +7,9 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import './less/editor.less';
 
-const CustomGalleryListingBlockTemplate = ({
+const CustomCardsGalleryTemplate = ({
   items,
-  gridSize = 'four',
+  gridSize,
   isEditMode,
   hasDate,
   hasDescription,
@@ -35,7 +35,7 @@ const CustomGalleryListingBlockTemplate = ({
   );
 
   const makeImage = (item) => (
-    <div className="image">
+    <ConditionalLink className="image" item={item} condition={!isEditMode}>
       <img
         src={
           item[settings.listingPreviewImageField]
@@ -46,20 +46,18 @@ const CustomGalleryListingBlockTemplate = ({
         }
         alt={item.title}
       />{' '}
-    </div>
+    </ConditionalLink>
   );
 
   return (
     <>
       {items && items.length > 0 && (
-        <div className={`ui link ${gridSize} cards`}>
+        <div className={`ui fluid ${gridSize || ''} cards`}>
           {items.map((item) => (
-            <ConditionalLink item={item} condition={!isEditMode}>
-              <div className="card" key={item['@id']}>
-                {makeImage(item)}
-                {makeTextBody(item)}
-              </div>
-            </ConditionalLink>
+            <div className="ui centered card" key={item['@id']}>
+              {makeImage(item)}
+              {makeTextBody(item)}
+            </div>
           ))}
         </div>
       )}
@@ -67,10 +65,10 @@ const CustomGalleryListingBlockTemplate = ({
   );
 };
 
-CustomGalleryListingBlockTemplate.propTypes = {
+CustomCardsGalleryTemplate.propTypes = {
   items: PropTypes.arrayOf(PropTypes.any).isRequired,
   linkMore: PropTypes.any,
   isEditMode: PropTypes.bool,
 };
 
-export default CustomGalleryListingBlockTemplate;
+export default CustomCardsGalleryTemplate;
