@@ -6,7 +6,6 @@ import React from 'react';
 
 const TestListView = (props) => {
   const { data, path, pathname } = props;
-  console.log({ props });
 
   return (
     <div className={cx('block listing', data.variation)}>
