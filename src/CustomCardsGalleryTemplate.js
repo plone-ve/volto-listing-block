@@ -42,6 +42,8 @@ const CustomCardsGalleryTemplate = ({
             ? flattenToAppURL(
                 item[settings.listingPreviewImageField].scales.preview.download,
               )
+            : settings.depiction
+            ? flattenToAppURL(item['@id'] + settings.depiction)
             : DefaultImageSVG
         }
         alt={item.title}
