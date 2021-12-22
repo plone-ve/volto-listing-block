@@ -26,10 +26,8 @@ describe('Blocks Tests', () => {
 
     // Select Custom summary Variation
     cy.get('#field-variation').click().contains('Custom summary').click();
-    cy.wait(1000);
     cy.get('.query-widget #field-query-0-querystring').click();
-    cy.get('.react-select__menu').contains('Country').first().click();
-    cy.wait(1000);
+    cy.get('.react-select__menu').contains('Creator').first().click();
     cy.get('.field.query-sort-on-widget #select-listingblock-sort-on').click();
     cy.get('.react-select__menu').contains('Creator').click();
 
@@ -51,10 +49,8 @@ describe('Blocks Tests', () => {
 
     // Select Custom Gallery Variation
     cy.get('#field-variation').click().contains('Custom cards gallery').click();
-    cy.wait(1000);
     cy.get('.query-widget #field-query-0-querystring').click();
-    cy.get('.react-select__menu').contains('NUTS').first().click();
-    cy.wait(1000);
+    cy.get('.react-select__menu').contains('Creator').first().click();
     cy.get('.field.query-sort-on-widget #select-listingblock-sort-on').click();
     cy.get('.react-select__menu').contains('Creation date').click();
 
