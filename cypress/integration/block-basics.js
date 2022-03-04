@@ -72,5 +72,6 @@ describe('Blocks Tests', () => {
     cy.contains('My Add-on Page');
     cy.get('.block.listing.customSummaryVariationId');
     cy.get('.block.listing.customCardsGalleryVariationId');
+    cy.get('.block.listing.customNewsListVariationId');
   });
 });
