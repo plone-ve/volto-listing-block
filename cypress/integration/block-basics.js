@@ -60,6 +60,14 @@ describe('Blocks Tests', () => {
     cy.get('#field-gridSize').click();
     cy.get('.react-select__menu').contains('Four').click();
 
+    // add another block
+    cy.get('.block-editor-text .block.text [contenteditable=true]').last().type('{enter}');
+    cy.get('.ui.basic.icon.button.block-add-button').first().click();
+    cy.get('.blocks-chooser .title').contains('Common').click();
+    cy.get('.content.active.common .button.listing')
+      .contains('Listing')
+      .click();
+
     //Select Custom News List Variation
     cy.get('#field-variation').click().contains('Custom news list').click();
     cy.get('.query-widget #field-query-0-querystring').click();
