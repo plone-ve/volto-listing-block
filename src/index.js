@@ -80,7 +80,7 @@ const applyConfig = (config) => {
     {
       id: 'customNewsListVariationId',
       isDefault: false,
-      title: 'Custom News List',
+      title: 'Custom news list',
       template: CustomNewsListTemplate,
       schemaEnhancer: ({ schema, formData, intl }) => {
         schema.fieldsets[0].fields = [...schema.fieldsets[0].fields, 'hasDate'];
@@ -89,6 +89,10 @@ const applyConfig = (config) => {
           ...schema.properties,
           hasDate: {
             title: 'Publication date',
+            type: 'boolean',
+          },
+          hasDescription: {
+            title: 'Description',
             type: 'boolean',
           },
         };
