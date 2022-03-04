@@ -1,4 +1,5 @@
 import CustomCardsGalleryTemplate from './CustomCardsGalleryTemplate';
+import CustomNewsListTemplate from './CustomNewsListTemplate';
 import CustomSummaryListingBlockTemplate from './CustomSummaryListingBlockTemplate';
 
 const applyConfig = (config) => {
@@ -64,6 +65,28 @@ const applyConfig = (config) => {
             factory: 'Choice',
             type: 'string',
           },
+          hasDate: {
+            title: 'Publication date',
+            type: 'boolean',
+          },
+          hasDescription: {
+            title: 'Description',
+            type: 'boolean',
+          },
+        };
+        return schema;
+      },
+    },
+    {
+      id: 'customNewsListVariationId',
+      isDefault: false,
+      title: 'Custom news list',
+      template: CustomNewsListTemplate,
+      schemaEnhancer: ({ schema, formData, intl }) => {
+        schema.fieldsets[0].fields = [...schema.fieldsets[0].fields, 'hasDate'];
+
+        schema.properties = {
+          ...schema.properties,
           hasDate: {
             title: 'Publication date',
             type: 'boolean',

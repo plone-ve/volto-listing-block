@@ -4,6 +4,7 @@ import { flattenToAppURL } from '@plone/volto/helpers';
 import config from '@plone/volto/registry';
 import moment from 'moment';
 import PropTypes from 'prop-types';
+import { Card } from 'semantic-ui-react';
 import React from 'react';
 import './less/editor.less';
 
@@ -17,49 +18,52 @@ const CustomCardsGalleryTemplate = ({
   const { settings } = config;
 
   const makeTextBody = (item) => (
-    <div className="content">
-      <div className="header">{item.title ? item.title : item.id}</div>
-      <div className="meta">
+    <Card.Content>
+      <Card.Header>{item.title ? item.title : item.id}</Card.Header>
+      <Card.Meta>
         {hasDate && item.effective && (
           <span className="category">
             {moment(item.effective).format('ll')}
           </span>
         )}
-      </div>
+      </Card.Meta>
       {hasDescription && (
-        <div className="description">
+        <Card.Description>
           <p>{item.description}</p>
-        </div>
+        </Card.Description>
       )}
-    </div>
+    </Card.Content>
   );
 
-  const makeImage = (item) => (
-    <ConditionalLink className="image" item={item} condition={!isEditMode}>
-      <img
-        src={
-          item[settings.listingPreviewImageField]
-            ? flattenToAppURL(
-                item[settings.listingPreviewImageField].scales.preview.download,
-              )
-            : settings.depiction
-            ? flattenToAppURL(item['@id'] + settings.depiction)
-            : DefaultImageSVG
-        }
-        alt={item.title}
-      />{' '}
-    </ConditionalLink>
-  );
+  const makeImage = (item) => {
+    return (
+      <ConditionalLink className="image" item={item} condition={!isEditMode}>
+        <img
+          src={
+            item[settings.listingPreviewImageField]
+              ? flattenToAppURL(
+                  item[settings.listingPreviewImageField].scales.preview
+                    .download,
+                )
+              : settings.depiction
+              ? flattenToAppURL(item['@id'] + settings.depiction)
+              : DefaultImageSVG
+          }
+          alt={item.title}
+        />
+      </ConditionalLink>
+    );
+  };
 
   return (
     <>
       {items && items.length > 0 && (
         <div className={`ui fluid ${gridSize || ''} cards`}>
           {items.map((item) => (
-            <div className="ui centered card" key={item['@id']}>
+            <Card key={item['@id']} className="centered">
               {makeImage(item)}
               {makeTextBody(item)}
-            </div>
+            </Card>
           ))}
         </div>
       )}
