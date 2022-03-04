@@ -64,14 +64,9 @@ describe('Blocks Tests', () => {
     cy.get('#field-variation').click().contains('Custom news list').click();
     cy.get('.query-widget #field-query-0-querystring').click();
     cy.get('.react-select__menu').contains('Creator').first().click();
-    cy.get('.field.query-sort-on-widget #select-listingblock-sort-on').click();
-    cy.get('.react-select__menu').contains('Creation date').click();
-
-    cy.get('#field-b_size-4-querystring').type('5');
 
     // Test for switches
     cy.contains('Publication date').click();
-    cy.contains('Description').click();
 
     // Save
     cy.get('#toolbar-save').click();
