@@ -1,11 +1,9 @@
 import { ConditionalLink } from '@plone/volto/components';
-import DefaultImageSVG from '@plone/volto/components/manage/Blocks/Listing/default-image.svg';
-import { flattenToAppURL } from '@plone/volto/helpers';
-import config from '@plone/volto/registry';
 import moment from 'moment';
 import PropTypes from 'prop-types';
 import { Card } from 'semantic-ui-react';
 import React from 'react';
+import PreviewImage from './PreviewImage';
 import './less/editor.less';
 
 const CustomCardsGalleryTemplate = ({
@@ -15,8 +13,6 @@ const CustomCardsGalleryTemplate = ({
   hasDate,
   hasDescription,
 }) => {
-  const { settings } = config;
-
   const makeTextBody = (item) => (
     <Card.Content>
       <Card.Header>{item.title ? item.title : item.id}</Card.Header>
@@ -38,19 +34,7 @@ const CustomCardsGalleryTemplate = ({
   const makeImage = (item) => {
     return (
       <ConditionalLink className="image" item={item} condition={!isEditMode}>
-        <img
-          src={
-            item[settings.listingPreviewImageField]
-              ? flattenToAppURL(
-                  item[settings.listingPreviewImageField].scales.preview
-                    .download,
-                )
-              : settings.depiction
-              ? flattenToAppURL(item['@id'] + settings.depiction)
-              : DefaultImageSVG
-          }
-          alt={item.title}
-        />
+        <PreviewImage item={item} alt={item.title} />
       </ConditionalLink>
     );
   };
