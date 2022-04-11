@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { Card } from 'semantic-ui-react';
 import React from 'react';
 import PreviewImage from './PreviewImage';
+import config from '@plone/volto/registry';
 import './less/editor.less';
 
 const CustomCardsGalleryTemplate = ({
@@ -13,6 +14,7 @@ const CustomCardsGalleryTemplate = ({
   hasDate,
   hasDescription,
 }) => {
+  moment.locale(config.settings.dateLocale);
   const makeTextBody = (item) => (
     <Card.Content>
       <Card.Header>{item.title ? item.title : item.id}</Card.Header>
