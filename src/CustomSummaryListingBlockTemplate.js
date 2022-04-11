@@ -21,6 +21,7 @@ const CustomSummaryListingBlockTemplate = ({
   let href = linkHref?.[0]?.['@id'] || '';
 
   const { settings } = config;
+  moment.locale(config.settings.dateLocale);
   const link = isInternalURL(href) ? (
     <ConditionalLink to={flattenToAppURL(href)} condition={!isEditMode}>
       {linkTitle || href}

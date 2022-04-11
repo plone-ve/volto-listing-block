@@ -1,7 +1,7 @@
 import React from 'react';
 import { flattenToAppURL, getBaseUrl } from '@plone/volto/helpers';
 import { Link } from 'react-router-dom';
-
+import config from '@plone/volto/registry';
 import moment from 'moment';
 import PropTypes from 'prop-types';
 import './less/editor.less';
@@ -13,6 +13,7 @@ const CustomNewsListTemplate = ({
   hasDate,
   hasDescription,
 }) => {
+  moment.locale(config.settings.dateLocale);
   const makeTextBody = (item) => (
     <div className="news-item">
       <Link

@@ -101,6 +101,8 @@ const applyConfig = (config) => {
     },
   ];
 
+  // moment date locale. See https://momentjs.com/ - Multiple Locale Support
+  config.settings.dateLocale = config.settings.dateLocale || 'en';
   return config;
 };
 
