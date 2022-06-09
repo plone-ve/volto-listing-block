@@ -1,3 +1,4 @@
+import CardsCarousel from './CardsCarousel';
 import CustomCardsGalleryTemplate from './CustomCardsGalleryTemplate';
 import CustomNewsListTemplate from './CustomNewsListTemplate';
 import CustomSummaryListingBlockTemplate from './CustomSummaryListingBlockTemplate';
@@ -5,6 +6,42 @@ import CustomSummaryListingBlockTemplate from './CustomSummaryListingBlockTempla
 const applyConfig = (config) => {
   config.blocks.blocksConfig.listing.variations = [
     ...config.blocks.blocksConfig.listing.variations,
+    {
+      id: 'cardsCarousel',
+      isDefault: false,
+      title: 'Cards carousel',
+      template: CardsCarousel,
+      // schemaEnhancer: ({ schema, formData, intl }) => {
+      //   schema.fieldsets[0].fields = [
+      //     ...schema.fieldsets[0].fields,
+      //     'gridSize',
+      //     'hasDate',
+      //     'hasDescription',
+      //   ];
+
+      //   schema.properties = {
+      //     ...schema.properties,
+      //     gridSize: {
+      //       title: 'Grid Size',
+      //       choices: [
+      //         ['three', 'Three'],
+      //         ['four', 'Four'],
+      //       ],
+      //       factory: 'Choice',
+      //       type: 'string',
+      //     },
+      //     hasDate: {
+      //       title: 'Publication date',
+      //       type: 'boolean',
+      //     },
+      //     hasDescription: {
+      //       title: 'Description',
+      //       type: 'boolean',
+      //     },
+      //   };
+      //   return schema;
+      // },
+    },
     {
       id: 'customSummaryVariationId',
       isDefault: false,
