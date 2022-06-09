@@ -11,36 +11,34 @@ const applyConfig = (config) => {
       isDefault: false,
       title: 'Cards carousel',
       template: CardsCarousel,
-      // schemaEnhancer: ({ schema, formData, intl }) => {
-      //   schema.fieldsets[0].fields = [
-      //     ...schema.fieldsets[0].fields,
-      //     'gridSize',
-      //     'hasDate',
-      //     'hasDescription',
-      //   ];
-
-      //   schema.properties = {
-      //     ...schema.properties,
-      //     gridSize: {
-      //       title: 'Grid Size',
-      //       choices: [
-      //         ['three', 'Three'],
-      //         ['four', 'Four'],
-      //       ],
-      //       factory: 'Choice',
-      //       type: 'string',
-      //     },
-      //     hasDate: {
-      //       title: 'Publication date',
-      //       type: 'boolean',
-      //     },
-      //     hasDescription: {
-      //       title: 'Description',
-      //       type: 'boolean',
-      //     },
-      //   };
-      //   return schema;
-      // },
+      schemaEnhancer: ({ schema }) => {
+        return {
+          ...schema,
+          fieldsets: [
+            ...schema.fieldsets,
+            {
+              id: 'carousel',
+              title: 'Carousel',
+              fields: ['slidesToShow', 'slidesToScroll'],
+            },
+          ],
+          properties: {
+            ...schema.properties,
+            slidesToShow: {
+              title: 'Slides to show',
+              type: 'number',
+              default: 4,
+              minimum: 1,
+            },
+            slidesToScroll: {
+              title: 'Slides to scroll',
+              type: 'number',
+              default: 1,
+              minimum: 1,
+            },
+          },
+        };
+      },
     },
     {
       id: 'customSummaryVariationId',

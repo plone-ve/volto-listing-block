@@ -1,14 +1,12 @@
-import React, { useMemo } from 'react';
-import cx from 'classnames';
+import React from 'react';
 import Slider from 'react-slick';
-import { Button, Icon, Card as UiCard, Image } from 'semantic-ui-react';
+import { Button, Icon, Card as UiCard } from 'semantic-ui-react';
 import config from '@plone/volto/registry';
 import { ConditionalLink } from '@plone/volto/components';
 import { formatDate } from '@plone/volto/helpers/Utils/Date';
-import { getImage, getText } from '@eeacms/volto-listing-block/helpers';
 import PreviewImage from './PreviewImage';
 
-const tabletBreakpoint = 835;
+const tabletBreakpoint = 768;
 const mobileBreakpoint = 480;
 
 const Card = ({ item, isEditMode }) => {
@@ -51,11 +49,13 @@ const Card = ({ item, isEditMode }) => {
 };
 
 const getSlidesToShow = (items, _slidesToShow) => {
+  if (_slidesToShow <= 0) return 1;
   if (items.length >= _slidesToShow) return parseInt(_slidesToShow);
   return items.length;
 };
 
 const getSlidesToScroll = (items, _slidesToShow, _slidesToScroll) => {
+  if (_slidesToScroll <= 0) return 1;
   const slidesToShow = getSlidesToShow(items, _slidesToShow);
   if (slidesToShow >= _slidesToScroll) return parseInt(_slidesToScroll);
   return slidesToShow;
@@ -96,47 +96,57 @@ const Arrows = (props) => {
 
 const CardsCarousel = ({ block, items, ...rest }) => {
   const slider = React.useRef(null);
-
-  const slidesToShow = useMemo(
-    () => getSlidesToShow(items, rest.slidesToShow || 3),
-    [items, rest.slidesToShow],
-  );
-  const slidesToScroll = useMemo(
-    () =>
-      getSlidesToScroll(
-        items,
-        rest.slidesToShow || 3,
-        rest.slidesToScroll || 1,
-      ),
-    [items, rest.slidesToShow, rest.slidesToScroll],
-  );
-
-  const settings = useMemo(() => {
-    return {
-      dots: true,
-      infinite: true,
-      slidesToShow,
-      slidesToScroll,
-      responsive: [
-        {
-          breakpoint: tabletBreakpoint,
-          settings: {
-            slidesToShow: 3,
-            slidesToScroll: 1,
-          },
+  const [rendered, setRendered] = React.useState(false);
+  const [settings, setSettings] = React.useState({
+    dots: true,
+    infinite: true,
+    slidesToShow: getSlidesToShow(items, rest.slidesToShow || 4),
+    slidesToScroll: getSlidesToScroll(
+      items,
+      rest.slidesToShow || 4,
+      rest.slidesToScroll || 1,
+    ),
+    responsive: [
+      {
+        breakpoint: tabletBreakpoint,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 1,
         },
-        {
-          breakpoint: mobileBreakpoint,
-          settings: {
-            slidesToShow: 1,
-            slidesToScroll: 1,
-          },
+      },
+      {
+        breakpoint: mobileBreakpoint,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
         },
-      ],
-    };
-  }, [slidesToShow, slidesToScroll]);
+      },
+    ],
+  });
 
-  return (
+  React.useEffect(() => {
+    if (!rendered) {
+      setRendered(true);
+    }
+  }, [rendered]);
+
+  // React.useEffect(() => {
+  //   if (!rendered) return;
+  //   setRendered(false);
+
+  //   // setSettings({
+  //   //   ...settings,
+  //   //   slidesToShow: getSlidesToShow(items, rest.slidesToShow || 4),
+  //   //   slidesToScroll: getSlidesToScroll(
+  //   //     items,
+  //   //     rest.slidesToShow || 4,
+  //   //     rest.slidesToScroll || 1,
+  //   //   ),
+  //   // });
+  //   /* eslint-disable-next-line */
+  // }, [rest.slidesToShow, rest.slidesToScroll]);
+
+  return rendered ? (
     <div className="cards-carousel">
       <Slider {...settings} ref={slider}>
         {items.map((item, index) => (
@@ -148,8 +158,10 @@ const CardsCarousel = ({ block, items, ...rest }) => {
           />
         ))}
       </Slider>
-      {items.length > slidesToShow && <Arrows slider={slider} />}
+      {items.length > settings.slidesToShow && <Arrows slider={slider} />}
     </div>
+  ) : (
+    ''
   );
 };
 
