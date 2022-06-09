@@ -6,6 +6,8 @@ import { ConditionalLink } from '@plone/volto/components';
 import { formatDate } from '@plone/volto/helpers/Utils/Date';
 import PreviewImage from './PreviewImage';
 
+// import '@eeacms/volto-listing-block/less/carousel.less';
+
 const tabletBreakpoint = 768;
 const mobileBreakpoint = 480;
 
@@ -14,16 +16,7 @@ const Card = ({ item, isEditMode }) => {
   const locale = config.settings.dateLocale || 'en-gb';
 
   return (
-    <UiCard
-      fluid={true}
-      // className={cx(
-      //   {
-      //     rounded: data.rounded,
-      //   },
-      //   item.theme || data.theme,
-      //   data.rounded ? data.roundedSize || 'small' : null,
-      // )}
-    >
+    <UiCard fluid={true}>
       <ConditionalLink className="image" item={item} condition={!isEditMode}>
         <PreviewImage item={item} alt={item.title} />
       </ConditionalLink>
@@ -96,8 +89,8 @@ const Arrows = (props) => {
 
 const CardsCarousel = ({ block, items, ...rest }) => {
   const slider = React.useRef(null);
-  const [rendered, setRendered] = React.useState(false);
-  const [settings, setSettings] = React.useState({
+  // const [rendered, setRendered] = React.useState(false);
+  const [settings] = React.useState({
     dots: true,
     infinite: true,
     slidesToShow: getSlidesToShow(items, rest.slidesToShow || 4),
@@ -124,11 +117,11 @@ const CardsCarousel = ({ block, items, ...rest }) => {
     ],
   });
 
-  React.useEffect(() => {
-    if (!rendered) {
-      setRendered(true);
-    }
-  }, [rendered]);
+  // React.useEffect(() => {
+  //   if (!rendered) {
+  //     setRendered(true);
+  //   }
+  // }, [rendered]);
 
   // React.useEffect(() => {
   //   if (!rendered) return;
@@ -146,7 +139,13 @@ const CardsCarousel = ({ block, items, ...rest }) => {
   //   /* eslint-disable-next-line */
   // }, [rest.slidesToShow, rest.slidesToScroll]);
 
-  return rendered ? (
+  return rest.isEditMode ? (
+    <div className="fluid-card-row">
+      {items.map((item, index) => (
+        <Card key={`card-${block}-${index}`} {...rest} item={item} />
+      ))}
+    </div>
+  ) : (
     <div className="cards-carousel">
       <Slider {...settings} ref={slider}>
         {items.map((item, index) => (
@@ -160,8 +159,6 @@ const CardsCarousel = ({ block, items, ...rest }) => {
       </Slider>
       {items.length > settings.slidesToShow && <Arrows slider={slider} />}
     </div>
-  ) : (
-    ''
   );
 };
 
