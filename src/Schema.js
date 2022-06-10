@@ -2,8 +2,8 @@ import { defineMessages } from 'react-intl';
 
 const messages = defineMessages({
   Type: {
-    id: 'Divider',
-    defaultMessage: 'Divider',
+    id: 'Listing',
+    defaultMessage: 'Listing',
   },
   Theme: {
     id: 'Theme',
