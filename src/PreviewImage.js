@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import { flattenToAppURL } from '@plone/volto/helpers';
 
-import DefaultImageSVG from '@plone/volto/components/manage/Blocks/Listing/default-image.svg';
+import DefaultImageSVG from './default-image.svg';
 
 /**
  * Renders a preview image for a catalog brain result item.

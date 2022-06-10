@@ -14,7 +14,6 @@ const CustomSummaryListingBlockTemplate = ({
   isEditMode,
   imageOnRightSide,
   hasImage,
-  hasTitle,
   hasDate,
   hasDescription,
 }) => {
