@@ -5,6 +5,7 @@ import { Card } from 'semantic-ui-react';
 import React from 'react';
 import PreviewImage from './PreviewImage';
 import config from '@plone/volto/registry';
+import cx from 'classnames';
 import './less/editor.less';
 
 const CustomCardsGalleryTemplate = ({
@@ -13,6 +14,7 @@ const CustomCardsGalleryTemplate = ({
   isEditMode,
   hasDate,
   hasDescription,
+  styles,
 }) => {
   moment.locale(config.settings.dateLocale);
   const makeTextBody = (item) => (
@@ -46,7 +48,7 @@ const CustomCardsGalleryTemplate = ({
       {items && items.length > 0 && (
         <div className={`ui fluid ${gridSize || ''} cards`}>
           {items.map((item) => (
-            <Card key={item['@id']} className="centered">
+            <Card key={item['@id']} className={cx('centered', styles?.theme)}>
               {makeImage(item)}
               {makeTextBody(item)}
             </Card>

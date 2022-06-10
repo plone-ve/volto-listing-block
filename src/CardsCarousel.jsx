@@ -5,24 +5,31 @@ import config from '@plone/volto/registry';
 import { ConditionalLink } from '@plone/volto/components';
 import { formatDate } from '@plone/volto/helpers/Utils/Date';
 import PreviewImage from './PreviewImage';
-
-// import '@eeacms/volto-listing-block/less/carousel.less';
+import { truncate } from 'lodash';
+import cx from 'classnames';
 
 const tabletBreakpoint = 768;
 const mobileBreakpoint = 480;
 
-const Card = ({ item, isEditMode }) => {
+const Card = ({
+  item,
+  isEditMode,
+  hasDate,
+  hasDescription,
+  maxDescription,
+  styles,
+}) => {
   const { title, description, EffectiveDate } = item;
   const locale = config.settings.dateLocale || 'en-gb';
 
   return (
-    <UiCard fluid={true}>
+    <UiCard fluid={true} className={cx(styles?.theme)}>
       <ConditionalLink className="image" item={item} condition={!isEditMode}>
         <PreviewImage item={item} alt={item.title} />
       </ConditionalLink>
       <UiCard.Content>
         {title && <UiCard.Header>{title}</UiCard.Header>}
-        {EffectiveDate !== 'None' && (
+        {hasDate && EffectiveDate !== 'None' && (
           <UiCard.Meta>
             {formatDate({
               date: EffectiveDate,
@@ -35,7 +42,16 @@ const Card = ({ item, isEditMode }) => {
             })}
           </UiCard.Meta>
         )}
-        {description && <UiCard.Description>{description}</UiCard.Description>}
+        {hasDescription && description && (
+          <UiCard.Description>
+            {maxDescription
+              ? truncate(description, {
+                  length: maxDescription,
+                  separator: ' ',
+                })
+              : description}
+          </UiCard.Description>
+        )}
       </UiCard.Content>
     </UiCard>
   );
@@ -116,28 +132,6 @@ const CardsCarousel = ({ block, items, ...rest }) => {
       },
     ],
   });
-
-  // React.useEffect(() => {
-  //   if (!rendered) {
-  //     setRendered(true);
-  //   }
-  // }, [rendered]);
-
-  // React.useEffect(() => {
-  //   if (!rendered) return;
-  //   setRendered(false);
-
-  //   // setSettings({
-  //   //   ...settings,
-  //   //   slidesToShow: getSlidesToShow(items, rest.slidesToShow || 4),
-  //   //   slidesToScroll: getSlidesToScroll(
-  //   //     items,
-  //   //     rest.slidesToShow || 4,
-  //   //     rest.slidesToScroll || 1,
-  //   //   ),
-  //   // });
-  //   /* eslint-disable-next-line */
-  // }, [rest.slidesToShow, rest.slidesToScroll]);
 
   return rest.isEditMode ? (
     <div className="fluid-card-row">
