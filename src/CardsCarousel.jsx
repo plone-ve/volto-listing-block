@@ -28,7 +28,6 @@ const Card = ({
         <PreviewImage item={item} alt={item.title} />
       </ConditionalLink>
       <UiCard.Content>
-        {title && <UiCard.Header>{title}</UiCard.Header>}
         {hasDate && EffectiveDate !== 'None' && (
           <UiCard.Meta>
             {formatDate({
@@ -42,6 +41,7 @@ const Card = ({
             })}
           </UiCard.Meta>
         )}
+        {title && <UiCard.Header>{title}</UiCard.Header>}
         {hasDescription && description && (
           <UiCard.Description>
             {maxDescription
