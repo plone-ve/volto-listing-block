@@ -41,7 +41,17 @@ const Card = ({
             })}
           </UiCard.Meta>
         )}
-        {title && <UiCard.Header>{title}</UiCard.Header>}
+        {title && (
+          <UiCard.Header>
+            <ConditionalLink
+              className="header-link"
+              item={item}
+              condition={!isEditMode}
+            >
+              {title}
+            </ConditionalLink>
+          </UiCard.Header>
+        )}
         {hasDescription && description && (
           <UiCard.Description>
             {maxDescription
