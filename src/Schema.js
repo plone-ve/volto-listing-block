@@ -13,10 +13,6 @@ const messages = defineMessages({
     id: 'Theme',
     defaultMessage: 'Theme',
   },
-  ThemeDefault: {
-    id: 'Default',
-    defaultMessage: 'Default',
-  },
   ThemePrimary: {
     id: 'Primary',
     defaultMessage: 'Primary',
@@ -46,7 +42,6 @@ export const ListingStylingSchema = ({ intl }) => ({
       title: intl.formatMessage(messages.Theme),
       description: intl.formatMessage(messages.ThemeHelp),
       choices: [
-        ['', intl.formatMessage(messages.ThemeDefault)],
         ['primary', intl.formatMessage(messages.ThemePrimary)],
         ['secondary', intl.formatMessage(messages.ThemeSecondary)],
         ['tertiary', intl.formatMessage(messages.ThemeTertiary)],
