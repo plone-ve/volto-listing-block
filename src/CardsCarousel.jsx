@@ -41,7 +41,17 @@ const Card = ({
             })}
           </UiCard.Meta>
         )}
-        {title && <UiCard.Header>{title}</UiCard.Header>}
+        {title && (
+          <UiCard.Header>
+            <ConditionalLink
+              className="header-link"
+              item={item}
+              condition={!isEditMode}
+            >
+              {title}
+            </ConditionalLink>
+          </UiCard.Header>
+        )}
         {hasDescription && description && (
           <UiCard.Description>
             {maxDescription
@@ -77,7 +87,7 @@ const Arrows = (props) => {
     <>
       <Button
         aria-label="Previous slide"
-        className="slider-arrow prev-arrow"
+        className="slider-arrow prev-arrow tablet or lower hidden"
         icon
         onClick={() => {
           if (slider.current) {
@@ -89,7 +99,7 @@ const Arrows = (props) => {
       </Button>
       <Button
         aria-label="Next slide"
-        className="slider-arrow next-arrow"
+        className="slider-arrow next-arrow tablet or lower hidden"
         icon
         onClick={() => {
           if (slider.current) {
@@ -105,10 +115,10 @@ const Arrows = (props) => {
 
 const CardsCarousel = ({ block, items, ...rest }) => {
   const slider = React.useRef(null);
-  // const [rendered, setRendered] = React.useState(false);
   const [settings] = React.useState({
     dots: true,
     infinite: true,
+    arrows: false,
     slidesToShow: getSlidesToShow(items, rest.slidesToShow || 4),
     slidesToScroll: getSlidesToScroll(
       items,
@@ -121,6 +131,7 @@ const CardsCarousel = ({ block, items, ...rest }) => {
         settings: {
           slidesToShow: 3,
           slidesToScroll: 1,
+          arrows: false,
         },
       },
       {
@@ -128,6 +139,7 @@ const CardsCarousel = ({ block, items, ...rest }) => {
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
+          arrows: false,
         },
       },
     ],
