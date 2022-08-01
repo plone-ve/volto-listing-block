@@ -31,11 +31,13 @@ const CustomSummaryListingBlockTemplate = ({
 
   const makeTextBody = (item) => (
     <div className="listing-body">
-      <h3>{item.title ? item.title : item.id}</h3>
+      <h3 className={'listing-header'}>{item.title ? item.title : item.id}</h3>
       {hasDate && item.effective && (
-        <p>{moment(item.effective).format('ll')}</p>
+        <p className={'listing-date'}>{moment(item.effective).format('ll')}</p>
       )}
-      {hasDescription && <p>{item.description}</p>}
+      {hasDescription && (
+        <p className={'listing-description'}>{item.description}</p>
+      )}
     </div>
   );
 
