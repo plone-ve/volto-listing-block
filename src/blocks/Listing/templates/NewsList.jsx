@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import config from '@plone/volto/registry';
 import moment from 'moment';
 import PropTypes from 'prop-types';
-import './less/editor.less';
 
 const CustomNewsListTemplate = ({
   items,
@@ -51,6 +50,27 @@ const CustomNewsListTemplate = ({
       )}
     </>
   );
+};
+
+CustomNewsListTemplate.schemaEnhancer = ({ schema, formData, intl }) => {
+  schema.fieldsets.splice(1, 0, {
+    id: 'newsList',
+    title: 'News item',
+    fields: ['hasDate', 'hasDescription'],
+  });
+
+  schema.properties = {
+    ...schema.properties,
+    hasDate: {
+      title: 'Publication date',
+      type: 'boolean',
+    },
+    hasDescription: {
+      title: 'Description',
+      type: 'boolean',
+    },
+  };
+  return schema;
 };
 
 CustomNewsListTemplate.propTypes = {
