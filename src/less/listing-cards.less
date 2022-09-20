@@ -60,7 +60,30 @@ each(range(5), {
   }
 }
 
+
+// over specific due to blocks.less override
+.u-item.listing-item {
+  a,
+  a p {
+    color: #3d5265;
+  }
+}
+
 .listing-item {
+  margin-bottom: 32px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #BCBEC0;
+
+  img {
+    margin-right: 25px;
+    max-width: 350px !important;
+    width: auto;
+  }
+
+  .listing-header {
+    margin-bottom: 8px;
+  }
+
   // defaults in Volto
   .slot-top {
     display: flex;
