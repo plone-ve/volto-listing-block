@@ -1,8 +1,8 @@
-import React from 'react';
-import Item from './Item';
+import React from "react";
+import Item from "./Item";
 
-import { isArray } from 'lodash';
-import { serializeNodes } from 'volto-slate/editor/render';
+import { isArray } from "lodash";
+import { serializeNodes } from "@plone/volto-slate/editor/render";
 
 export const serializeText = (text) => {
   return isArray(text) ? serializeNodes(text) : text;

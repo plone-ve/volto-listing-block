@@ -16,14 +16,11 @@
     "type": "git",
     "url": "git@github.com:eea/volto-listing-block.git"
   },
-  "addons": [
-    "volto-slate"
-  ],
+  "addons": [],
   "dependencies": {
     "react-slick": "0.29.0",
     "slick-carousel": "1.8.1",
-    "react-resize-detector": "7.1.2",
-    "volto-slate": "*"
+    "react-resize-detector": "7.1.2"
   },
   "devDependencies": {
     "@cypress/code-coverage": "^3.9.5",
