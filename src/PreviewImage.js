@@ -41,16 +41,15 @@ function PreviewImage(props) {
     label,
     ...rest
   } = props;
-  const src =
-    preview_image_url || preview_image?.[0]
-      ? getSrc(preview_image[0], size)
-      : item.image_field
-      ? getSrc(item, size)
-      : DefaultImageSVG;
+  const src = preview_image?.[0]
+    ? getSrc(preview_image[0], size)
+    : item.image_field
+    ? getSrc(item, size)
+    : DefaultImageSVG;
 
   return (
     <Image
-      src={src}
+      src={preview_image_url || src}
       alt={item.title}
       {...rest}
       label={

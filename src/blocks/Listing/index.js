@@ -9,6 +9,7 @@ import {
   RightImageCardLayout,
 } from './CardTemplates';
 import { DefaultItemLayout } from './ItemTemplates';
+import { SearchItemLayout } from './SearchItemTemplate';
 
 import { ListingStylingSchema } from './schema';
 
@@ -77,6 +78,12 @@ const applyConfig = (config) => {
         isDefault: true,
         title: 'Basic Item',
         view: DefaultItemLayout,
+      },
+      {
+        id: 'searchItem',
+        isDefault: false,
+        title: 'Search Item',
+        view: SearchItemLayout,
       },
     ],
     cardTemplates: [
