@@ -1,17 +1,17 @@
-import React from "react";
-import { connect } from "react-redux";
-import { isArray } from "lodash";
-import config from "@plone/volto/registry";
-import { BlockDataForm, SidebarPortal } from "@plone/volto/components";
-import SlateEditor from "@plone/volto-slate/editor/SlateEditor";
-import { handleKey } from "@plone/volto-slate/blocks/Text/keyboard";
+import React from 'react';
+import { connect } from 'react-redux';
+import { isArray } from 'lodash';
+import config from '@plone/volto/registry';
+import { BlockDataForm, SidebarPortal } from '@plone/volto/components';
+import SlateEditor from '@plone/volto-slate/editor/SlateEditor';
+import { handleKey } from '@plone/volto-slate/blocks/Text/keyboard';
 import {
   uploadContent,
   saveSlateBlockSelection,
-} from "@plone/volto-slate/actions";
+} from '@plone/volto-slate/actions';
 
-import Item from "./Item";
-import getSchema from "./schema";
+import Item from './Item';
+import getSchema from './schema';
 
 export const createSlateParagraph = (text) => {
   return isArray(text) ? text : config.settings.slate.defaultValue();
@@ -36,7 +36,7 @@ const Edit = (props) => {
       editor.getBlockProps = () => props;
       return editor;
     },
-    [props]
+    [props],
   );
 
   const handleFocus = React.useCallback(() => {
@@ -100,5 +100,5 @@ export default connect(
   {
     uploadContent,
     saveSlateBlockSelection, // needed as editor blockProps
-  }
+  },
 )(Edit);
