@@ -1,6 +1,8 @@
 import cx from 'classnames';
 import { ConditionalLink, FormattedDate } from '@plone/volto/components';
 
+import { getVoltoStyles } from '@eeacms/volto-listing-block/schema-utils';
+
 import PreviewImage from '@eeacms/volto-listing-block/PreviewImage';
 
 const BodyText = ({ item, hasDate, hasDescription }) => {
@@ -26,27 +28,13 @@ const BodyText = ({ item, hasDate, hasDescription }) => {
   );
 };
 
-const getStyles = (props) => {
-  const { itemModel = {} } = props;
-  const res = {};
-  if (itemModel.maxDescription) {
-    res[`max-${itemModel.maxDescription}-lines`] = true;
-  }
-  return res;
-};
-
 const BasicItem = (props) => {
   const { item, styles, className, itemModel = {}, isEditMode = false } = props;
   const { hasImage, imageOnRightSide, hasDate, hasDescription } = itemModel;
 
   return (
     <div
-      className={cx(
-        'u-item listing-item',
-        styles?.theme,
-        getStyles(props),
-        className,
-      )}
+      className={cx('u-item listing-item', getVoltoStyles(styles), className)}
     >
       <div className="wrapper">
         <div className="slot-top">
