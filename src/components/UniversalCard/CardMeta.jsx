@@ -17,7 +17,7 @@ const CardMeta = (props) => {
         <span className="text-left">{head_title || item['@type']}</span>
       )}
       {showDate && (
-        <span className="text-right">
+        <span className="text-right date">
           {formatDate({
             date: EffectiveDate,
             format: {
