@@ -1,5 +1,15 @@
 import { defineMessages } from 'react-intl';
 
+import alignLeftSVG from '@plone/volto/icons/align-left.svg';
+import alignCenterSVG from '@plone/volto/icons/align-center.svg';
+import clearSVG from '@plone/volto/icons/clear.svg';
+
+const ALIGN_VALUE_MAP = [
+  ['align_left', alignLeftSVG],
+  ['align_center', alignCenterSVG],
+  ['', clearSVG],
+];
+
 const messages = defineMessages({
   Type: {
     id: 'Listing',
@@ -54,7 +64,7 @@ export const ListingStylingSchema = ({ intl }) => ({
     {
       id: 'default',
       title: 'Default',
-      fields: ['theme', 'rounded', 'inverted'],
+      fields: ['theme', 'text_align', 'rounded', 'inverted'],
     },
   ],
   properties: {
@@ -67,6 +77,11 @@ export const ListingStylingSchema = ({ intl }) => ({
         ['secondary', intl.formatMessage(messages.ThemeSecondary)],
         ['tertiary', intl.formatMessage(messages.ThemeTertiary)],
       ],
+    },
+    text_align: {
+      title: 'Text align',
+      widget: 'style_text_align',
+      actions: ALIGN_VALUE_MAP,
     },
     inverted: {
       title: intl.formatMessage(messages.Inverted),
