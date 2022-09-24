@@ -2,7 +2,7 @@ import config from '@plone/volto/registry';
 import { resolveExtension } from '@plone/volto/helpers/Extensions/withBlockExtensions';
 import { Item } from './model';
 
-import schemaEnhancer from './schema';
+import universalItemSchemaEnhancer from './schema';
 
 const UniversalItem = (props) => {
   const { itemModel = {}, item, ...rest } = props;
@@ -16,6 +16,6 @@ const UniversalItem = (props) => {
   return <ItemTemplate item={new Item(item)} itemModel={itemModel} {...rest} />;
 };
 
-UniversalItem.schemaEnhancer = schemaEnhancer;
+UniversalItem.schemaEnhancer = universalItemSchemaEnhancer;
 
 export default UniversalItem;

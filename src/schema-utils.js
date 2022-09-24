@@ -15,14 +15,16 @@ const addTypeSelect = ({ intl, schema, extensionName, messages }) => {
   return schema;
 };
 
-export const enhanceSchema = ({ extensionName, messages }) => ({
-  schema: originalSchema,
-  formData,
-  intl,
-}) => {
-  // const extensionName = 'itemTemplates';
-  const extensionType = '@type'; // property name in stored block data
-  const extensions = config.blocks.blocksConfig.listing.extensions;
+export const enhanceSchema = ({
+  extensionName,
+  messages,
+  blockType = 'listing',
+}) => ({ schema: originalSchema, formData, intl }) => {
+  const extensionType = '@type'; // the attribute name that's stored in the block data
+  // it identifies the type of extension that's
+  // applied. Similar in scope, for example, with the block @type
+  const blockConfig = config.blocks.blocksConfig[blockType];
+  const extensions = blockConfig.extensions;
   const variations = extensions[extensionName];
 
   const activeItemName = formData?.[extensionType];
@@ -36,6 +38,45 @@ export const enhanceSchema = ({ extensionName, messages }) => ({
     : cloneDeep(originalSchema);
 
   return addTypeSelect({ schema, intl, extensionName, messages });
+};
+
+export const addStylingSchema = ({
+  formData,
+  schema,
+  blockType = 'listing',
+  extensionName = 'itemTemplates',
+  intl,
+}) => {
+  const extensionType = '@type'; // the attribute name that's stored in the block data
+  const activeItemName = formData?.[extensionType];
+  const blockConfig = config.blocks.blocksConfig[blockType];
+  const activeVariation =
+    formData['variation'] ||
+    blockConfig.variations?.find(({ isDefault }) => isDefault) ||
+    {};
+  const extensions = blockConfig.extensions;
+  const variations = extensions[extensionName];
+  let activeItem = variations?.find((item) => item.id === activeItemName);
+
+  const variationStyleSchema = activeVariation.stylesSchema;
+  schema = variationStyleSchema
+    ? variationStyleSchema({ schema: cloneDeep(schema), formData, intl })
+    : schema;
+
+  const stylingSchema = activeItem?.['stylesSchema'];
+  schema = stylingSchema
+    ? stylingSchema({ schema: cloneDeep(schema), formData, intl })
+    : schema;
+
+  console.log('activeItem', {
+    activeItem,
+    activeVariation,
+    variationStyleSchema,
+    stylingSchema,
+    schema,
+  });
+
+  return schema;
 };
 
 export const getVoltoStyles = (props) => {
