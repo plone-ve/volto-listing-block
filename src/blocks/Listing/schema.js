@@ -19,6 +19,10 @@ export const BasicListingBlockStylesSchema = ({ intl, formData }) => {
   const styleSchema = defaultStyleSchema({ intl, formData });
   styleSchema.fieldsets[0].fields.push('theme', 'text_align');
 
+  styleSchema.fieldsets[0].fields = styleSchema.fieldsets[0].fields.filter(
+    (val) => val !== 'align',
+  );
+
   styleSchema.properties = {
     ...styleSchema.properties,
     theme: {
