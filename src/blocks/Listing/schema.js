@@ -17,12 +17,7 @@ export const ListingStylingSchemaEnhancer = ({ schema }) => {
 
 export const BasicListingBlockStylesSchema = ({ intl, formData }) => {
   const styleSchema = defaultStyleSchema({ intl, formData });
-  styleSchema.fieldsets[0].fields.push(
-    'theme',
-    'text_align',
-    // 'rounded',
-    // 'inverted',
-  );
+  styleSchema.fieldsets[0].fields.push('theme', 'text_align');
 
   styleSchema.properties = {
     ...styleSchema.properties,
@@ -41,11 +36,6 @@ export const BasicListingBlockStylesSchema = ({ intl, formData }) => {
       widget: 'style_text_align',
       actions: ALIGN_VALUE_MAP,
     },
-    // rounded: {
-    //   title: intl.formatMessage(messages.Rounded),
-    //   description: intl.formatMessage(messages.RoundedHelp),
-    //   type: 'boolean',
-    // },
   };
 
   return styleSchema;
