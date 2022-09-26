@@ -47,11 +47,11 @@ const BasicItem = (props) => {
                     hasDescription={hasDescription}
                     hasDate={hasDate}
                   />
-                  <PreviewImage item={item} style={{ marginLeft: 'auto' }} />
+                  <PreviewImage item={item} className={'right'} />
                 </>
               ) : (
                 <>
-                  <PreviewImage item={item} />
+                  <PreviewImage item={item} className={'left'} />
                   <BodyText
                     item={item}
                     hasDescription={hasDescription}

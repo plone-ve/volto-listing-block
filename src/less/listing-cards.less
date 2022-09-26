@@ -75,11 +75,6 @@ each(range(5), {
   border-bottom: 1px solid #bcbec0;
   margin-bottom: 32px;
 
-  img {
-    width: auto !important;
-    max-width: 350px !important;
-    margin-right: 25px;
-  }
 
   .slot-head,
   .listing-header {
@@ -102,6 +97,16 @@ each(range(5), {
 }
 
 // listing theme styling alongside inverse options
+.has--rounded-- .listing-item .image {
+  width: auto !important;
+  max-width: 350px !important;
+}
+
+.has--rounded--true img {
+  width: 176px !important;
+  height: 176px !important;
+  border-radius: 50%;
+}
 .has--theme--primary {
   --text-color: var(--text-color--primary, #fff);
   background-color: var(--background-color, @primaryColor);
@@ -131,6 +136,14 @@ each(range(5), {
   --text-color--tertiary: @tertiaryColor;
   --theme-padding: 32px 0;
   --background-color: #fff;
+}
+
+.image.left {
+  margin-right: 24px;
+}
+
+.image.right {
+  margin-left: 24px;
 }
 
 .u-item.listing-item {
