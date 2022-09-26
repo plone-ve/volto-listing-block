@@ -1,5 +1,5 @@
 import { defineMessages } from 'react-intl';
-import { enhanceSchema } from '@eeacms/volto-listing-block/schema-utils';
+import { schemaEnhancerFactory } from '@eeacms/volto-listing-block/schema-utils';
 
 const messages = defineMessages({
   title: {
@@ -110,7 +110,10 @@ const CardSchema = ({ formData }) => {
 
 export default function universalCardSchemaEnhancer(props) {
   const { schema } = props;
-  const enhancer = enhanceSchema({ extensionName: 'cardTemplates', messages });
+  const enhancer = schemaEnhancerFactory({
+    extensionName: 'cardTemplates',
+    messages,
+  });
   return {
     ...schema,
     fieldsets: [

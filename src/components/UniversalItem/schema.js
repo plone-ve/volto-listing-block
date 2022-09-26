@@ -1,6 +1,6 @@
 import {
-  enhanceSchema,
-  addStylingSchema,
+  schemaEnhancerFactory,
+  enhanceStylingSchema,
 } from '@eeacms/volto-listing-block/schema-utils';
 import { defineMessages } from 'react-intl';
 
@@ -77,10 +77,14 @@ const ItemSchema = ({ formData }) => {
 
 export default function universalItemSchemaEnhancer(props) {
   const { schema } = props;
-  const enhanceItemModel = enhanceSchema({
+
+  const enhanceItemModel = schemaEnhancerFactory({
     extensionName: 'itemTemplates',
     messages,
+    blockType: 'listing',
+    extensionField: '@type',
   });
+
   const baseSchema = {
     ...schema,
     fieldsets: [
@@ -104,10 +108,11 @@ export default function universalItemSchemaEnhancer(props) {
     },
   };
 
-  const styledSchema = addStylingSchema({
+  const styledSchema = enhanceStylingSchema({
     ...props,
     schema: baseSchema,
-    formData: props.formData?.itemModel || {},
+    // schema: baseSchema.properties.styles.schema,
+    formData: props.formData,
   });
 
   return styledSchema;

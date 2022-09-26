@@ -46,6 +46,11 @@ SummaryListing.schemaEnhancer = (args) => {
   return schema;
 };
 
+SummaryListing.styleSchemaEnhancer = ({ schema }) => {
+  // console.log('style', schema);
+  return schema;
+};
+
 SummaryListing.propTypes = {
   items: PropTypes.arrayOf(PropTypes.any).isRequired,
   linkMore: PropTypes.any,
