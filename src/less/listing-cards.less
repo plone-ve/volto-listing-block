@@ -97,15 +97,20 @@ each(range(5), {
 }
 
 // listing theme styling alongside inverse options
-.has--rounded-- .listing-item .image {
-  width: auto !important;
-  max-width: 350px !important;
+.listing .listing-item .ui.image {
+  width: var(--image-width, auto);
+  height: var(--image-height, auto);
+  border-radius: var(--border-radius, 0);
 }
 
-.has--rounded--true img {
-  width: 176px !important;
-  height: 176px !important;
-  border-radius: 50%;
+.listing-item .image {
+  --image-max-width: 350px;
+}
+
+.has--rounded--true {
+  --image-width: 176px !important;
+  --image-height: 176px !important;
+  --border-radius: 50%;
 }
 .has--theme--primary {
   --text-color: var(--text-color--primary, #fff);
@@ -144,6 +149,7 @@ each(range(5), {
 
 .image.right {
   margin-left: 24px;
+  margin-right: 0;
 }
 
 .u-item.listing-item {
