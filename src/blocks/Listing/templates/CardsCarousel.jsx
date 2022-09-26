@@ -145,4 +145,18 @@ CardsCarousel.schemaEnhancer = (args) => {
   };
 };
 
+CardsCarousel.styleSchemaEnhancer = ({ schema, intl }) => {
+  const styleSchema = schema.properties.styles.schema;
+  styleSchema.fieldsets[0].fields.push('oblique');
+  styleSchema.properties = {
+    ...styleSchema.properties,
+    oblique: {
+      title: 'Oblique',
+      type: 'boolean',
+    },
+  };
+
+  return schema;
+};
+
 export default CardsCarousel;
