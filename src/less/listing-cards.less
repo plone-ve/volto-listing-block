@@ -97,6 +97,7 @@ each(range(5), {
 }
 
 // listing theme styling alongside inverse options
+
 .listing .listing-item .ui.image {
   width: var(--image-width, auto);
   height: var(--image-height, auto);
@@ -112,22 +113,20 @@ each(range(5), {
   --image-height: 176px !important;
   --border-radius: 50%;
 }
+
 .has--theme--primary {
   --text-color: var(--text-color--primary, #fff);
-  background-color: var(--background-color, @primaryColor);
-  color: var(--text-color, #fff);
+  --bg-color: var(--background-color, @primaryColor);
 }
 
 .has--theme--secondary {
   --text-color: var(--text-color--secondary, #fff);
-  background-color: var(--background-color, @secondaryColor);
-  color: var(--text-color--secondary, #fff);
+  --bg-color: var(--background-color, @secondaryColor);
 }
 
 .has--theme--tertiary {
   --text-color: var(--text-color--tertiary, #fff);
-  background-color: var(--background-color, @tertiaryColor);
-  color: var(--text-color);
+  --bg-color: var(--background-color, @tertiaryColor);
 }
 
 .has--inverted--:not(.has--theme--) {
@@ -143,6 +142,10 @@ each(range(5), {
   --background-color: #fff;
 }
 
+.listing {
+  color: var(--text-color, @tertiaryColor);
+  background-color: var(--bg-color, #FFF);
+}
 .image.left {
   margin-right: 24px;
 }
