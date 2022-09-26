@@ -70,22 +70,16 @@ each(range(5), {
   }
 }
 
-
 .listing-item {
   padding-bottom: 16px;
   border-bottom: 1px solid #bcbec0;
   margin-bottom: 32px;
 
-  img {
-    width: auto !important;
-    max-width: 350px !important;
-    margin-right: 25px;
-  }
-
   .slot-head,
   .listing-header {
     margin-bottom: 8px;
   }
+
   .meta .date {
     margin-left: auto;
   }
@@ -102,36 +96,68 @@ each(range(5), {
 }
 
 // listing theme styling alongside inverse options
+
+.listing .listing-item .ui.image {
+  width: var(--image-width, auto);
+  height: var(--image-height, auto);
+  border-radius: var(--border-radius, 0);
+}
+
+.listing-item .image {
+  --image-max-width: 350px;
+}
+
+.has--rounded--true {
+  --image-width: 176px !important;
+  --image-height: 176px !important;
+  --border-radius: 50%;
+}
+
 .has--theme--primary {
-  --text-color: var(--text-color--primary, #FFF);
-  background-color: var(--background-color, @primaryColor);
-  color: var(--text-color, #FFF);
+  --text-color: var(--text-color--primary, #fff);
+  --bg-color: var(--background-color, @primaryColor);
 }
+
 .has--theme--secondary {
-  --text-color: var(--text-color--secondary, #FFF);
-  background-color: var(--background-color, @secondaryColor);
-  color: var(--text-color--secondary, #FFF);
+  --text-color: var(--text-color--secondary, #fff);
+  --bg-color: var(--background-color, @secondaryColor);
 }
+
 .has--theme--tertiary {
-  --text-color: var(--text-color--tertiary, #FFF);
-  background-color: var(--background-color, @tertiaryColor);
-  color: var(--text-color);
+  --text-color: var(--text-color--tertiary, #fff);
+  --bg-color: var(--background-color, @tertiaryColor);
 }
+
 .has--inverted--:not(.has--theme--) {
-  --text-color: #FFF;
+  --text-color: #fff;
   --theme-padding: 32px 1.5rem;
 }
+
 .has--inverted--true {
   --text-color--primary: @primaryColor;
   --text-color--secondary: @secondaryColor;
   --text-color--tertiary: @tertiaryColor;
   --theme-padding: 32px 0;
-  --background-color: #FFF;
+  --background-color: #fff;
+}
+
+.listing {
+  background-color: var(--bg-color, #fff);
+  color: var(--text-color, @tertiaryColor);
+}
+
+.image.left {
+  margin-right: 24px;
+}
+
+.image.right {
+  margin-right: 0;
+  margin-left: 24px;
 }
 
 .u-item.listing-item {
-    padding: var(--theme-padding, 32px 1rem);
-    margin: 0;
+  padding: var(--theme-padding, 32px 1rem);
+  margin: 0;
 }
 
 .ui.card.u-card {

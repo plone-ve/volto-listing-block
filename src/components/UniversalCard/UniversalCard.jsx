@@ -7,7 +7,7 @@ import { Item } from './model';
 import { getVoltoStyles } from '@eeacms/volto-listing-block/schema-utils';
 import schemaEnhancer from './schema';
 
-const UniversalCard = (props) => {
+function UniversalCard(props) {
   const { itemModel = {}, styles, item, ...rest } = props;
   const extension = resolveExtension(
     '@type',
@@ -27,7 +27,7 @@ const UniversalCard = (props) => {
       {...rest}
     />
   );
-};
+}
 
 UniversalCard.schemaEnhancer = schemaEnhancer;
 

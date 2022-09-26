@@ -1,17 +1,21 @@
 import CardsCarousel from './templates/CardsCarousel';
-import CustomCardsGalleryTemplate from './templates/CardsGallery';
-import CustomNewsListTemplate from './templates/NewsList';
-import CustomSummaryListingBlockTemplate from './templates/Summary';
+import CardsGallery from './templates/CardsGallery';
+import NewsList from './templates/NewsList';
+import Summary from './templates/Summary';
+
 import {
   DefaultCardLayout,
   ImageCardLayout,
   LeftImageCardLayout,
   RightImageCardLayout,
 } from './CardTemplates';
+
 import { DefaultItemLayout } from './ItemTemplates';
 import { SearchItemLayout } from './SearchItemTemplate';
 
-import { ListingStylingSchema } from './schema';
+import { BasicListingBlockStylesSchema } from './schema';
+
+// import { ListingStylingSchemaEnhancer } from './schema';
 
 const applyConfig = (config) => {
   // moment date locale. See https://momentjs.com/ - Multiple Locale Support
@@ -22,9 +26,12 @@ const applyConfig = (config) => {
 
   const { schemaEnhancer } = listing;
 
+  listing.stylesSchema = BasicListingBlockStylesSchema;
+
   listing.schemaEnhancer = (props) => {
+    // NOTE: this is a schema finalizer
     const schema = schemaEnhancer ? schemaEnhancer(props) : props.schema;
-    //
+
     // move querystring to its own fieldset;
     schema.fieldsets[0].fields = schema.fieldsets[0].fields.filter(
       (f) => f !== 'querystring',
@@ -44,8 +51,9 @@ const applyConfig = (config) => {
       id: 'summary',
       isDefault: false,
       title: 'Item listing',
-      template: CustomSummaryListingBlockTemplate,
-      schemaEnhancer: CustomSummaryListingBlockTemplate.schemaEnhancer,
+      template: Summary,
+      schemaEnhancer: Summary.schemaEnhancer,
+      stylesSchema: Summary.styleSchemaEnhancer,
     },
     {
       id: 'cardsCarousel',
@@ -53,20 +61,21 @@ const applyConfig = (config) => {
       title: 'Cards carousel',
       template: CardsCarousel,
       schemaEnhancer: CardsCarousel.schemaEnhancer,
+      stylesSchema: CardsCarousel.styleSchemaEnhancer,
     },
     {
       id: 'customCardsGalleryVariationId',
       isDefault: false,
       title: 'Cards gallery',
-      template: CustomCardsGalleryTemplate,
-      schemaEnhancer: CustomCardsGalleryTemplate.schemaEnhancer,
+      template: CardsGallery,
+      schemaEnhancer: CardsGallery.schemaEnhancer,
     },
     {
       id: 'customNewsListVariationId',
       isDefault: false,
       title: 'News List',
-      template: CustomNewsListTemplate,
-      schemaEnhancer: CustomNewsListTemplate.schemaEnhancer,
+      template: NewsList,
+      schemaEnhancer: NewsList.schemaEnhancer,
     },
   ];
 
@@ -84,6 +93,7 @@ const applyConfig = (config) => {
         isDefault: false,
         title: 'Search Item',
         view: SearchItemLayout,
+        stylesSchema: SearchItemLayout.styleSchemaEnhancer,
       },
     ],
     cardTemplates: [
@@ -112,10 +122,8 @@ const applyConfig = (config) => {
   };
 
   // Theming
-  if (!listing.enableStyling) {
-    listing.enableStyling = true;
-    listing.stylesSchema = ListingStylingSchema;
-  }
+  // This bug needs to be fixed first: https://github.com/plone/volto/issues/3675
+  // listing.enableStyling = true;
 
   return config;
 };

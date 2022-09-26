@@ -1,1 +1,5 @@
 @categoryFontSize: 12px;
+
+@primaryColor         : #004B7F;
+@secondaryColor       : #007B6C;
+@tertiaryColor        : #3D5265;
