@@ -75,7 +75,6 @@ each(range(5), {
   border-bottom: 1px solid #bcbec0;
   margin-bottom: 32px;
 
-
   .slot-head,
   .listing-header {
     margin-bottom: 8px;
@@ -143,16 +142,17 @@ each(range(5), {
 }
 
 .listing {
+  background-color: var(--bg-color, #fff);
   color: var(--text-color, @tertiaryColor);
-  background-color: var(--bg-color, #FFF);
 }
+
 .image.left {
   margin-right: 24px;
 }
 
 .image.right {
-  margin-left: 24px;
   margin-right: 0;
+  margin-left: 24px;
 }
 
 .u-item.listing-item {
