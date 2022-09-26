@@ -1,11 +1,13 @@
+import React from 'react';
+import PropTypes from 'prop-types';
+import moment from 'moment'; // TODO: this needs to be lazyloaded!!!
+
 import { ConditionalLink } from '@plone/volto/components';
 import UniversalItem from '@eeacms/volto-listing-block/components/UniversalItem/UniversalItem';
 import { flattenToAppURL } from '@plone/volto/helpers';
 import { isInternalURL } from '@plone/volto/helpers/Url/Url';
 import config from '@plone/volto/registry';
-import moment from 'moment';
-import PropTypes from 'prop-types';
-import React from 'react';
+import messages from '@eeacms/volto-listing-block/messages';
 
 const SummaryListing = (props) => {
   const { block, items, linkTitle, linkHref, isEditMode } = props;
@@ -43,8 +45,18 @@ const SummaryListing = (props) => {
 
 SummaryListing.schemaEnhancer = UniversalItem.schemaEnhancer;
 
-SummaryListing.styleSchemaEnhancer = ({ schema }) => {
-  console.log('style', schema);
+SummaryListing.styleSchemaEnhancer = ({ schema, intl }) => {
+  const styleSchema = schema.properties.styles.schema;
+  styleSchema.fieldsets[0].fields.push('inverted');
+  styleSchema.properties = {
+    ...styleSchema.properties,
+    inverted: {
+      title: intl.formatMessage(messages.Inverted),
+      description: intl.formatMessage(messages.InvertedHelp),
+      type: 'boolean',
+    },
+  };
+
   return schema;
 };
 

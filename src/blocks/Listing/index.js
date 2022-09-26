@@ -26,7 +26,7 @@ const applyConfig = (config) => {
 
   const { schemaEnhancer } = listing;
 
-  // listing.stylesSchema = BasicListingBlockStylesSchema;
+  listing.stylesSchema = BasicListingBlockStylesSchema;
 
   listing.schemaEnhancer = (props) => {
     // NOTE: this is a schema finalizer
@@ -93,7 +93,7 @@ const applyConfig = (config) => {
         isDefault: false,
         title: 'Search Item',
         view: SearchItemLayout,
-        // stylesSchema: ListingStylingSchemaEnhancer,
+        stylesSchema: SearchItemLayout.styleSchemaEnhancer,
       },
     ],
     cardTemplates: [

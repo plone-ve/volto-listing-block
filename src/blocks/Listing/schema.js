@@ -1,4 +1,5 @@
-import { defineMessages } from 'react-intl';
+import { defaultStyleSchema } from '@plone/volto/components/manage/Blocks/Block/StylesSchema';
+import messages from '@eeacms/volto-listing-block/messages';
 
 import alignLeftSVG from '@plone/volto/icons/align-left.svg';
 import alignCenterSVG from '@plone/volto/icons/align-center.svg';
@@ -10,73 +11,21 @@ const ALIGN_VALUE_MAP = [
   ['', clearSVG],
 ];
 
-const messages = defineMessages({
-  styling: {
-    id: 'Styling',
-    defaultMessage: 'Styling',
-  },
-
-  Type: {
-    id: 'Listing',
-    defaultMessage: 'Listing',
-  },
-  Theme: {
-    id: 'Theme',
-    defaultMessage: 'Theme',
-  },
-  ThemeHelp: {
-    id: 'Theme',
-    defaultMessage: 'Theme',
-  },
-  ThemeDefault: {
-    id: 'Default',
-    defaultMessage: 'Default',
-  },
-  ThemePrimary: {
-    id: 'Primary',
-    defaultMessage: 'Primary',
-  },
-  ThemeSecondary: {
-    id: 'Secondary',
-    defaultMessage: 'Secondary',
-  },
-  ThemeTertiary: {
-    id: 'Tertiary',
-    defaultMessage: 'Tertiary',
-  },
-  Rounded: {
-    id: 'Rounded',
-    defaultMessage: 'Rounded',
-  },
-  RoundedHelp: {
-    id: 'Rounded Image',
-    defaultMessage: 'Rounded Image',
-  },
-  Inverted: {
-    id: 'Inverted',
-    defaultMessage: 'Inverted',
-  },
-  InvertedHelp: {
-    id: 'InvertedHelp',
-    defaultMessage: 'Inverted theme',
-  },
-});
-
 export const ListingStylingSchemaEnhancer = ({ schema }) => {
   return schema;
 };
 
-export const BasicListingBlockStylesSchema = ({ schema, intl }) => {
-  // return schema;
-  schema.fieldsets[0].fields.push(
+export const BasicListingBlockStylesSchema = ({ intl, formData }) => {
+  const styleSchema = defaultStyleSchema({ intl, formData });
+  styleSchema.fieldsets[0].fields.push(
     'theme',
     'text_align',
     // 'rounded',
     // 'inverted',
   );
 
-  schema.properties = {
-    ...schema.properties,
+  styleSchema.properties = {
+    ...styleSchema.properties,
     theme: {
       title: intl.formatMessage(messages.Theme),
       description: intl.formatMessage(messages.ThemeHelp),
@@ -92,11 +41,6 @@ export const BasicListingBlockStylesSchema = ({ schema, intl }) => {
       widget: 'style_text_align',
       actions: ALIGN_VALUE_MAP,
     },
-    // inverted: {
-    //   title: intl.formatMessage(messages.Inverted),
-    //   description: intl.formatMessage(messages.InvertedHelp),
-    //   type: 'boolean',
-    // },
     // rounded: {
     //   title: intl.formatMessage(messages.Rounded),
     //   description: intl.formatMessage(messages.RoundedHelp),
@@ -104,5 +48,5 @@ export const BasicListingBlockStylesSchema = ({ schema, intl }) => {
     // },
   };
 
-  return schema;
+  return styleSchema;
 };

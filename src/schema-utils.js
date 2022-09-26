@@ -2,7 +2,6 @@ import { cloneDeep } from 'lodash';
 import config from '@plone/volto/registry';
 
 import { defineMessages } from 'react-intl';
-import { defaultStyleSchema } from '@plone/volto/components/manage/Blocks/Block/StylesSchema';
 
 const addTypeSelect = ({ intl, schema, extensionName, messages }) => {
   const field = '@type';
@@ -70,6 +69,8 @@ const addStylesField = ({ schema, intl, formData }) => {
   // We omit the first step in ladder because of bugs in Volto < 16.0.0-alpha.36
   // In later versions we won't have to redefine the styles field
 
+  const defaultStyleSchema = config.blocks.blocksConfig.listing.stylesSchema;
+
   if (schema.properties.styles) return schema;
 
   schema.fieldsets.push({
@@ -81,7 +82,7 @@ const addStylesField = ({ schema, intl, formData }) => {
   schema.properties.styles = {
     widget: 'object',
     title: intl.formatMessage(messages.styling),
-    schema: defaultStyleSchema({ formData, intl }),
+    schema: defaultStyleSchema({ formData, intl, schema }),
   };
 
   return schema;
@@ -98,13 +99,15 @@ export const enhanceStylingSchema = ({
 
   // first, enhance styling schema based on the variation
   // then, enhance it based on the `${extensionName}`
-  // TODO: use resolveExtensions() from Volto
 
   const blockConfig = config.blocks.blocksConfig[blockType];
-  const activeVariation =
+  const activeVariationId =
     formData['variation'] ||
-    blockConfig.variations?.find(({ isDefault }) => isDefault) ||
-    {};
+    blockConfig.variations?.find(({ isDefault }) => isDefault)?.id;
+  // TODO: use resolveExtensions() from Volto
+  const activeVariation = activeVariationId
+    ? blockConfig.variations.find(({ id }) => id === activeVariationId)
+    : {};
 
   // TODO: not needed when we will use latest Volto
   const variationStyleSchema = activeVariation?.stylesSchema;
