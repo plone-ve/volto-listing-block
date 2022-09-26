@@ -1,5 +1,5 @@
 import { ConditionalLink } from '@plone/volto/components';
-import { UniversalItem } from '@eeacms/volto-listing-block';
+import UniversalItem from '@eeacms/volto-listing-block/components/UniversalItem/UniversalItem';
 import { flattenToAppURL } from '@plone/volto/helpers';
 import { isInternalURL } from '@plone/volto/helpers/Url/Url';
 import config from '@plone/volto/registry';
@@ -41,13 +41,10 @@ const SummaryListing = (props) => {
   );
 };
 
-SummaryListing.schemaEnhancer = (args) => {
-  const schema = UniversalItem.schemaEnhancer(args);
-  return schema;
-};
+SummaryListing.schemaEnhancer = UniversalItem.schemaEnhancer;
 
 SummaryListing.styleSchemaEnhancer = ({ schema }) => {
-  // console.log('style', schema);
+  console.log('style', schema);
   return schema;
 };
 

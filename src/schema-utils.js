@@ -90,29 +90,35 @@ export const enhanceStylingSchema = ({
   formData,
   schema,
   blockType = 'listing',
-  extensionName = 'itemModel',
+  extensionName = 'itemTemplates',
   intl,
 }) => {
   // Adds (to the limited styles schema) the new styling schema enhancements
   schema = addStylesField({ formData, schema, intl });
 
-  const extensionType = '@type'; // the attribute name that's stored in the block data
-  const activeItemName = formData?.[extensionType];
+  // first, enhance styling schema based on the variation
+  // then, enhance it based on the `${extensionName}`
+  // TODO: use resolveExtensions() from Volto
+
   const blockConfig = config.blocks.blocksConfig[blockType];
   const activeVariation =
     formData['variation'] ||
     blockConfig.variations?.find(({ isDefault }) => isDefault) ||
     {};
-  const extensions = blockConfig.extensions;
-  const variations = extensions[extensionName];
-  let activeItem = variations?.find((item) => item.id === activeItemName);
 
-  // TODO: not needed after bug fix in Volto
+  // TODO: not needed when we will use latest Volto
   const variationStyleSchema = activeVariation?.stylesSchema;
   schema = variationStyleSchema
     ? variationStyleSchema({ schema: cloneDeep(schema), formData, intl })
     : schema;
   // end TODO
+
+  const extensionType = '@type'; // the attribute name that's stored in the block data
+  const extensionTemplates = blockConfig.extensions?.[extensionName];
+  const activeItemName = formData?.itemModel?.[extensionType];
+  let activeItem = extensionTemplates?.find(
+    (item) => item.id === activeItemName,
+  );
 
   const stylingSchema = activeItem?.['stylesSchema'];
   schema = stylingSchema

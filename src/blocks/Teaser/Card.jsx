@@ -4,7 +4,7 @@ import { omit } from 'lodash';
 import { Message } from 'semantic-ui-react';
 import { defineMessages, useIntl } from 'react-intl';
 
-import { UniversalCard } from '@eeacms/volto-listing-block';
+import UniversalCard from '@eeacms/volto-listing-block/components/UniversalCard/UniversalCard';
 
 import imageBlockSVG from '@plone/volto/components/manage/Blocks/Image/block-image.svg';
 

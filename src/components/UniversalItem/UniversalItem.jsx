@@ -4,7 +4,7 @@ import { Item } from './model';
 
 import universalItemSchemaEnhancer from './schema';
 
-const UniversalItem = (props) => {
+function UniversalItem(props) {
   const { itemModel = {}, item, ...rest } = props;
   const extension = resolveExtension(
     '@type',
@@ -14,7 +14,7 @@ const UniversalItem = (props) => {
   const ItemTemplate = extension.view;
 
   return <ItemTemplate item={new Item(item)} itemModel={itemModel} {...rest} />;
-};
+}
 
 UniversalItem.schemaEnhancer = universalItemSchemaEnhancer;
 
