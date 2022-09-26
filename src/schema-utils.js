@@ -68,14 +68,6 @@ export const addStylingSchema = ({
     ? stylingSchema({ schema: cloneDeep(schema), formData, intl })
     : schema;
 
-  console.log('activeItem', {
-    activeItem,
-    activeVariation,
-    variationStyleSchema,
-    stylingSchema,
-    schema,
-  });
-
   return schema;
 };
 

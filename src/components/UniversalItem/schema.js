@@ -104,8 +104,6 @@ export default function universalItemSchemaEnhancer(props) {
     },
   };
 
-  console.log('1schema', baseSchema);
-
   const styledSchema = addStylingSchema({
     ...props,
     schema: baseSchema,
