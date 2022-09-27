@@ -147,7 +147,6 @@ CardsCarousel.schemaEnhancer = (args) => {
 };
 
 CardsCarousel.styleSchemaEnhancer = ({ schema, intl }) => {
-  console.log('cards carousel schema', schema);
   return CardStylingSchemaEnhancer({ schema });
 };
 
