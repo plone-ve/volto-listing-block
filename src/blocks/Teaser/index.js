@@ -1,8 +1,8 @@
 import { compose } from 'redux';
 import TeaserCardTemplate from './Card';
-import { ListingStylingSchema } from '../Listing/schema';
+import { ListingStylingSchemaEnhancer } from '../Listing/schema';
 import { adjustTeaserSchema } from './schema';
-import { UniversalCard } from '@eeacms/volto-listing-block';
+import UniversalCard from '@eeacms/volto-listing-block/components/UniversalCard/UniversalCard';
 
 export default (config) => {
   // Teaser
@@ -21,7 +21,7 @@ export default (config) => {
       },
     ];
     config.blocks.blocksConfig.teaser.enableStyling = true;
-    config.blocks.blocksConfig.teaser.stylesSchema = ListingStylingSchema;
+    config.blocks.blocksConfig.teaser.stylesSchema = ListingStylingSchemaEnhancer;
   }
 
   // Teaser Grid

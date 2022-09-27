@@ -2,7 +2,7 @@ import React from 'react';
 import { Button, Icon } from 'semantic-ui-react';
 import loadable from '@loadable/component';
 
-import { UniversalCard } from '@eeacms/volto-listing-block';
+import UniversalCard from '@eeacms/volto-listing-block/components/UniversalCard/UniversalCard';
 import ResponsiveContainer from '@eeacms/volto-listing-block/components/ResponsiveContainer';
 
 const Slider = loadable(() => import('react-slick'));
@@ -143,6 +143,20 @@ CardsCarousel.schemaEnhancer = (args) => {
       },
     },
   };
+};
+
+CardsCarousel.styleSchemaEnhancer = ({ schema, intl }) => {
+  const styleSchema = schema.properties.styles.schema;
+  styleSchema.fieldsets[0].fields.push('oblique');
+  styleSchema.properties = {
+    ...styleSchema.properties,
+    oblique: {
+      title: 'Oblique',
+      type: 'boolean',
+    },
+  };
+
+  return schema;
 };
 
 export default CardsCarousel;

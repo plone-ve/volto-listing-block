@@ -10,9 +10,7 @@ export class BasicModel {
   }
 
   get(target, name) {
-    // console.log('get', target, name);
     if (target.hasOwnProperty(name)) {
-      // console.log('hasOwn', name);
       return target[name];
     }
 
