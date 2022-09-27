@@ -15,7 +15,7 @@ import { SearchItemLayout } from './SearchItemTemplate';
 
 import { BasicListingBlockStylesSchema } from './schema';
 
-// import { ListingStylingSchemaEnhancer } from './schema';
+import { CardStylingSchemaEnhancer } from './schema';
 
 const applyConfig = (config) => {
   // moment date locale. See https://momentjs.com/ - Multiple Locale Support
@@ -69,6 +69,7 @@ const applyConfig = (config) => {
       title: 'Cards gallery',
       template: CardsGallery,
       schemaEnhancer: CardsGallery.schemaEnhancer,
+      stylesSchema: CardStylingSchemaEnhancer,
     },
     {
       id: 'customNewsListVariationId',
@@ -123,7 +124,7 @@ const applyConfig = (config) => {
 
   // Theming
   // This bug needs to be fixed first: https://github.com/plone/volto/issues/3675
-  // listing.enableStyling = true;
+  listing.enableStyling = true;
 
   return config;
 };

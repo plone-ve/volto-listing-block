@@ -7,6 +7,7 @@ import { defineMessages, useIntl } from 'react-intl';
 import UniversalCard from '@eeacms/volto-listing-block/components/UniversalCard/UniversalCard';
 
 import imageBlockSVG from '@plone/volto/components/manage/Blocks/Image/block-image.svg';
+import { CardStylingSchemaEnhancer } from '../Listing/schema';
 
 const messages = defineMessages({
   PleaseChooseContent: {
@@ -42,6 +43,10 @@ const TeaserCardTemplate = (props) => {
 TeaserCardTemplate.propTypes = {
   data: PropTypes.objectOf(PropTypes.any).isRequired,
   isEditMode: PropTypes.bool,
+};
+
+TeaserCardTemplate.styleSchemaEnhancer = (schema) => {
+  return CardStylingSchemaEnhancer({ schema });
 };
 
 export default TeaserCardTemplate;

@@ -7,7 +7,6 @@ import UniversalItem from '@eeacms/volto-listing-block/components/UniversalItem/
 import { flattenToAppURL } from '@plone/volto/helpers';
 import { isInternalURL } from '@plone/volto/helpers/Url/Url';
 import config from '@plone/volto/registry';
-import messages from '@eeacms/volto-listing-block/messages';
 
 const SummaryListing = (props) => {
   const { block, items, linkTitle, linkHref, isEditMode } = props;
@@ -46,17 +45,6 @@ const SummaryListing = (props) => {
 SummaryListing.schemaEnhancer = UniversalItem.schemaEnhancer;
 
 SummaryListing.styleSchemaEnhancer = ({ schema, intl }) => {
-  const styleSchema = schema.properties.styles.schema;
-  styleSchema.fieldsets[0].fields.push('inverted');
-  styleSchema.properties = {
-    ...styleSchema.properties,
-    inverted: {
-      title: intl.formatMessage(messages.Inverted),
-      description: intl.formatMessage(messages.InvertedHelp),
-      type: 'boolean',
-    },
-  };
-
   return schema;
 };
 
