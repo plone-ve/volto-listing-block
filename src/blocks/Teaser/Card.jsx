@@ -49,11 +49,6 @@ TeaserCardTemplate.styleSchemaEnhancer = (schema) => {
   return CardStylingSchemaEnhancer({ schema });
 };
 
-// TeaserCardTemplate.styleSchemaEnhancer = ({ schema }) => {
-//   console.log('teaser schema', schema);
-//   return CardStylingSchemaEnhancer({ schema });
-// };
-
 export default TeaserCardTemplate;
 
 // const CardImage = (props) => {
