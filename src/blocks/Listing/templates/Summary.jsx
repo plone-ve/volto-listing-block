@@ -46,17 +46,6 @@ const SummaryListing = (props) => {
 SummaryListing.schemaEnhancer = UniversalItem.schemaEnhancer;
 
 SummaryListing.styleSchemaEnhancer = ({ schema, intl }) => {
-  const styleSchema = schema.properties.styles.schema;
-  styleSchema.fieldsets[0].fields.push('inverted');
-  styleSchema.properties = {
-    ...styleSchema.properties,
-    inverted: {
-      title: intl.formatMessage(messages.Inverted),
-      description: intl.formatMessage(messages.InvertedHelp),
-      type: 'boolean',
-    },
-  };
-
   return schema;
 };
 

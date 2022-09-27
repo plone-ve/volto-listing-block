@@ -5,23 +5,34 @@ import alignLeftSVG from '@plone/volto/icons/align-left.svg';
 import alignCenterSVG from '@plone/volto/icons/align-center.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';
 
-const ALIGN_VALUE_MAP = [
+export const ALIGN_VALUE_MAP = [
   ['align_left', alignLeftSVG],
   ['align_center', alignCenterSVG],
   ['', clearSVG],
 ];
 
-export const ListingStylingSchemaEnhancer = ({ schema }) => {
+export const CardStylingSchemaEnhancer = ({ schema }) => {
+  const styleSchema = schema.properties.styles.schema;
+  styleSchema.fieldsets[0].fields.push('text_align');
+  styleSchema.properties = {
+    ...styleSchema.properties,
+    text_align: {
+      title: 'Text align',
+      widget: 'style_text_align',
+      actions: ALIGN_VALUE_MAP,
+    },
+  };
+
   return schema;
 };
 
 export const BasicListingBlockStylesSchema = ({ intl, formData }) => {
   const styleSchema = defaultStyleSchema({ intl, formData });
-  styleSchema.fieldsets[0].fields.push('theme', 'text_align');
 
   styleSchema.fieldsets[0].fields = styleSchema.fieldsets[0].fields.filter(
     (val) => val !== 'align',
   );
+  styleSchema.fieldsets[0].fields.push('theme', 'inverted', 'rounded');
 
   styleSchema.properties = {
     ...styleSchema.properties,
@@ -35,10 +46,15 @@ export const BasicListingBlockStylesSchema = ({ intl, formData }) => {
         ['tertiary', intl.formatMessage(messages.ThemeTertiary)],
       ],
     },
-    text_align: {
-      title: 'Text align',
-      widget: 'style_text_align',
-      actions: ALIGN_VALUE_MAP,
+    inverted: {
+      title: intl.formatMessage(messages.Inverted),
+      description: intl.formatMessage(messages.InvertedHelp),
+      type: 'boolean',
+    },
+    rounded: {
+      title: intl.formatMessage(messages.Rounded),
+      description: intl.formatMessage(messages.RoundedHelp),
+      type: 'boolean',
     },
   };
 
