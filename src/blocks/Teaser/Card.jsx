@@ -46,7 +46,6 @@ TeaserCardTemplate.propTypes = {
 };
 
 TeaserCardTemplate.styleSchemaEnhancer = (schema) => {
-  console.log('teaser schema', schema);
   return CardStylingSchemaEnhancer({ schema });
 };
 
