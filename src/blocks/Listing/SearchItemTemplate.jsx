@@ -1,5 +1,4 @@
 import cx from 'classnames';
-import messages from '@eeacms/volto-listing-block/messages';
 import PreviewImage from '@eeacms/volto-listing-block/PreviewImage';
 
 const BodyText = ({ item, hasDescription }) => {
