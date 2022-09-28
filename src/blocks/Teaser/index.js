@@ -21,7 +21,7 @@ export default (config) => {
         ),
       },
     ];
-    config.blocks.blocksConfig.teaser.enableStyling = true;
+    // config.blocks.blocksConfig.teaser.enableStyling = true;
     config.blocks.blocksConfig.teaser.stylesSchema = BasicListingBlockStylesSchema;
   }
 
