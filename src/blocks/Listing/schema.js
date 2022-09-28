@@ -1,4 +1,3 @@
-import { defaultStyleSchema } from '@plone/volto/components/manage/Blocks/Block/StylesSchema';
 import messages from '@eeacms/volto-listing-block/messages';
 
 import alignLeftSVG from '@plone/volto/icons/align-left.svg';
@@ -26,12 +25,23 @@ export const CardStylingSchemaEnhancer = ({ schema }) => {
   return schema;
 };
 
+export const defaultStyleSchema = ({ formData, intl }) => {
+  return {
+    fieldsets: [
+      {
+        id: 'styling',
+        title: 'Styling',
+        fields: [],
+      },
+    ],
+    properties: {},
+    required: [],
+  };
+};
+
 export const BasicListingBlockStylesSchema = ({ intl, formData }) => {
   const styleSchema = defaultStyleSchema({ intl, formData });
 
-  styleSchema.fieldsets[0].fields = styleSchema.fieldsets[0].fields.filter(
-    (val) => val !== 'align',
-  );
   styleSchema.fieldsets[0].fields.push('theme', 'inverted', 'rounded');
 
   styleSchema.properties = {
