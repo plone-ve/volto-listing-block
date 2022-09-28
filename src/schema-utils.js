@@ -69,9 +69,10 @@ const addStylesField = ({ schema, intl, formData }) => {
   // We omit the first step in ladder because of bugs in Volto < 16.0.0-alpha.36
   // In later versions we won't have to redefine the styles field
 
-  const defaultStyleSchema = config.blocks.blocksConfig.listing.stylesSchema;
-
+  // debugger;
   if (schema.properties.styles) return schema;
+
+  const defaultStyleSchema = config.blocks.blocksConfig.listing.stylesSchema;
 
   schema.fieldsets.push({
     id: 'styling',

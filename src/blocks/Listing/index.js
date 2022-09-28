@@ -124,7 +124,7 @@ const applyConfig = (config) => {
 
   // Theming
   // This bug needs to be fixed first: https://github.com/plone/volto/issues/3675
-  listing.enableStyling = true;
+  // listing.enableStyling = true;
 
   return config;
 };
