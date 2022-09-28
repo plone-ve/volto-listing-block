@@ -39,13 +39,15 @@ export const defaultStyleSchema = ({ formData, intl }) => {
   };
 };
 
-export const BasicListingBlockStylesSchema = ({ intl, formData }) => {
-  const styleSchema = defaultStyleSchema({ intl, formData });
-
-  styleSchema.fieldsets[0].fields.push('theme', 'inverted', 'rounded');
-
-  styleSchema.properties = {
-    ...styleSchema.properties,
+export const BasicListingBlockStylesSchema = ({ intl }) => ({
+  fieldsets: [
+    {
+      id: 'styling',
+      title: 'Styling',
+      fields: ['theme', 'inverted', 'rounded'],
+    },
+  ],
+  properties: {
     theme: {
       title: intl.formatMessage(messages.Theme),
       description: intl.formatMessage(messages.ThemeHelp),
@@ -66,7 +68,6 @@ export const BasicListingBlockStylesSchema = ({ intl, formData }) => {
       description: intl.formatMessage(messages.RoundedHelp),
       type: 'boolean',
     },
-  };
-
-  return styleSchema;
-};
+  },
+  required: [],
+});
