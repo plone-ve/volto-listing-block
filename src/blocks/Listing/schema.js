@@ -25,20 +25,6 @@ export const CardStylingSchemaEnhancer = ({ schema }) => {
   return schema;
 };
 
-export const defaultStyleSchema = ({ formData, intl }) => {
-  return {
-    fieldsets: [
-      {
-        id: 'styling',
-        title: 'Styling',
-        fields: [],
-      },
-    ],
-    properties: {},
-    required: [],
-  };
-};
-
 export const BasicListingBlockStylesSchema = ({ intl }) => ({
   fieldsets: [
     {
