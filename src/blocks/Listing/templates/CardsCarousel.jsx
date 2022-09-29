@@ -60,7 +60,7 @@ const Arrows = (props) => {
 const CardsCarousel = ({ block, items, ...rest }) => {
   const slider = React.useRef(null);
   const [settings] = React.useState({
-    dots: false,
+    dots: true,
     infinite: true,
     arrows: false,
     lazyLoad: 'progressive',
