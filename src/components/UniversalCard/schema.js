@@ -113,6 +113,7 @@ const CardSchema = ({ formData }) => {
 
 export default function universalCardSchemaEnhancer(props) {
   const { schema } = props;
+  props.formData = props.formData || props.data;
   const enhancer = schemaEnhancerFactory({
     extensionName: 'cardTemplates',
     messages,
