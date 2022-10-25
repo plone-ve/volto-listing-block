@@ -7,7 +7,7 @@ const CardMeta = (props) => {
   const { item, itemModel = {}, head_title } = props;
   const { EffectiveDate } = item;
   const locale = config.settings.dateLocale || 'en-gb';
-  const showDate = itemModel?.hasDate && EffectiveDate !== 'None';
+  const showDate = itemModel.hasDate !== false && EffectiveDate !== 'None';
   const showMeta = !!(head_title || (itemModel?.hasMetaType && item['@type']));
   const show = showDate || showMeta;
 

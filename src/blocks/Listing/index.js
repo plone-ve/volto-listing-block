@@ -15,7 +15,7 @@ import { SearchItemLayout } from './SearchItemTemplate';
 
 import { BasicListingBlockStylesSchema } from './schema';
 
-// import { ListingStylingSchemaEnhancer } from './schema';
+import { CardStylingSchemaEnhancer } from './schema';
 
 const applyConfig = (config) => {
   // moment date locale. See https://momentjs.com/ - Multiple Locale Support
@@ -69,6 +69,7 @@ const applyConfig = (config) => {
       title: 'Cards gallery',
       template: CardsGallery,
       schemaEnhancer: CardsGallery.schemaEnhancer,
+      stylesSchema: CardStylingSchemaEnhancer,
     },
     {
       id: 'customNewsListVariationId',

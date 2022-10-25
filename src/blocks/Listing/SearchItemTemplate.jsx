@@ -1,5 +1,4 @@
 import cx from 'classnames';
-import messages from '@eeacms/volto-listing-block/messages';
 import PreviewImage from '@eeacms/volto-listing-block/PreviewImage';
 
 const BodyText = ({ item, hasDescription }) => {
@@ -61,15 +60,5 @@ export const SearchItemLayout = (props) => {
   return <BasicItem {...props} />;
 };
 SearchItemLayout.styleSchemaEnhancer = ({ schema, intl }) => {
-  const styleSchema = schema.properties.styles.schema;
-  styleSchema.fieldsets[0].fields.push('rounded');
-  styleSchema.properties = {
-    ...styleSchema.properties,
-    rounded: {
-      title: intl.formatMessage(messages.Rounded),
-      description: intl.formatMessage(messages.RoundedHelp),
-      type: 'boolean',
-    },
-  };
   return schema;
 };

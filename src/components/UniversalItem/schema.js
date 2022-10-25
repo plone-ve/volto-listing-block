@@ -77,6 +77,7 @@ const ItemSchema = ({ formData }) => {
 
 export default function universalItemSchemaEnhancer(props) {
   const { schema } = props;
+  props.formData = props.formData || props.data;
 
   const enhanceItemModel = schemaEnhancerFactory({
     extensionName: 'itemTemplates',
