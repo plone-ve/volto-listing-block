@@ -25,6 +25,12 @@ UniversalItem, which are generic components governed by a designated
 
 It provides several views and integrates with the Teaser Grid.
 
+## Upgrade
+
+### Upgrading to 1.x
+
+This version requires: `@plone/volto >= 16.0.0.alpha.15` (`volto-slate` part of Volto Core).
+
 ## Getting started
 
 ### Try volto-listing-block with Docker
