@@ -2,13 +2,11 @@ import messages from '@eeacms/volto-listing-block/messages';
 
 import alignLeftSVG from '@plone/volto/icons/align-left.svg';
 import alignCenterSVG from '@plone/volto/icons/align-center.svg';
-import clearSVG from '@plone/volto/icons/clear.svg';
 
-export const ALIGN_VALUE_MAP = [
-  ['align_left', alignLeftSVG],
-  ['align_center', alignCenterSVG],
-  ['', clearSVG],
-];
+const ALIGN_INFO_MAP = {
+  align_left: [alignLeftSVG, 'Left'],
+  align_center: [alignCenterSVG, 'Center'],
+};
 
 export const CardStylingSchemaEnhancer = ({ schema }) => {
   const styleSchema = schema.properties.styles.schema;
@@ -18,7 +16,8 @@ export const CardStylingSchemaEnhancer = ({ schema }) => {
     text_align: {
       title: 'Text align',
       widget: 'style_text_align',
-      actions: ALIGN_VALUE_MAP,
+      actions: Object.keys(ALIGN_INFO_MAP),
+      actionsInfoMap: ALIGN_INFO_MAP,
     },
   };
 

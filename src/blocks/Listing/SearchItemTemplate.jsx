@@ -45,7 +45,7 @@ const BasicItem = (props) => {
           {hasImage && (
             <PreviewImage
               item={item}
-              style={{ marginLeft: 'auto' }}
+              className="right"
               preview_image_url={item.preview_image_url}
             />
           )}
