@@ -45,8 +45,8 @@ const applyConfig = (config) => {
       title: 'Listing',
       template: Listing,
       schemaEnhancer: compose(
-        Listing.schemaEnhancer, // layout schema
         setBasicStylingSchema,
+        Listing.schemaEnhancer, // layout schema
         universalCardSchemaEnhancer,
       ),
     },
@@ -56,8 +56,8 @@ const applyConfig = (config) => {
       title: 'Carousel',
       template: Carousel,
       schemaEnhancer: compose(
-        Carousel.schemaEnhancer,
         setBasicStylingSchema,
+        Carousel.schemaEnhancer,
         universalCardSchemaEnhancer,
       ),
     },
@@ -67,8 +67,8 @@ const applyConfig = (config) => {
       title: 'Gallery',
       template: Gallery,
       schemaEnhancer: compose(
-        Gallery.schemaEnhancer,
         setBasicStylingSchema,
+        Gallery.schemaEnhancer,
         universalCardSchemaEnhancer,
       ),
     },

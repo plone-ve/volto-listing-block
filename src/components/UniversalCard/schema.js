@@ -1,5 +1,8 @@
 import { defineMessages } from 'react-intl';
-import { DefaultCardModelSchema } from '@eeacms/volto-listing-block/schema-utils';
+import {
+  DefaultCardModelSchema,
+  schemaEnhancerFactory,
+} from '@eeacms/volto-listing-block/schema-utils';
 
 const messages = defineMessages({
   title: {
@@ -8,17 +11,18 @@ const messages = defineMessages({
   },
 });
 
-export default function universalCardSchemaEnhancer(props) {
+export default function universalCardSchemaEnhancer(args) {
+  const props = { ...args };
   const { schema } = props;
 
-  // props.formData = props.formData || props.data;
-  // const enhancer = schemaEnhancerFactory({
-  //   extensionName: 'cardTemplates',
-  //   messages,
-  //   blockType: 'listing',
-  //   extensionField: '@type',
-  // });
-  //
+  props.formData = props.formData || props.data;
+  const enhancer = schemaEnhancerFactory({
+    extensionName: 'cardTemplates',
+    messages,
+    blockType: 'listing',
+    extensionField: '@type',
+  });
+
   schema.fieldsets.push({
     id: 'cardDesigner',
     title: 'Card',
@@ -34,15 +38,16 @@ export default function universalCardSchemaEnhancer(props) {
         title: 'Card model',
         widget: 'object',
         schema: DefaultCardModelSchema,
-        // schema: enhancer({
-        //   ...props,
-        //   schema: CardSchema(props),
-        // }),
       },
     },
   };
 
-  return baseSchema;
+  const enhancedSchema = enhancer({
+    ...props,
+    schema: baseSchema,
+  });
+
+  return enhancedSchema;
 }
 
 // enhanceStylingSchema,
