@@ -4,7 +4,6 @@ import loadable from '@loadable/component';
 
 import UniversalCard from '@eeacms/volto-listing-block/components/UniversalCard/UniversalCard';
 import ResponsiveContainer from '@eeacms/volto-listing-block/components/ResponsiveContainer';
-import { CardStylingSchemaEnhancer } from '../schema';
 
 const Slider = loadable(() => import('react-slick'));
 
@@ -116,8 +115,8 @@ const CardsCarousel = ({ block, items, ...rest }) => {
   );
 };
 
-CardsCarousel.schemaEnhancer = (args) => {
-  const schema = UniversalCard.schemaEnhancer(args);
+CardsCarousel.schemaEnhancer = ({ schema }) => {
+  // const schema = UniversalCard.schemaEnhancer(args);
 
   schema.fieldsets.splice(1, 0, {
     id: 'carousel',
@@ -144,10 +143,6 @@ CardsCarousel.schemaEnhancer = (args) => {
       },
     },
   };
-};
-
-CardsCarousel.styleSchemaEnhancer = ({ schema, intl }) => {
-  return CardStylingSchemaEnhancer({ schema });
 };
 
 export default CardsCarousel;

@@ -1,5 +1,6 @@
 import cx from 'classnames';
 import PreviewImage from '@eeacms/volto-listing-block/PreviewImage';
+// import { universalItemSchemaEnhancer } from '@eeacms/volto-listing-block/components/UniversalItem/schema';
 
 const BodyText = ({ item, hasDescription }) => {
   return (
@@ -59,6 +60,5 @@ const BasicItem = (props) => {
 export const SearchItemLayout = (props) => {
   return <BasicItem {...props} />;
 };
-SearchItemLayout.styleSchemaEnhancer = ({ schema, intl }) => {
-  return schema;
-};
+
+// SearchItemLayout.schemaEnhancer = universalItemSchemaEnhancer;

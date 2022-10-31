@@ -15,7 +15,7 @@ function UniversalCard(props) {
     itemModel,
   );
   // const CardTemplate = BasicCard;
-  const CardTemplate = extension.view;
+  const CardTemplate = extension.template;
   const classNames = getVoltoStyles(styles);
 
   return (
