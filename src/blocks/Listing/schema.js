@@ -93,7 +93,7 @@ const CallToActionSchema = ({ formData }) => {
 export const setCardModelSchema = (args) => {
   const { formData, schema } = args;
 
-  console.log('setCardModelSchema', args);
+  // console.log('setCardModelSchema', args);
 
   const itemModelSchema = schema.properties.itemModel.schema;
   itemModelSchema.fieldsets[0].fields = [
@@ -149,7 +149,7 @@ export const setItemModelSchema = (args) => {
   const { formData, schema } = args;
   const itemModelSchema = schema.properties.itemModel.schema;
 
-  console.log('setItemModelSchema', args);
+  // console.log('setItemModelSchema', args);
 
   itemModelSchema.fieldsets[0].fields = [
     ...itemModelSchema.fieldsets[0].fields,
