@@ -115,7 +115,8 @@ const CardsCarousel = ({ block, items, ...rest }) => {
   );
 };
 
-CardsCarousel.schemaEnhancer = ({ schema }) => {
+CardsCarousel.schemaEnhancer = (args) => {
+  const { schema } = args;
   // const schema = UniversalCard.schemaEnhancer(args);
 
   schema.fieldsets.splice(1, 0, {

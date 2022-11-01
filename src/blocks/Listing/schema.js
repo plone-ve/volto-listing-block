@@ -8,7 +8,9 @@ const ALIGN_INFO_MAP = {
   align_center: [alignCenterSVG, 'Center'],
 };
 
-export const setBasicStylingSchema = ({ schema, intl }) => {
+export const setBasicStylingSchema = (args) => {
+  const { schema, intl } = args;
+  console.log('setBasicStylingSchema', args);
   schema.properties.styles.schema = {
     fieldsets: [
       {
@@ -52,10 +54,10 @@ const CallToActionSchema = ({ formData }) => {
         id: 'default',
         fields: [
           'enable',
-          ...(formData.itemModel?.callToAction?.enable
+          ...(formData?.itemModel?.callToAction?.enable
             ? [
                 'label',
-                formData['@type'] === 'listing' ? 'urlTemplate' : 'href',
+                formData?.['@type'] === 'listing' ? 'urlTemplate' : 'href',
               ]
             : []),
         ], //
@@ -89,7 +91,9 @@ const CallToActionSchema = ({ formData }) => {
   };
 };
 
-export const setCardModelSchema = ({ formData, schema }) => {
+export const setCardModelSchema = (args) => {
+  const { formData, schema } = args;
+  console.log('setCardModelSchema', args);
   const CardSchema = {
     fieldsets: [
       {
@@ -148,7 +152,9 @@ export const setCardModelSchema = ({ formData, schema }) => {
   return schema;
 };
 
-export const setItemModelSchema = ({ formData, schema }) => {
+export const setItemModelSchema = (args) => {
+  const { formData, schema } = args;
+  console.log('setItemModelSchema', args);
   const ItemSchema = {
     fieldsets: [
       {

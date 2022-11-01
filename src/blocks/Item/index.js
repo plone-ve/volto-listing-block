@@ -1,7 +1,11 @@
-import codeSVG from '@plone/volto/icons/code.svg';
+import { compose } from 'redux';
+import { addStyling } from '@plone/volto/helpers';
+
 import ItemEdit from './Edit';
 import ItemView from './View';
 import { setItemStyling } from './schema';
+
+import codeSVG from '@plone/volto/icons/code.svg';
 
 export default (config) => {
   config.blocks.blocksConfig.item = {
@@ -19,7 +23,7 @@ export default (config) => {
       addPermission: [],
       view: [],
     },
-    schemaEnhancer: setItemStyling,
+    schemaEnhancer: compose(addStyling, setItemStyling),
   };
 
   config.settings.blocksWithFootnotesSupport = {

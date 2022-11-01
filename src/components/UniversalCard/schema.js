@@ -12,6 +12,7 @@ const messages = defineMessages({
 });
 
 export default function universalCardSchemaEnhancer(args) {
+  console.log('universalCardSchemaEnhancer', args);
   const props = { ...args };
   const { schema } = props;
 

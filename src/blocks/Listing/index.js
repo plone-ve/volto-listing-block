@@ -1,4 +1,8 @@
 import { compose } from 'redux';
+import { addStyling } from '@plone/volto/helpers';
+import UniversalCard from '@eeacms/volto-listing-block/components/UniversalCard/UniversalCard';
+import { composeSchema } from '@eeacms/volto-listing-block/schema-utils';
+
 import Carousel from './layout-templates/Carousel';
 import Gallery from './layout-templates/Gallery';
 import Listing from './layout-templates/Listing';
@@ -19,8 +23,6 @@ import {
 import { DefaultItemLayout } from './item-templates/ItemTemplates';
 import { SearchItemLayout } from './item-templates/SearchItemTemplate';
 
-// import universalCardSchemaEnhancer from '@eeacms/volto-listing-block/components/UniversalCard/schema';
-
 const applyConfig = (config) => {
   // moment date locale. See https://momentjs.com/ - Multiple Locale Support
   config.settings.dateLocale = config.settings.dateLocale ?? 'en';
@@ -36,6 +38,13 @@ const applyConfig = (config) => {
   // The variation takes care of how the individual item is displayed.
   // With our own variations being based on the UniversalCard, we have another
   // level of control on how each item is displayed.
+  // console.log(
+  //   composeSchema(
+  //     addStyling,
+  //     setBasicStylingSchema,
+  //     UniversalCard.schemaEnhancer,
+  //   ),
+  // );
 
   listing.variations = [
     ...listing.variations.filter(({ id }) => blacklist.indexOf(id) === -1),
@@ -44,21 +53,35 @@ const applyConfig = (config) => {
       isDefault: false,
       title: 'Listing',
       template: Listing,
-      schemaEnhancer: compose(setBasicStylingSchema, Listing.schemaEnhancer),
+      schemaEnhancer: composeSchema(
+        addStyling,
+        setBasicStylingSchema,
+        UniversalCard.schemaEnhancer,
+      ),
     },
     {
       id: 'cardsCarousel',
       isDefault: false,
       title: 'Carousel',
       template: Carousel,
-      schemaEnhancer: compose(setBasicStylingSchema, Carousel.schemaEnhancer),
+      // schemaEnhancer: compose(
+      //   addStyling,
+      //   setBasicStylingSchema,
+      //   UniversalCard.schemaEnhancer,
+      //   Carousel.schemaEnhancer,
+      // ),
     },
     {
       id: 'cardsGallery', //  'customCardsGalleryVariationId'
       isDefault: false,
       title: 'Gallery',
       template: Gallery,
-      schemaEnhancer: compose(setBasicStylingSchema, Gallery.schemaEnhancer),
+      // schemaEnhancer: compose(
+      //   addStyling,
+      //   setBasicStylingSchema,
+      //   UniversalCard.schemaEnhancer,
+      //   Gallery.schemaEnhancer,
+      // ),
     },
   ];
 
@@ -70,32 +93,32 @@ const applyConfig = (config) => {
         isDefault: true,
         title: 'Card (default)',
         template: DefaultCardLayout,
-        schemaEnhancer: compose(setCardModelSchema, setCardStylingSchema),
+        schemaEnhancer: composeSchema(setCardModelSchema, setCardStylingSchema),
       },
       {
         id: 'imageCard',
         title: 'Image Card',
         template: ImageCardLayout,
-        schemaEnhancer: compose(setCardModelSchema, setCardStylingSchema),
+        schemaEnhancer: composeSchema(setCardModelSchema, setCardStylingSchema),
       },
       {
         id: 'imageOnLeft',
         title: 'Image on left',
         template: LeftImageCardLayout,
-        schemaEnhancer: compose(setCardModelSchema, setCardStylingSchema),
+        schemaEnhancer: composeSchema(setCardModelSchema, setCardStylingSchema),
       },
       {
         id: 'imageOnRight',
         title: 'Image on right',
         template: RightImageCardLayout,
-        schemaEnhancer: compose(setCardModelSchema, setCardStylingSchema),
+        schemaEnhancer: composeSchema(setCardModelSchema, setCardStylingSchema),
       },
       {
         id: 'item',
         isDefault: true,
         title: 'Listing Item',
         template: DefaultItemLayout,
-        schemaEnhancer: compose(
+        schemaEnhancer: composeSchema(
           setItemModelSchema,
           setCardStylingSchema,
           DefaultItemLayout.schemaEnhancer,
@@ -106,7 +129,7 @@ const applyConfig = (config) => {
         isDefault: false,
         title: 'Search Item',
         template: SearchItemLayout,
-        schemaEnhancer: compose(
+        schemaEnhancer: composeSchema(
           setCardStylingSchema,
           SearchItemLayout.schemaEnhancer,
         ),

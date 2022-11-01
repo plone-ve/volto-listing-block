@@ -1,4 +1,5 @@
 import { compose } from 'redux';
+import { addStyling } from '@plone/volto/helpers';
 
 import TeaserCardTemplate from './Card';
 import { adjustTeaserSchema } from './schema';
@@ -13,9 +14,10 @@ export default (config) => {
         title: 'Card (top image)',
         template: TeaserCardTemplate,
         schemaEnhancer: compose(
+          addStyling,
           adjustTeaserSchema,
-          setCardModelSchema,
           setCardStylingSchema,
+          setCardModelSchema,
         ),
       },
       // ...(config.blocks.blocksConfig.teaser.variations || []),
