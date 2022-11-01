@@ -48,6 +48,6 @@ Listing.propTypes = {
   isEditMode: PropTypes.bool,
 };
 
-Listing.schemaEnhancer = ({ schema }) => schema;
+Listing.schemaEnhancer = UniversalCard.schemaEnhancer;
 
 export default Listing;

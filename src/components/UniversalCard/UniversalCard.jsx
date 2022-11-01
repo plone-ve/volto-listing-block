@@ -14,7 +14,6 @@ function UniversalCard(props) {
     config.blocks.blocksConfig.listing.extensions.cardTemplates,
     itemModel,
   );
-  // const CardTemplate = BasicCard;
   const CardTemplate = extension.template;
   const classNames = getVoltoStyles(styles);
 

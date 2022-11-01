@@ -19,7 +19,7 @@ import {
 import { DefaultItemLayout } from './item-templates/ItemTemplates';
 import { SearchItemLayout } from './item-templates/SearchItemTemplate';
 
-import universalCardSchemaEnhancer from '@eeacms/volto-listing-block/components/UniversalCard/schema';
+// import universalCardSchemaEnhancer from '@eeacms/volto-listing-block/components/UniversalCard/schema';
 
 const applyConfig = (config) => {
   // moment date locale. See https://momentjs.com/ - Multiple Locale Support
@@ -44,33 +44,21 @@ const applyConfig = (config) => {
       isDefault: false,
       title: 'Listing',
       template: Listing,
-      schemaEnhancer: compose(
-        setBasicStylingSchema,
-        Listing.schemaEnhancer, // layout schema
-        universalCardSchemaEnhancer,
-      ),
+      schemaEnhancer: compose(setBasicStylingSchema, Listing.schemaEnhancer),
     },
     {
       id: 'cardsCarousel',
       isDefault: false,
       title: 'Carousel',
       template: Carousel,
-      schemaEnhancer: compose(
-        setBasicStylingSchema,
-        Carousel.schemaEnhancer,
-        universalCardSchemaEnhancer,
-      ),
+      schemaEnhancer: compose(setBasicStylingSchema, Carousel.schemaEnhancer),
     },
     {
       id: 'cardsGallery', //  'customCardsGalleryVariationId'
       isDefault: false,
       title: 'Gallery',
       template: Gallery,
-      schemaEnhancer: compose(
-        setBasicStylingSchema,
-        Gallery.schemaEnhancer,
-        universalCardSchemaEnhancer,
-      ),
+      schemaEnhancer: compose(setBasicStylingSchema, Gallery.schemaEnhancer),
     },
   ];
 

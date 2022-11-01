@@ -49,13 +49,3 @@ export default function universalCardSchemaEnhancer(args) {
 
   return enhancedSchema;
 }
-
-// enhanceStylingSchema,
-
-// const styledSchema = enhanceStylingSchema({
-//   ...props,
-//   schema: baseSchema,
-//   // schema: baseSchema.properties.styles.schema,
-//   formData: props.formData,
-// });
-// return styledSchema;

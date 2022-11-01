@@ -1,7 +1,7 @@
 import codeSVG from '@plone/volto/icons/code.svg';
 import ItemEdit from './Edit';
 import ItemView from './View';
-import { stylingSchema } from './schema';
+import { setItemStyling } from './schema';
 
 export default (config) => {
   config.blocks.blocksConfig.item = {
@@ -12,8 +12,6 @@ export default (config) => {
     edit: ItemEdit,
     view: ItemView,
     blockHasOwnFocusManagement: true,
-    stylesSchema: stylingSchema,
-    enableStyling: true,
     restricted: false,
     mostUsed: false,
     sidebarTab: 1,
@@ -21,6 +19,7 @@ export default (config) => {
       addPermission: [],
       view: [],
     },
+    schemaEnhancer: setItemStyling,
   };
 
   config.settings.blocksWithFootnotesSupport = {
