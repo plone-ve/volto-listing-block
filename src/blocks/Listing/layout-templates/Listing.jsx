@@ -3,12 +3,12 @@ import PropTypes from 'prop-types';
 import moment from 'moment'; // TODO: this needs to be lazyloaded!!!
 
 import { ConditionalLink } from '@plone/volto/components';
-import UniversalItem from '@eeacms/volto-listing-block/components/UniversalItem/UniversalItem';
+import UniversalCard from '@eeacms/volto-listing-block/components/UniversalCard/UniversalCard';
 import { flattenToAppURL } from '@plone/volto/helpers';
 import { isInternalURL } from '@plone/volto/helpers/Url/Url';
 import config from '@plone/volto/registry';
 
-const SummaryListing = (props) => {
+const Listing = (props) => {
   const { block, items, linkTitle, linkHref, isEditMode } = props;
   let href = linkHref?.[0]?.['@id'] || '';
 
@@ -26,7 +26,7 @@ const SummaryListing = (props) => {
       <div className="items">
         {items && items.length > 0 ? (
           items.map((item, index) => (
-            <UniversalItem
+            <UniversalCard
               {...props}
               key={`item-${block}-${index}`}
               item={item}
@@ -42,16 +42,12 @@ const SummaryListing = (props) => {
   );
 };
 
-SummaryListing.schemaEnhancer = UniversalItem.schemaEnhancer;
-
-SummaryListing.styleSchemaEnhancer = ({ schema, intl }) => {
-  return schema;
-};
-
-SummaryListing.propTypes = {
+Listing.propTypes = {
   items: PropTypes.arrayOf(PropTypes.any).isRequired,
   linkMore: PropTypes.any,
   isEditMode: PropTypes.bool,
 };
 
-export default SummaryListing;
+Listing.schemaEnhancer = UniversalCard.schemaEnhancer;
+
+export default Listing;

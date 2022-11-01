@@ -59,6 +59,3 @@ const BasicItem = (props) => {
 export const SearchItemLayout = (props) => {
   return <BasicItem {...props} />;
 };
-SearchItemLayout.styleSchemaEnhancer = ({ schema, intl }) => {
-  return schema;
-};

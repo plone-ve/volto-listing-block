@@ -4,6 +4,7 @@ import { ConditionalLink, FormattedDate } from '@plone/volto/components';
 import { getVoltoStyles } from '@eeacms/volto-listing-block/schema-utils';
 
 import PreviewImage from '@eeacms/volto-listing-block/PreviewImage';
+// import { universalItemSchemaEnhancer } from '@eeacms/volto-listing-block/components/UniversalItem/schema';
 
 const BodyText = ({ item, hasDate, hasDescription }) => {
   return (
