@@ -1,7 +1,8 @@
 import { cloneDeep } from 'lodash';
 import config from '@plone/volto/registry';
 
-const addTypeSelect = ({ intl, schema, extensionName, messages }) => {
+export const addTypeSelect = ({ intl, schema, extensionName, messages }) => {
+  schema = cloneDeep(schema);
   const field = '@type';
   const extensions = config.blocks.blocksConfig.listing.extensions;
   const variations = extensions[extensionName];
@@ -31,7 +32,7 @@ export const schemaEnhancerFactory = ({
   const extensions = blockConfig.extensions;
   const templates = extensions[extensionName];
 
-  const activeItemName = formData?.[extensionField];
+  const activeItemName = formData?.itemModel?.[extensionField]; // TODO: don't hardcode itemModel
   let activeItem = templates?.find((item) => item.id === activeItemName);
   if (!activeItem) activeItem = templates?.find((item) => item.isDefault);
 
@@ -41,7 +42,7 @@ export const schemaEnhancerFactory = ({
     ? schemaEnhancer({ schema: cloneDeep(originalSchema), formData, intl })
     : cloneDeep(originalSchema);
 
-  return addTypeSelect({ schema, intl, extensionName, messages });
+  return schema;
 };
 
 export const DefaultCardModelSchema = {

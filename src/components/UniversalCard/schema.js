@@ -2,6 +2,7 @@ import { defineMessages } from 'react-intl';
 import {
   DefaultCardModelSchema,
   schemaEnhancerFactory,
+  addTypeSelect,
 } from '@eeacms/volto-listing-block/schema-utils';
 
 const messages = defineMessages({
@@ -12,13 +13,13 @@ const messages = defineMessages({
 });
 
 export default function universalCardSchemaEnhancer(args) {
-  console.log('universalCardSchemaEnhancer', args);
   const props = { ...args };
   const { schema } = props;
 
   props.formData = props.formData || props.data;
+  const extensionName = 'cardTemplates';
   const enhancer = schemaEnhancerFactory({
-    extensionName: 'cardTemplates',
+    extensionName,
     messages,
     blockType: 'listing',
     extensionField: '@type',
@@ -30,6 +31,13 @@ export default function universalCardSchemaEnhancer(args) {
     fields: ['itemModel'],
   });
 
+  const itemModelSchema = addTypeSelect({
+    ...args,
+    schema: DefaultCardModelSchema,
+    extensionName,
+    messages,
+  });
+
   const baseSchema = {
     ...schema,
     fieldsets: [...schema.fieldsets],
@@ -38,7 +46,7 @@ export default function universalCardSchemaEnhancer(args) {
       itemModel: {
         title: 'Card model',
         widget: 'object',
-        schema: DefaultCardModelSchema,
+        schema: itemModelSchema,
       },
     },
   };

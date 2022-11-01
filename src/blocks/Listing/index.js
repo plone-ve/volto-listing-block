@@ -1,4 +1,3 @@
-import { compose } from 'redux';
 import { addStyling } from '@plone/volto/helpers';
 import UniversalCard from '@eeacms/volto-listing-block/components/UniversalCard/UniversalCard';
 import { composeSchema } from '@eeacms/volto-listing-block/schema-utils';
@@ -118,21 +117,14 @@ const applyConfig = (config) => {
         isDefault: true,
         title: 'Listing Item',
         template: DefaultItemLayout,
-        schemaEnhancer: composeSchema(
-          setItemModelSchema,
-          setCardStylingSchema,
-          DefaultItemLayout.schemaEnhancer,
-        ),
+        schemaEnhancer: composeSchema(setItemModelSchema, setCardStylingSchema),
       },
       {
         id: 'searchItem',
         isDefault: false,
         title: 'Search Item',
         template: SearchItemLayout,
-        schemaEnhancer: composeSchema(
-          setCardStylingSchema,
-          SearchItemLayout.schemaEnhancer,
-        ),
+        schemaEnhancer: composeSchema(setItemModelSchema, setCardStylingSchema),
       },
     ],
   };

@@ -10,7 +10,6 @@ const ALIGN_INFO_MAP = {
 
 export const setBasicStylingSchema = (args) => {
   const { schema, intl } = args;
-  console.log('setBasicStylingSchema', args);
   schema.properties.styles.schema = {
     fieldsets: [
       {
@@ -93,130 +92,120 @@ const CallToActionSchema = ({ formData }) => {
 
 export const setCardModelSchema = (args) => {
   const { formData, schema } = args;
-  console.log('setCardModelSchema', args);
-  const CardSchema = {
-    fieldsets: [
-      {
-        id: 'cardDesigner',
-        title: 'Card',
-        fields: [
-          'hasDate',
-          'hasDescription',
-          ...(formData?.itemModel?.hasDescription ? ['maxDescription'] : []),
-          'hasMetaType',
-          'hasLabel',
-          'hasTags',
-          'callToAction',
-        ],
-      },
-    ],
-    properties: {
-      hasDate: {
-        title: 'Publication date',
-        type: 'boolean',
-      },
-      hasDescription: {
-        title: 'Description',
-        type: 'boolean',
-      },
-      maxDescription: {
-        title: 'Description max lines',
-        description:
-          "Limit description to a maximum number of lines by adding trailing '...'",
-        type: 'number',
-        default: 2,
-        minimum: 0,
-        maximum: 5,
-      },
-      hasMetaType: {
-        title: 'Show portal type',
-        type: 'boolean',
-      },
-      hasLabel: {
-        title: 'Show new/archived label',
-        type: 'boolean',
-      },
-      hasTags: {
-        title: 'Show tags',
-        type: 'boolean',
-      },
-      callToAction: {
-        widget: 'object',
-        schema: CallToActionSchema({ formData }),
-      },
-    },
-    required: [],
-  };
 
-  schema.properties.itemModel.schema = CardSchema;
+  console.log('setCardModelSchema', args);
+
+  const itemModelSchema = schema.properties.itemModel.schema;
+  itemModelSchema.fieldsets[0].fields = [
+    ...itemModelSchema.fieldsets[0].fields,
+    'hasDate',
+    'hasDescription',
+    ...(formData?.itemModel?.hasDescription ? ['maxDescription'] : []),
+    'hasMetaType',
+    'hasLabel',
+    'hasTags',
+    'callToAction',
+  ];
+  itemModelSchema.properties = {
+    ...itemModelSchema.properties,
+    hasDate: {
+      title: 'Publication date',
+      type: 'boolean',
+    },
+    hasDescription: {
+      title: 'Description',
+      type: 'boolean',
+    },
+    maxDescription: {
+      title: 'Description max lines',
+      description:
+        "Limit description to a maximum number of lines by adding trailing '...'",
+      type: 'number',
+      default: 2,
+      minimum: 0,
+      maximum: 5,
+    },
+    hasMetaType: {
+      title: 'Show portal type',
+      type: 'boolean',
+    },
+    hasLabel: {
+      title: 'Show new/archived label',
+      type: 'boolean',
+    },
+    hasTags: {
+      title: 'Show tags',
+      type: 'boolean',
+    },
+    callToAction: {
+      widget: 'object',
+      schema: CallToActionSchema({ formData }),
+    },
+  };
   return schema;
 };
 
 export const setItemModelSchema = (args) => {
   const { formData, schema } = args;
+  const itemModelSchema = schema.properties.itemModel.schema;
+
   console.log('setItemModelSchema', args);
-  const ItemSchema = {
-    fieldsets: [
-      {
-        id: 'itemDesigner',
-        title: 'Item',
-        fields: [
-          'hasDate',
-          'hasDescription',
-          'maxDescription',
-          'hasImage',
-          ...(formData.itemModel?.hasImage ? ['imageOnRightSide'] : []),
-          // 'hasMetaType',
-          // 'hasLabel',
-          // 'hasTags',
-          // 'callToAction',
-        ],
-      },
-    ],
-    properties: {
-      hasDate: {
-        title: 'Publication date',
-        type: 'boolean',
-      },
-      hasDescription: {
-        title: 'Description',
-        type: 'boolean',
-        default: true,
-      },
-      maxDescription: {
-        title: 'Description max lines',
-        description:
-          "Limit description to a maximum number of lines by adding trailing '...'",
-        type: 'number',
-        default: 2,
-        minimum: 0,
-        maximum: 5,
-      },
-      hasImage: {
-        title: 'Image',
-        type: 'boolean',
-        default: true,
-      },
-      imageOnRightSide: {
-        title: 'Image on Right (Default is Left)',
-        type: 'boolean',
-      },
-      // hasMetaType: {
-      //   title: 'Show portal type',
-      //   type: 'boolean',
-      // },
-      // hasLabel: {
-      //   title: 'Show new/archived label',
-      //   type: 'boolean',
-      // },
-      // hasTags: {
-      //   title: 'Show tags',
-      //   type: 'boolean',
-      // },
+
+  itemModelSchema.fieldsets[0].fields = [
+    ...itemModelSchema.fieldsets[0].fields,
+    'hasDate',
+    'hasDescription',
+    'maxDescription',
+    'hasImage',
+    ...(formData.itemModel?.hasImage ? ['imageOnRightSide'] : []),
+    // 'hasMetaType',
+    // 'hasLabel',
+    // 'hasTags',
+    // 'callToAction',
+  ];
+  itemModelSchema.properties = {
+    ...itemModelSchema.properties,
+
+    hasDate: {
+      title: 'Publication date',
+      type: 'boolean',
     },
-    required: [],
+    hasDescription: {
+      title: 'Description',
+      type: 'boolean',
+      default: true,
+    },
+    maxDescription: {
+      title: 'Description max lines',
+      description:
+        "Limit description to a maximum number of lines by adding trailing '...'",
+      type: 'number',
+      default: 2,
+      minimum: 0,
+      maximum: 5,
+    },
+    hasImage: {
+      title: 'Image',
+      type: 'boolean',
+      default: true,
+    },
+    imageOnRightSide: {
+      title: 'Image on Right (Default is Left)',
+      type: 'boolean',
+    },
+    // hasMetaType: {
+    //   title: 'Show portal type',
+    //   type: 'boolean',
+    // },
+    // hasLabel: {
+    //   title: 'Show new/archived label',
+    //   type: 'boolean',
+    // },
+    // hasTags: {
+    //   title: 'Show tags',
+    //   type: 'boolean',
+    // },
   };
-  schema.properties.itemModel.schema = ItemSchema;
   return schema;
 };
 

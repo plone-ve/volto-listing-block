@@ -78,5 +78,3 @@ const BasicItem = (props) => {
 export const DefaultItemLayout = (props) => {
   return <BasicItem {...props} />;
 };
-
-// DefaultItemLayout.schemaEnhancer = universalItemSchemaEnhancer;
