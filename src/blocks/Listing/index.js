@@ -37,13 +37,6 @@ const applyConfig = (config) => {
   // The variation takes care of how the individual item is displayed.
   // With our own variations being based on the UniversalCard, we have another
   // level of control on how each item is displayed.
-  // console.log(
-  //   composeSchema(
-  //     addStyling,
-  //     setBasicStylingSchema,
-  //     UniversalCard.schemaEnhancer,
-  //   ),
-  // );
 
   listing.variations = [
     ...listing.variations.filter(({ id }) => blacklist.indexOf(id) === -1),
@@ -150,30 +143,3 @@ const moveQueryToFieldset = (schemaEnhancer) => (props) => {
 
   return schema;
 };
-
-// import { CardStylingSchemaEnhancer } from '../schema';
-// CardsCarousel.styleSchemaEnhancer = ({ schema, intl }) => {
-//   return CardStylingSchemaEnhancer({ schema });
-// };
-
-// Listing.schemaEnhancer = UniversalItem.schemaEnhancer;
-//
-// Listing.styleSchemaEnhancer = ({ schema, intl }) => {
-//   return schema;
-// };
-// listing.stylesSchema = BasicListingBlockStylesSchema;
-// stylesSchema: Summary.styleSchemaEnhancer,
-// stylesSchema: CardStylingSchemaEnhancer,
-// stylesSchema: CardsCarousel.styleSchemaEnhancer,
-// stylesSchema: SearchItemLayout.styleSchemaEnhancer,
-// {
-//   id: 'customNewsListVariationId',
-//   isDefault: false,
-//   title: 'News List',
-//   template: NewsList,
-//   // schemaEnhancer: NewsList.schemaEnhancer,
-// },
-// Theming
-// This bug needs to be fixed first: https://github.com/plone/volto/issues/3675
-// listing.enableStyling = true;
-// import NewsList from './templates/NewsList';
