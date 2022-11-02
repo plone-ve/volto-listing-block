@@ -63,24 +63,24 @@ const applyConfig = (config) => {
       isDefault: false,
       title: 'Carousel',
       template: Carousel,
-      // schemaEnhancer: compose(
-      //   addStyling,
-      //   setBasicStylingSchema,
-      //   UniversalCard.schemaEnhancer,
-      //   Carousel.schemaEnhancer,
-      // ),
+      schemaEnhancer: composeSchema(
+        addStyling,
+        setBasicStylingSchema,
+        UniversalCard.schemaEnhancer,
+        Carousel.schemaEnhancer,
+      ),
     },
     {
       id: 'cardsGallery', //  'customCardsGalleryVariationId'
       isDefault: false,
       title: 'Gallery',
       template: Gallery,
-      // schemaEnhancer: compose(
-      //   addStyling,
-      //   setBasicStylingSchema,
-      //   UniversalCard.schemaEnhancer,
-      //   Gallery.schemaEnhancer,
-      // ),
+      schemaEnhancer: composeSchema(
+        addStyling,
+        setBasicStylingSchema,
+        UniversalCard.schemaEnhancer,
+        Gallery.schemaEnhancer,
+      ),
     },
   ];
 
