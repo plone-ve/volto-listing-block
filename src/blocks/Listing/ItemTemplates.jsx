@@ -36,7 +36,9 @@ const BasicItem = (props) => {
     <div
       className={cx('u-item listing-item', getVoltoStyles(styles), className)}
     >
-      <div className="wrapper">
+      <div
+        className={`wrapper ${imageOnRightSide ? 'right-image' : 'left-image'}`}
+      >
         <div className="slot-top">
           <ConditionalLink item={item} condition={!isEditMode}>
             {hasImage ? (
@@ -47,11 +49,15 @@ const BasicItem = (props) => {
                     hasDescription={hasDescription}
                     hasDate={hasDate}
                   />
-                  <PreviewImage item={item} className={'right'} />
+                  <div className="image-wrapper">
+                    <PreviewImage item={item} />
+                  </div>
                 </>
               ) : (
                 <>
-                  <PreviewImage item={item} className={'left'} />
+                  <div className="image-wrapper">
+                    <PreviewImage item={item} />
+                  </div>
                   <BodyText
                     item={item}
                     hasDescription={hasDescription}

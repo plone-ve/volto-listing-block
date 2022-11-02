@@ -8,6 +8,12 @@ const BodyText = ({ item, hasDescription }) => {
       {hasDescription && (
         <p className={'listing-description'}>{item.description}</p>
       )}
+
+      {item?.extra && (
+        <div className="slot-bottom" style={{ marginTop: 'auto' }}>
+          {item?.extra}
+        </div>
+      )}
     </div>
   );
 };
@@ -23,7 +29,7 @@ const getStyles = (props) => {
 
 const BasicItem = (props) => {
   const { item, styles, className, itemModel = {} } = props;
-  const { hasImage, hasDate, hasDescription } = itemModel;
+  const { hasImage, hasDate, hasDescription, imageOnRightSide } = itemModel;
 
   return (
     <div
@@ -37,20 +43,44 @@ const BasicItem = (props) => {
       <div className="wrapper">
         <div className="slot-head">{item?.meta}</div>
         <div className="slot-top">
-          <BodyText
-            item={item}
-            hasDescription={hasDescription}
-            hasDate={hasDate}
-          />
-          {hasImage && (
-            <PreviewImage
+          {hasImage ? (
+            imageOnRightSide ? (
+              <>
+                <BodyText
+                  item={item}
+                  hasDescription={hasDescription}
+                  hasDate={hasDate}
+                />
+                <div className={'image-wrapper right'}>
+                  <PreviewImage
+                    item={item}
+                    preview_image_url={item.preview_image_url}
+                  />
+                </div>
+              </>
+            ) : (
+              <>
+                <div className={'image-wrapper left'}>
+                  <PreviewImage
+                    item={item}
+                    preview_image_url={item.preview_image_url}
+                  />
+                </div>
+                <BodyText
+                  item={item}
+                  hasDescription={hasDescription}
+                  hasDate={hasDate}
+                />
+              </>
+            )
+          ) : (
+            <BodyText
               item={item}
-              className="right"
-              preview_image_url={item.preview_image_url}
+              hasDescription={hasDescription}
+              hasDate={hasDate}
             />
           )}
         </div>
-        <div className="slot-bottom">{item?.extra}</div>
       </div>
     </div>
   );
