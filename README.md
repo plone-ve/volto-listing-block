@@ -19,9 +19,8 @@
 ## Features
 
 This package aims to provide a framework for more flexible listings for the
-Listing Volto block. It introduces the concepts of UniversalCard and
-UniversalItem, which are generic components governed by a designated
-"itemModel".
+Listing Volto block. It introduces the concept of UniversalCard, which is a
+generic component governed by a designated "itemModel".
 
 It provides several views and integrates with the Teaser Grid.
 
