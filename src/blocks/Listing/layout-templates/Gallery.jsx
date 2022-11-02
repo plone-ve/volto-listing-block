@@ -4,7 +4,7 @@ import React from 'react';
 import UniversalCard from '@eeacms/volto-listing-block/components/UniversalCard/UniversalCard';
 import config from '@plone/volto/registry';
 
-const CardsGallery = ({
+const Gallery = ({
   block,
   items,
   gridSize,
@@ -27,9 +27,10 @@ const CardsGallery = ({
   );
 };
 
-CardsGallery.schemaEnhancer = (args) => {
-  const schema = UniversalCard.schemaEnhancer(args);
+Gallery.schemaEnhancer = ({ schema }) => {
+  // const schema = UniversalCard.schemaEnhancer(args);
   // schema.fieldsets[0].fields.push('gridSize');
+
   schema.fieldsets.splice(1, 0, {
     id: 'cardsGallery',
     title: 'Gallery',
@@ -52,13 +53,13 @@ CardsGallery.schemaEnhancer = (args) => {
   return schema;
 };
 
-CardsGallery.propTypes = {
+Gallery.propTypes = {
   items: PropTypes.arrayOf(PropTypes.any).isRequired,
   linkMore: PropTypes.any,
   isEditMode: PropTypes.bool,
 };
 
-export default CardsGallery;
+export default Gallery;
 
 // const makeTextBody = (item) => (
 //   <Card.Content>
