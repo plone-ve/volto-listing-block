@@ -28,6 +28,9 @@ const applyConfig = (config) => {
   const { listing } = config.blocks.blocksConfig;
 
   const blacklist = ['summary'];
+  // integration with volto-block-style
+  if (config.settings.integratesBlockStyles)
+    config.settings.integratesBlockStyles.push('listing');
 
   listing.schemaEnhancer = moveQueryToFieldset(listing.schemaEnhancer);
 
