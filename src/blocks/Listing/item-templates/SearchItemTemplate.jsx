@@ -40,7 +40,9 @@ const BasicItem = (props) => {
         className,
       )}
     >
-      <div className="wrapper">
+      <div
+        className={`wrapper ${imageOnRightSide ? 'right-image' : 'left-image'}`}
+      >
         <div className="slot-head">{item?.meta}</div>
         <div className="slot-top">
           {hasImage ? (
@@ -51,7 +53,7 @@ const BasicItem = (props) => {
                   hasDescription={hasDescription}
                   hasDate={hasDate}
                 />
-                <div className={'image-wrapper right'}>
+                <div className="image-wrapper">
                   <PreviewImage
                     item={item}
                     preview_image_url={item.preview_image_url}
@@ -60,7 +62,7 @@ const BasicItem = (props) => {
               </>
             ) : (
               <>
-                <div className={'image-wrapper left'}>
+                <div className="image-wrapper">
                   <PreviewImage
                     item={item}
                     preview_image_url={item.preview_image_url}
