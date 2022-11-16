@@ -78,33 +78,36 @@ export default ({ data }) => {
   };
 };
 
-export const stylingSchema = ({ intl }) => ({
-  title: 'Item style',
-  block: 'item',
-  fieldsets: [
-    {
-      id: 'default',
-      title: 'Default',
-      fields: ['theme', 'verticalAlign'],
+export const setItemStyling = ({ intl, schema }) => {
+  // TODO: this should be an enhancer, don't overwrite the schema
+  schema.properties.styles.schema = {
+    title: 'Item style',
+    block: 'item',
+    fieldsets: [
+      {
+        id: 'default',
+        title: 'Default',
+        fields: ['theme', 'verticalAlign'],
+      },
+    ],
+    properties: {
+      theme: {
+        title: 'Theme',
+        choices: [
+          ['primary', 'Primary'],
+          ['secondary', 'Secondary'],
+          ['tertiary', 'Tertiary'],
+        ],
+      },
+      verticalAlign: {
+        title: 'Vertical align',
+        choices: [
+          ['top', 'Top'],
+          ['middle', 'Middle'],
+          ['bottom', 'Bottom'],
+        ],
+      },
     },
-  ],
-  properties: {
-    theme: {
-      title: 'Theme',
-      choices: [
-        ['primary', 'Primary'],
-        ['secondary', 'Secondary'],
-        ['tertiary', 'Tertiary'],
-      ],
-    },
-    verticalAlign: {
-      title: 'Vertical align',
-      choices: [
-        ['top', 'Top'],
-        ['middle', 'Middle'],
-        ['bottom', 'Bottom'],
-      ],
-    },
-  },
-  required: [],
-});
+    required: [],
+  };
+};

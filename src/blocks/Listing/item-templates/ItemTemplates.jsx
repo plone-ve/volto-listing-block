@@ -1,9 +1,19 @@
 import cx from 'classnames';
 import { ConditionalLink, FormattedDate } from '@plone/volto/components';
+// import { buildStyleClassNamesFromData } from '@plone/volto/helpers';
 
 import { getVoltoStyles } from '@eeacms/volto-listing-block/schema-utils';
 
 import PreviewImage from '@eeacms/volto-listing-block/PreviewImage';
+
+const getStyles = (props) => {
+  const { itemModel = {} } = props;
+  const res = {};
+  if (itemModel.maxDescription) {
+    res[`max-${itemModel.maxDescription}-lines`] = true;
+  }
+  return res;
+};
 
 const BodyText = ({ item, hasDate, hasDescription }) => {
   return (
@@ -29,14 +39,17 @@ const BodyText = ({ item, hasDate, hasDescription }) => {
 };
 
 const BasicItem = (props) => {
-  const { item, styles, className, itemModel = {}, isEditMode = false } = props;
+  const { item, className, itemModel = {}, isEditMode = false } = props;
   const { hasImage, imageOnRightSide, hasDate, hasDescription } = itemModel;
+  const styles = getStyles(props);
 
   return (
     <div
       className={cx('u-item listing-item', getVoltoStyles(styles), className)}
     >
-      <div className="wrapper">
+      <div
+        className={`wrapper ${imageOnRightSide ? 'right-image' : 'left-image'}`}
+      >
         <div className="slot-top">
           <ConditionalLink item={item} condition={!isEditMode}>
             {hasImage ? (
@@ -47,11 +60,15 @@ const BasicItem = (props) => {
                     hasDescription={hasDescription}
                     hasDate={hasDate}
                   />
-                  <PreviewImage item={item} className={'right'} />
+                  <div className="image-wrapper">
+                    <PreviewImage item={item} />
+                  </div>
                 </>
               ) : (
                 <>
-                  <PreviewImage item={item} className={'left'} />
+                  <div className="image-wrapper">
+                    <PreviewImage item={item} />
+                  </div>
                   <BodyText
                     item={item}
                     hasDescription={hasDescription}

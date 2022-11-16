@@ -1,30 +1,30 @@
-import cx from 'classnames';
-
 import config from '@plone/volto/registry';
 import { resolveExtension } from '@plone/volto/helpers/Extensions/withBlockExtensions';
 import { Item } from './model';
+import cx from 'classnames';
 
-import { getVoltoStyles } from '@eeacms/volto-listing-block/schema-utils';
+// import { getVoltoStyles } from '@eeacms/volto-listing-block/schema-utils';
+import { buildStyleClassNamesFromData } from '@plone/volto/helpers';
+//
 import schemaEnhancer from './schema';
 
 function UniversalCard(props) {
-  const { itemModel = {}, styles, item, ...rest } = props;
+  const { itemModel = {}, item, ...rest } = props;
   const extension = resolveExtension(
     '@type',
     config.blocks.blocksConfig.listing.extensions.cardTemplates,
     itemModel,
   );
-  // const CardTemplate = BasicCard;
-  const CardTemplate = extension.view;
-  const classNames = getVoltoStyles(styles);
+  const styles = buildStyleClassNamesFromData(itemModel.styles);
+
+  const CardTemplate = extension.template;
 
   return (
     <CardTemplate
-      className={cx(classNames)}
       item={new Item(item)}
       itemModel={itemModel}
-      styles={styles}
       {...rest}
+      className={cx([rest.className, ...styles])}
     />
   );
 }

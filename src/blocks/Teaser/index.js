@@ -1,28 +1,27 @@
-import { compose } from 'redux';
+import { composeSchema } from '@eeacms/volto-listing-block/schema-utils';
+import { addStyling } from '@plone/volto/helpers';
+
 import TeaserCardTemplate from './Card';
-import { BasicListingBlockStylesSchema } from '../Listing/schema';
 import { adjustTeaserSchema } from './schema';
-import UniversalCard from '@eeacms/volto-listing-block/components/UniversalCard/UniversalCard';
+import { setCardStylingSchema, setCardModelSchema } from '../Listing/schema';
 
 export default (config) => {
-  // Teaser
   if (config.blocks.blocksConfig.teaser) {
     config.blocks.blocksConfig.teaser.variations = [
-      // ...(config.blocks.blocksConfig.teaser.variations || []),
       {
         id: 'card',
         isDefault: true,
         title: 'Card (top image)',
         template: TeaserCardTemplate,
-        schemaEnhancer: compose(
+        schemaEnhancer: composeSchema(
+          addStyling,
           adjustTeaserSchema,
-          TeaserCardTemplate.styleSchemaEnhancer,
-          UniversalCard.schemaEnhancer,
+          setCardStylingSchema,
+          setCardModelSchema,
         ),
       },
+      // ...(config.blocks.blocksConfig.teaser.variations || []),
     ];
-    // config.blocks.blocksConfig.teaser.enableStyling = true;
-    config.blocks.blocksConfig.teaser.stylesSchema = BasicListingBlockStylesSchema;
   }
 
   // Teaser Grid
