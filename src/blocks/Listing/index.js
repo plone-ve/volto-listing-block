@@ -33,8 +33,8 @@ const applyConfig = (config) => {
     config.settings.integratesBlockStyles.push('listing');
 
   listing.schemaEnhancer = composeSchema(
-    moveQueryToFieldset,
     listing.schemaEnhancer,
+    moveQueryToFieldset,
   );
 
   // The split of responsibilities is as follows:
