@@ -3,10 +3,21 @@ import { addStyling } from '@plone/volto/helpers';
 
 import TeaserCardTemplate from './Card';
 import { adjustTeaserSchema } from './schema';
-import { setCardStylingSchema, setCardModelSchema } from '../Listing/schema';
+import UniversalCard from '@eeacms/volto-listing-block/components/UniversalCard/UniversalCard';
+import {
+  // setCardStylingSchema,
+  // setCardModelSchema,
+  setBasicStylingSchema,
+} from '../Listing/schema';
 
 export default (config) => {
   if (config.blocks.blocksConfig.teaser) {
+    config.blocks.blocksConfig.teaser.schemaEnhancer = composeSchema(
+      config.blocks.blocksConfig.teaser.schemaEnhancer,
+      addStyling,
+      setBasicStylingSchema,
+    );
+
     config.blocks.blocksConfig.teaser.variations = [
       {
         id: 'card',
@@ -14,10 +25,10 @@ export default (config) => {
         title: 'Card (top image)',
         template: TeaserCardTemplate,
         schemaEnhancer: composeSchema(
-          addStyling,
           adjustTeaserSchema,
-          setCardStylingSchema,
-          setCardModelSchema,
+          UniversalCard.schemaEnhancer,
+          // setCardModelSchema,
+          // setCardStylingSchema,
         ),
       },
       // ...(config.blocks.blocksConfig.teaser.variations || []),
