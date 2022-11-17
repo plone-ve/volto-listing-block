@@ -4,11 +4,7 @@ import { addStyling } from '@plone/volto/helpers';
 import TeaserCardTemplate from './Card';
 import { adjustTeaserSchema } from './schema';
 import UniversalCard from '@eeacms/volto-listing-block/components/UniversalCard/UniversalCard';
-import {
-  // setCardStylingSchema,
-  // setCardModelSchema,
-  setBasicStylingSchema,
-} from '../Listing/schema';
+import { setBasicStylingSchema } from '../Listing/schema';
 
 export default (config) => {
   if (config.blocks.blocksConfig.teaser) {
@@ -27,8 +23,6 @@ export default (config) => {
         schemaEnhancer: composeSchema(
           adjustTeaserSchema,
           UniversalCard.schemaEnhancer,
-          // setCardModelSchema,
-          // setCardStylingSchema,
         ),
       },
       // ...(config.blocks.blocksConfig.teaser.variations || []),

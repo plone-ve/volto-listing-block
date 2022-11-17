@@ -32,7 +32,10 @@ const applyConfig = (config) => {
   if (config.settings.integratesBlockStyles)
     config.settings.integratesBlockStyles.push('listing');
 
-  listing.schemaEnhancer = moveQueryToFieldset(listing.schemaEnhancer);
+  listing.schemaEnhancer = composeSchema(
+    moveQueryToFieldset,
+    listing.schemaEnhancer,
+  );
 
   // The split of responsibilities is as follows:
   // the Listing block variation takes care of the Layout responsibility (how
@@ -130,9 +133,8 @@ const applyConfig = (config) => {
 
 export default applyConfig;
 
-const moveQueryToFieldset = (schemaEnhancer) => (props) => {
+const moveQueryToFieldset = ({ schema }) => {
   // NOTE: this is a schema finalizer
-  const schema = schemaEnhancer ? schemaEnhancer(props) : props.schema;
 
   // move querystring to its own fieldset;
   schema.fieldsets[0].fields = schema.fieldsets[0].fields.filter(
