@@ -190,11 +190,19 @@ each(range(5), {
     content: '\200b';
   }
 
+  .header,
   .description {
-    display: -webkit-box;
+    display: -webkit-box !important;
     overflow: hidden;
-
     -webkit-box-orient: vertical;
+  }
+
+  .header {
+    min-height: 2.7rem;
+    -webkit-line-clamp: 2;
+  }
+
+  .description {
     -webkit-line-clamp: var(--max-lines, 5);
   }
 
