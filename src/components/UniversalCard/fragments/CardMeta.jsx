@@ -9,11 +9,11 @@ const CardMeta = (props) => {
   const locale = config.settings.dateLocale || 'en-gb';
   const showDate = itemModel.hasDate !== false && EffectiveDate !== 'None';
   const showMeta = !!(head_title || (itemModel?.hasMetaType && item['@type']));
-  const show = showDate || showMeta;
+  // const show = showDate || showMeta;
 
   // TODO: <EEAFormattedDate data={EffectiveDate} />
 
-  return show ? (
+  return (
     <UiCard.Meta>
       {showMeta && (
         <span className="text-left">{head_title || item['Type']}</span>
@@ -32,7 +32,7 @@ const CardMeta = (props) => {
         </span>
       )}
     </UiCard.Meta>
-  ) : null;
+  );
 };
 
 export default CardMeta;
