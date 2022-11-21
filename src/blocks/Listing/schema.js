@@ -4,8 +4,8 @@ import alignLeftSVG from '@plone/volto/icons/align-left.svg';
 import alignCenterSVG from '@plone/volto/icons/align-center.svg';
 
 const ALIGN_INFO_MAP = {
-  align_left: [alignLeftSVG, 'Left'],
-  align_center: [alignCenterSVG, 'Center'],
+  left: [alignLeftSVG, 'Left'],
+  center: [alignCenterSVG, 'Center'],
 };
 
 // export const setBasicStylingSchema = (args) => {
@@ -234,7 +234,7 @@ export const setCardStylingSchema = ({ schema, intl }) => {
   const itemModelSchema = schema.properties.itemModel;
   const styleSchema = itemModelSchema.schema.properties.styles.schema;
   const fieldset = styleSchema.fieldsets.find(({ id }) => id === 'default');
-  fieldset.fields.push('theme', 'inverted', 'rounded', 'text_align');
+  fieldset.fields.push('theme', 'inverted', 'rounded', 'text');
   styleSchema.properties = {
     ...styleSchema.properties,
     theme: {
@@ -257,7 +257,7 @@ export const setCardStylingSchema = ({ schema, intl }) => {
       description: intl.formatMessage(messages.RoundedHelp),
       type: 'boolean',
     },
-    text_align: {
+    text: {
       title: 'Text align',
       widget: 'style_text_align',
       actions: Object.keys(ALIGN_INFO_MAP),
