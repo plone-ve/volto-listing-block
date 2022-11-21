@@ -16,6 +16,9 @@ const getStyles = (props) => {
   if (itemModel.maxDescription) {
     res[`max-${itemModel.maxDescription}-lines`] = true;
   }
+  if (itemModel.maxTitle) {
+    res[`title-max-${itemModel.maxTitle}-lines`] = true;
+  }
   return res;
 };
 

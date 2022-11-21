@@ -6,6 +6,31 @@
 
 @import (multiple, reference, optional) '../../theme.config';
 
+each(range(5), {
+  .max-@{value}-lines {
+    --max-lines: @value;
+  }
+  .title-max-@{value}-lines {
+    --title-max-lines: @value;
+  }
+});
+
+.useMaxLines() {
+  display: -webkit-box !important;
+  overflow: hidden;
+
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: var(--max-lines, 5);
+}
+
+.useTitleMaxLines() {
+  display: -webkit-box !important;
+  overflow: hidden;
+
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: var(--title-max-lines, 5);
+}
+
 .category {
   font-size: @categoryFontSize;
 }
@@ -38,23 +63,13 @@
   font-size: 12px;
 }
 
-each(range(5), {
-  .max-@{value}-lines {
-    --max-lines: @value;
-  }
-});
-
-.useMaxLines() {
-  display: -webkit-box;
-  overflow: hidden;
-
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: var(--max-lines, 5);
-}
-
 .u-item {
   .listing-description {
     .useMaxLines();
+  }
+
+  .listing-header {
+    .useTitleMaxLines();
   }
 }
 
@@ -186,20 +201,12 @@ each(range(5), {
     content: '\200b';
   }
 
-  .header,
-  .description {
-    display: -webkit-box !important;
-    overflow: hidden;
-    -webkit-box-orient: vertical;
-  }
-
   .header {
-    min-height: 2.7rem;
-    -webkit-line-clamp: 2;
+    .useTitleMaxLines();
   }
 
   .description {
-    -webkit-line-clamp: var(--max-lines, 5);
+    .useMaxLines();
   }
 
   &.left-image-card {

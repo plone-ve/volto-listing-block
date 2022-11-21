@@ -98,6 +98,7 @@ export const setCardModelSchema = (args) => {
   const itemModelSchema = schema.properties.itemModel.schema;
   itemModelSchema.fieldsets[0].fields = [
     ...itemModelSchema.fieldsets[0].fields,
+    'maxTitle',
     'hasDate',
     'hasDescription',
     ...(formData?.itemModel?.hasDescription ? ['maxDescription'] : []),
@@ -115,6 +116,15 @@ export const setCardModelSchema = (args) => {
     hasDescription: {
       title: 'Description',
       type: 'boolean',
+    },
+    maxTitle: {
+      title: 'Title max lines',
+      description:
+        "Limit title to a maximum number of lines by adding trailing '...'",
+      type: 'number',
+      default: 2,
+      minimum: 0,
+      maximum: 5,
     },
     maxDescription: {
       title: 'Description max lines',
@@ -153,6 +163,7 @@ export const setItemModelSchema = (args) => {
 
   itemModelSchema.fieldsets[0].fields = [
     ...itemModelSchema.fieldsets[0].fields,
+    'maxTitle',
     'hasDate',
     'hasDescription',
     'maxDescription',
@@ -174,6 +185,15 @@ export const setItemModelSchema = (args) => {
       title: 'Description',
       type: 'boolean',
       default: true,
+    },
+    maxTitle: {
+      title: 'Title max lines',
+      description:
+        "Limit title to a maximum number of lines by adding trailing '...'",
+      type: 'number',
+      default: 2,
+      minimum: 0,
+      maximum: 5,
     },
     maxDescription: {
       title: 'Description max lines',
