@@ -18,9 +18,10 @@ const CardMeta = (props) => {
       {showMeta && (
         <span className="text-left">{head_title || item['Type']}</span>
       )}
-      {showDate && (
-        <span className="text-right date">
-          {formatDate({
+
+      <span className="text-right date">
+        {showDate &&
+          formatDate({
             date: EffectiveDate,
             format: {
               year: 'numeric',
@@ -29,8 +30,7 @@ const CardMeta = (props) => {
             },
             locale: locale,
           })}
-        </span>
-      )}
+      </span>
     </UiCard.Meta>
   );
 };
