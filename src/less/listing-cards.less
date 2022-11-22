@@ -107,8 +107,6 @@ each(range(5), {
 }
 
 // listing theme styling alongside inverse options
-
-//.block-editor-listing:not(.has--rounded--true) .listing-item,
 .listing-item:not(.has--rounded--true) {
   --image-max-width: 350px;
   --image-max-height: 210px;
@@ -164,23 +162,24 @@ each(range(5), {
   background-color: var(--bg-color, transparent);
   color: var(--text-color, @tertiaryColor);
 }
+
 .listing-body {
-    flex: 1;
-  }
-//.block-editor-listing:not(.has--rounded--true) .left-image,
-.listing-item:not(.has--rounded--true) .left-image {
+  flex: 1;
+}
+
+.listing-item:not(.has--rounded--true) {
   .listing-body {
     flex: 1;
   }
 
-  .image-wrapper {
+  .left-image .image-wrapper {
     margin-right: 24px;
+  }
 
-    .ui.image {
-      width: 100%;
-      margin-right: auto;
-      object-fit: cover;
-    }
+  .ui.image {
+    width: 100%;
+    margin-right: auto;
+    object-fit: cover;
   }
 }
 
@@ -199,7 +198,7 @@ each(range(5), {
 .u-item.listing-item {
   padding: var(--theme-padding, 32px 1rem);
   margin: 0;
-  background-color: var(--bg-color, #FFF);
+  background-color: var(--bg-color, #fff);
   color: var(--text-color, @tertiaryColor);
 }
 
