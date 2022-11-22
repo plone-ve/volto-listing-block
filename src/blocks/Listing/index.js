@@ -1,4 +1,4 @@
-import { addStyling } from '@plone/volto/helpers';
+// import { addStyling } from '@plone/volto/helpers';
 import UniversalCard from '@eeacms/volto-listing-block/components/UniversalCard/UniversalCard';
 import { composeSchema } from '@eeacms/volto-listing-block/schema-utils';
 
@@ -6,7 +6,7 @@ import Carousel from './layout-templates/Carousel';
 import Gallery from './layout-templates/Gallery';
 import Listing from './layout-templates/Listing';
 import {
-  setBasicStylingSchema,
+  // setBasicStylingSchema,
   setCardStylingSchema,
   setCardModelSchema,
   setItemModelSchema,
@@ -52,8 +52,8 @@ const applyConfig = (config) => {
       title: 'Listing',
       template: Listing,
       schemaEnhancer: composeSchema(
-        addStyling,
-        setBasicStylingSchema,
+        // addStyling,
+        // setBasicStylingSchema,
         UniversalCard.schemaEnhancer,
       ),
     },
@@ -63,8 +63,8 @@ const applyConfig = (config) => {
       title: 'Carousel',
       template: Carousel,
       schemaEnhancer: composeSchema(
-        addStyling,
-        setBasicStylingSchema,
+        // addStyling,
+        // setBasicStylingSchema,
         UniversalCard.schemaEnhancer,
         Carousel.schemaEnhancer,
       ),
@@ -75,8 +75,8 @@ const applyConfig = (config) => {
       title: 'Gallery',
       template: Gallery,
       schemaEnhancer: composeSchema(
-        addStyling,
-        setBasicStylingSchema,
+        // addStyling,
+        // setBasicStylingSchema,
         UniversalCard.schemaEnhancer,
         Gallery.schemaEnhancer,
       ),

@@ -6,12 +6,33 @@
 
 @import (multiple, reference, optional) '../../theme.config';
 
-.category {
-  font-size: @categoryFontSize;
+each(range(5), {
+  .max-@{value}-lines {
+    --max-lines: @value;
+  }
+  .title-max-@{value}-lines {
+    --title-max-lines: @value;
+  }
+});
+
+.useMaxLines(@value: 5) {
+  display: -webkit-box !important;
+  overflow: hidden;
+
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: var(--max-lines, @value);
 }
 
-.description {
-  font-size: 14px;
+.useTitleMaxLines(@value: 5) {
+  display: -webkit-box !important;
+  overflow: hidden;
+
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: var(--title-max-lines, @value);
+}
+
+.category {
+  font-size: @categoryFontSize;
 }
 
 .ui.cards > .card,
@@ -42,23 +63,13 @@
   font-size: 12px;
 }
 
-each(range(5), {
-  .max-@{value}-lines {
-    --max-lines: @value;
-  }
-});
-
-.useMaxLines() {
-  display: -webkit-box;
-  overflow: hidden;
-
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: var(--max-lines, 5);
-}
-
 .u-item {
   .listing-description {
     .useMaxLines();
+  }
+
+  .listing-header {
+    .useTitleMaxLines();
   }
 }
 
@@ -96,8 +107,7 @@ each(range(5), {
 }
 
 // listing theme styling alongside inverse options
-
-.listing-item {
+.listing-item:not(.has--rounded--true) {
   --image-max-width: 350px;
   --image-max-height: 210px;
 }
@@ -153,23 +163,29 @@ each(range(5), {
   color: var(--text-color, @tertiaryColor);
 }
 
-.left-image {
+.listing-body {
+  flex: 1;
+}
+
+.listing-item:not(.has--rounded--true) {
   .listing-body {
     flex: 1;
   }
 
-  .image-wrapper {
+  .left-image .image-wrapper {
     margin-right: 24px;
+  }
 
-    .ui.image {
-      width: 100%;
-      margin-right: auto;
-      object-fit: cover;
-    }
+  .ui.image {
+    width: 100%;
+    margin-right: auto;
+    object-fit: cover;
   }
 }
 
 .right-image {
+  width: 100%;
+
   .image-wrapper {
     margin-right: 0;
     margin-left: 24px;
@@ -183,15 +199,21 @@ each(range(5), {
 .u-item.listing-item {
   padding: var(--theme-padding, 32px 1rem);
   margin: 0;
+  background-color: var(--bg-color, #fff);
+  color: var(--text-color, @tertiaryColor);
 }
 
 .ui.card.u-card {
-  .description {
-    display: -webkit-box;
-    overflow: hidden;
+  .meta:after {
+    content: '\200b';
+  }
 
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: var(--max-lines, 5);
+  .header {
+    .useTitleMaxLines();
+  }
+
+  .description {
+    .useMaxLines();
   }
 
   &.left-image-card {

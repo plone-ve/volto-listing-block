@@ -2,6 +2,9 @@ import React from 'react';
 import { Button, Icon } from 'semantic-ui-react';
 import loadable from '@loadable/component';
 
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
+
 import UniversalCard from '@eeacms/volto-listing-block/components/UniversalCard/UniversalCard';
 import ResponsiveContainer from '@eeacms/volto-listing-block/components/ResponsiveContainer';
 
