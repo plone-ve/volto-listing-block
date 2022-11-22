@@ -4,47 +4,47 @@ import alignLeftSVG from '@plone/volto/icons/align-left.svg';
 import alignCenterSVG from '@plone/volto/icons/align-center.svg';
 
 const ALIGN_INFO_MAP = {
-  align_left: [alignLeftSVG, 'Left'],
-  align_center: [alignCenterSVG, 'Center'],
+  left: [alignLeftSVG, 'Left'],
+  center: [alignCenterSVG, 'Center'],
 };
 
-export const setBasicStylingSchema = (args) => {
-  const { schema, intl } = args;
-  schema.properties.styles.schema = {
-    fieldsets: [
-      {
-        id: 'styling',
-        title: 'Styling',
-        fields: ['theme', 'inverted', 'rounded'],
-      },
-    ],
-    properties: {
-      theme: {
-        title: intl.formatMessage(messages.Theme),
-        description: intl.formatMessage(messages.ThemeHelp),
-        choices: [
-          ['', intl.formatMessage(messages.ThemeDefault)],
-          ['primary', intl.formatMessage(messages.ThemePrimary)],
-          ['secondary', intl.formatMessage(messages.ThemeSecondary)],
-          ['tertiary', intl.formatMessage(messages.ThemeTertiary)],
-        ],
-      },
-      inverted: {
-        title: intl.formatMessage(messages.Inverted),
-        description: intl.formatMessage(messages.InvertedHelp),
-        type: 'boolean',
-      },
-      rounded: {
-        title: intl.formatMessage(messages.Rounded),
-        description: intl.formatMessage(messages.RoundedHelp),
-        type: 'boolean',
-      },
-    },
-    required: [],
-  };
+// export const setBasicStylingSchema = (args) => {
+//   const { schema, intl } = args;
+//   schema.properties.styles.schema = {
+//     fieldsets: [
+//       {
+//         id: 'styling',
+//         title: 'Styling',
+//         fields: ['theme', 'inverted', 'rounded'],
+//       },
+//     ],
+//     properties: {
+//       theme: {
+//         title: intl.formatMessage(messages.Theme),
+//         description: intl.formatMessage(messages.ThemeHelp),
+//         choices: [
+//           ['', intl.formatMessage(messages.ThemeDefault)],
+//           ['primary', intl.formatMessage(messages.ThemePrimary)],
+//           ['secondary', intl.formatMessage(messages.ThemeSecondary)],
+//           ['tertiary', intl.formatMessage(messages.ThemeTertiary)],
+//         ],
+//       },
+//       inverted: {
+//         title: intl.formatMessage(messages.Inverted),
+//         description: intl.formatMessage(messages.InvertedHelp),
+//         type: 'boolean',
+//       },
+//       rounded: {
+//         title: intl.formatMessage(messages.Rounded),
+//         description: intl.formatMessage(messages.RoundedHelp),
+//         type: 'boolean',
+//       },
+//     },
+//     required: [],
+//   };
 
-  return schema;
-};
+//   return schema;
+// };
 
 const CallToActionSchema = ({ formData }) => {
   return {
@@ -98,6 +98,7 @@ export const setCardModelSchema = (args) => {
   const itemModelSchema = schema.properties.itemModel.schema;
   itemModelSchema.fieldsets[0].fields = [
     ...itemModelSchema.fieldsets[0].fields,
+    'maxTitle',
     'hasDate',
     'hasDescription',
     ...(formData?.itemModel?.hasDescription ? ['maxDescription'] : []),
@@ -115,6 +116,15 @@ export const setCardModelSchema = (args) => {
     hasDescription: {
       title: 'Description',
       type: 'boolean',
+    },
+    maxTitle: {
+      title: 'Title max lines',
+      description:
+        "Limit title to a maximum number of lines by adding trailing '...'",
+      type: 'number',
+      default: 2,
+      minimum: 0,
+      maximum: 5,
     },
     maxDescription: {
       title: 'Description max lines',
@@ -153,6 +163,7 @@ export const setItemModelSchema = (args) => {
 
   itemModelSchema.fieldsets[0].fields = [
     ...itemModelSchema.fieldsets[0].fields,
+    'maxTitle',
     'hasDate',
     'hasDescription',
     'maxDescription',
@@ -174,6 +185,15 @@ export const setItemModelSchema = (args) => {
       title: 'Description',
       type: 'boolean',
       default: true,
+    },
+    maxTitle: {
+      title: 'Title max lines',
+      description:
+        "Limit title to a maximum number of lines by adding trailing '...'",
+      type: 'number',
+      default: 2,
+      minimum: 0,
+      maximum: 5,
     },
     maxDescription: {
       title: 'Description max lines',
@@ -214,7 +234,7 @@ export const setCardStylingSchema = ({ schema, intl }) => {
   const itemModelSchema = schema.properties.itemModel;
   const styleSchema = itemModelSchema.schema.properties.styles.schema;
   const fieldset = styleSchema.fieldsets.find(({ id }) => id === 'default');
-  fieldset.fields.push('theme', 'inverted', 'rounded', 'text_align');
+  fieldset.fields.push('theme', 'inverted', 'rounded', 'text');
   styleSchema.properties = {
     ...styleSchema.properties,
     theme: {
@@ -237,7 +257,7 @@ export const setCardStylingSchema = ({ schema, intl }) => {
       description: intl.formatMessage(messages.RoundedHelp),
       type: 'boolean',
     },
-    text_align: {
+    text: {
       title: 'Text align',
       widget: 'style_text_align',
       actions: Object.keys(ALIGN_INFO_MAP),
