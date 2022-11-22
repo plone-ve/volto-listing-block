@@ -15,20 +15,20 @@ each(range(5), {
   }
 });
 
-.useMaxLines() {
+.useMaxLines(@value: 5) {
   display: -webkit-box !important;
   overflow: hidden;
 
   -webkit-box-orient: vertical;
-  -webkit-line-clamp: var(--max-lines, 5);
+  -webkit-line-clamp: var(--max-lines, @value);
 }
 
-.useTitleMaxLines() {
+.useTitleMaxLines(@value: 5) {
   display: -webkit-box !important;
   overflow: hidden;
 
   -webkit-box-orient: vertical;
-  -webkit-line-clamp: var(--title-max-lines, 5);
+  -webkit-line-clamp: var(--title-max-lines, @value);
 }
 
 .category {
@@ -108,7 +108,8 @@ each(range(5), {
 
 // listing theme styling alongside inverse options
 
-.listing-item {
+//.block-editor-listing:not(.has--rounded--true) .listing-item,
+.listing-item:not(.has--rounded--true) {
   --image-max-width: 350px;
   --image-max-height: 210px;
 }
@@ -163,8 +164,11 @@ each(range(5), {
   background-color: var(--bg-color, transparent);
   color: var(--text-color, @tertiaryColor);
 }
-
-.left-image {
+.listing-body {
+    flex: 1;
+  }
+//.block-editor-listing:not(.has--rounded--true) .left-image,
+.listing-item:not(.has--rounded--true) .left-image {
   .listing-body {
     flex: 1;
   }
@@ -181,6 +185,7 @@ each(range(5), {
 }
 
 .right-image {
+  width: 100%;
   .image-wrapper {
     margin-right: 0;
     margin-left: 24px;
@@ -194,6 +199,8 @@ each(range(5), {
 .u-item.listing-item {
   padding: var(--theme-padding, 32px 1rem);
   margin: 0;
+  background-color: var(--bg-color, #FFF);
+  color: var(--text-color, @tertiaryColor);
 }
 
 .ui.card.u-card {
