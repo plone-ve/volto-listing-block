@@ -234,10 +234,15 @@ export const setCardStylingSchema = ({ schema, intl }) => {
   const itemModelSchema = schema.properties.itemModel;
   const styleSchema = itemModelSchema.schema.properties.styles.schema;
   const fieldset = styleSchema.fieldsets.find(({ id }) => id === 'default');
-  fieldset.fields.push('theme', 'inverted', 'rounded', 'text');
+  fieldset.fields.push(
+    'theme:noprefix',
+    'inverted:bool',
+    'rounded:bool',
+    'text:noprefix',
+  );
   styleSchema.properties = {
     ...styleSchema.properties,
-    theme: {
+    'theme:noprefix': {
       title: intl.formatMessage(messages.Theme),
       description: intl.formatMessage(messages.ThemeHelp),
       choices: [
@@ -247,17 +252,17 @@ export const setCardStylingSchema = ({ schema, intl }) => {
         ['tertiary', intl.formatMessage(messages.ThemeTertiary)],
       ],
     },
-    inverted: {
+    'inverted:bool': {
       title: intl.formatMessage(messages.Inverted),
       description: intl.formatMessage(messages.InvertedHelp),
       type: 'boolean',
     },
-    rounded: {
+    'rounded:bool': {
       title: intl.formatMessage(messages.Rounded),
       description: intl.formatMessage(messages.RoundedHelp),
       type: 'boolean',
     },
-    text: {
+    'text:noprefix': {
       title: 'Text align',
       widget: 'style_text_align',
       actions: Object.keys(ALIGN_INFO_MAP),
