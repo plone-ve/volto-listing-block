@@ -16,9 +16,9 @@ const CallToAction = ({ item, itemModel, styles }) => (
     as="a"
     href={getCallToAction(item, itemModel.callToAction)}
     className={
-      styles?.theme
-        ? styles.inverted
-          ? styles.theme + ' inverted'
+      itemModel?.styles['theme:noprefix']
+        ? itemModel?.styles['inverted:bool']
+          ? itemModel?.styles['theme:noprefix'] + ' inverted'
           : 'inverted'
         : 'tertiary inverted'
     }
