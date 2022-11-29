@@ -1,6 +1,6 @@
 {
   "name": "@eeacms/volto-listing-block",
-  "version": "2.1.0",
+  "version": "2.2.0",
   "description": "@eeacms/volto-listing-block: Volto add-on",
   "main": "src/index.js",
   "author": "European Environment Agency: IDM2 A-Team",
@@ -18,13 +18,13 @@
   },
   "addons": [],
   "dependencies": {
+    "react-resize-detector": "7.1.2",
     "react-slick": "0.29.0",
-    "slick-carousel": "1.8.1",
-    "react-resize-detector": "7.1.2"
+    "slick-carousel": "1.8.1"
   },
   "devDependencies": {
-    "@plone/scripts": "*",
     "@cypress/code-coverage": "^3.10.0",
+    "@plone/scripts": "*",
     "babel-plugin-transform-class-properties": "^6.24.1",
     "md5": "^2.3.0"
   },

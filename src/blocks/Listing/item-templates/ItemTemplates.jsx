@@ -1,6 +1,5 @@
 import cx from 'classnames';
 import { ConditionalLink, FormattedDate } from '@plone/volto/components';
-// import { buildStyleClassNamesFromData } from '@plone/volto/helpers';
 
 import { getVoltoStyles } from '@eeacms/volto-listing-block/schema-utils';
 
@@ -29,8 +28,9 @@ const BodyText = ({ item, hasDate, hasDescription }) => {
             format={{
               year: 'numeric',
               month: 'short',
-              day: 'numeric',
+              day: '2-digit',
             }}
+            locale={'en-gb'}
           />
         </p>
       )}

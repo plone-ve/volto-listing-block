@@ -107,7 +107,7 @@ each(range(5), {
 }
 
 // listing theme styling alongside inverse options
-.listing-item:not(.has--rounded--true) {
+.listing-item:not(.rounded) {
   --image-max-width: 350px;
   --image-max-height: 210px;
 }
@@ -124,33 +124,28 @@ each(range(5), {
   height: var(--image-max-height, auto);
 }
 
-.has--rounded--true[class*='listing'] {
+.listing-item.rounded {
   --image-width: 176px !important;
   --image-height: 176px !important;
   --border-radius: 50%;
 }
 
-.has--theme--primary[class*='listing'] {
+.listing-item.primary {
   --text-color: var(--text-color--primary, #fff);
   --bg-color: var(--background-color, @primaryColor);
 }
 
-.has--theme--secondary[class*='listing'] {
+.listing-item.secondary {
   --text-color: var(--text-color--secondary, #fff);
   --bg-color: var(--background-color, @secondaryColor);
 }
 
-.has--theme--tertiary[class*='listing'] {
+.listing-item.tertiary {
   --text-color: var(--text-color--tertiary, #fff);
   --bg-color: var(--background-color, @tertiaryColor);
 }
 
-.has--inverted--:not(.has--theme--)[class*='listing'] {
-  --text-color: #fff;
-  --theme-padding: 32px 1.5rem;
-}
-
-.has--inverted--true[class*='listing'] {
+.listing-item.inverted {
   --text-color--primary: @primaryColor;
   --text-color--secondary: @secondaryColor;
   --text-color--tertiary: @tertiaryColor;
@@ -167,7 +162,7 @@ each(range(5), {
   flex: 1;
 }
 
-.listing-item:not(.has--rounded--true) {
+.listing-item:not(.rounded) {
   .listing-body {
     flex: 1;
   }

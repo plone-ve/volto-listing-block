@@ -59,7 +59,7 @@ const CallToActionSchema = ({ formData }) => {
                 formData?.['@type'] === 'listing' ? 'urlTemplate' : 'href',
               ]
             : []),
-        ], //
+        ],
         title: 'Default',
       },
     ],
@@ -92,8 +92,6 @@ const CallToActionSchema = ({ formData }) => {
 
 export const setCardModelSchema = (args) => {
   const { formData, schema } = args;
-
-  // console.log('setCardModelSchema', args);
 
   const itemModelSchema = schema.properties.itemModel.schema;
   itemModelSchema.fieldsets[0].fields = [
@@ -158,8 +156,6 @@ export const setCardModelSchema = (args) => {
 export const setItemModelSchema = (args) => {
   const { formData, schema } = args;
   const itemModelSchema = schema.properties.itemModel.schema;
-
-  // console.log('setItemModelSchema', args);
 
   itemModelSchema.fieldsets[0].fields = [
     ...itemModelSchema.fieldsets[0].fields,
@@ -234,10 +230,15 @@ export const setCardStylingSchema = ({ schema, intl }) => {
   const itemModelSchema = schema.properties.itemModel;
   const styleSchema = itemModelSchema.schema.properties.styles.schema;
   const fieldset = styleSchema.fieldsets.find(({ id }) => id === 'default');
-  fieldset.fields.push('theme', 'inverted', 'rounded', 'text');
+  fieldset.fields.push(
+    'theme:noprefix',
+    'inverted:bool',
+    'rounded:bool',
+    'text',
+  );
   styleSchema.properties = {
     ...styleSchema.properties,
-    theme: {
+    'theme:noprefix': {
       title: intl.formatMessage(messages.Theme),
       description: intl.formatMessage(messages.ThemeHelp),
       choices: [
@@ -247,12 +248,12 @@ export const setCardStylingSchema = ({ schema, intl }) => {
         ['tertiary', intl.formatMessage(messages.ThemeTertiary)],
       ],
     },
-    inverted: {
+    'inverted:bool': {
       title: intl.formatMessage(messages.Inverted),
       description: intl.formatMessage(messages.InvertedHelp),
       type: 'boolean',
     },
-    rounded: {
+    'rounded:bool': {
       title: intl.formatMessage(messages.Rounded),
       description: intl.formatMessage(messages.RoundedHelp),
       type: 'boolean',

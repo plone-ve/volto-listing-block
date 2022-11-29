@@ -16,9 +16,9 @@ const CallToAction = ({ item, itemModel, styles }) => (
     as="a"
     href={getCallToAction(item, itemModel.callToAction)}
     className={
-      styles?.theme
-        ? styles.inverted
-          ? styles.theme + ' inverted'
+      itemModel?.styles['theme:noprefix']
+        ? itemModel?.styles['inverted:bool']
+          ? itemModel?.styles['theme:noprefix'] + ' inverted'
           : 'inverted'
         : 'tertiary inverted'
     }
@@ -40,7 +40,11 @@ const CardExtra = ({ item, itemModel = {}, ...rest }) => {
 
   return show ? (
     <UiCard.Content extra>
-      {showTags && <Tags item={item} itemModel={itemModel} {...rest} />}
+      {showTags && (
+        <div className={'tags labels'}>
+          <Tags item={item} itemModel={itemModel} {...rest} />
+        </div>
+      )}
       {showCallToAction && (
         <CallToAction item={item} itemModel={itemModel} {...rest} />
       )}

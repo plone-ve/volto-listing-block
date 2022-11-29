@@ -4,7 +4,6 @@ import { ConditionalLink } from '@plone/volto/components';
 import PreviewImage from '@eeacms/volto-listing-block/PreviewImage';
 
 const getLabel = (props) => {
-  // { text: 'new', side: 'left', color: 'green' }
   const { item, itemModel = {} } = props;
   const text = item.isNew ? 'New' : item.isExpired ? 'Archived' : null;
 
@@ -13,7 +12,7 @@ const getLabel = (props) => {
         text,
         side: 'left',
         // TODO: set the colors from css?
-        color: item.review_state === 'archived' ? 'yellow' : 'green',
+        color: item.isExpired ? 'yellow' : 'green',
       }
     : null;
 };
