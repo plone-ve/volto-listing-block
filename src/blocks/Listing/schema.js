@@ -59,7 +59,7 @@ const CallToActionSchema = ({ formData }) => {
                 formData?.['@type'] === 'listing' ? 'urlTemplate' : 'href',
               ]
             : []),
-        ], //
+        ],
         title: 'Default',
       },
     ],
@@ -92,8 +92,6 @@ const CallToActionSchema = ({ formData }) => {
 
 export const setCardModelSchema = (args) => {
   const { formData, schema } = args;
-
-  // console.log('setCardModelSchema', args);
 
   const itemModelSchema = schema.properties.itemModel.schema;
   itemModelSchema.fieldsets[0].fields = [
@@ -158,8 +156,6 @@ export const setCardModelSchema = (args) => {
 export const setItemModelSchema = (args) => {
   const { formData, schema } = args;
   const itemModelSchema = schema.properties.itemModel.schema;
-
-  // console.log('setItemModelSchema', args);
 
   itemModelSchema.fieldsets[0].fields = [
     ...itemModelSchema.fieldsets[0].fields,
@@ -238,7 +234,7 @@ export const setCardStylingSchema = ({ schema, intl }) => {
     'theme:noprefix',
     'inverted:bool',
     'rounded:bool',
-    'text:noprefix',
+    'text',
   );
   styleSchema.properties = {
     ...styleSchema.properties,
@@ -262,7 +258,7 @@ export const setCardStylingSchema = ({ schema, intl }) => {
       description: intl.formatMessage(messages.RoundedHelp),
       type: 'boolean',
     },
-    'text:noprefix': {
+    text: {
       title: 'Text align',
       widget: 'style_text_align',
       actions: Object.keys(ALIGN_INFO_MAP),
