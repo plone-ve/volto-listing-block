@@ -3,7 +3,7 @@ import { Card as UiCard } from 'semantic-ui-react';
 import { ConditionalLink } from '@plone/volto/components';
 
 const CardTitle = (props) => {
-  const { item, isEditMode } = props;
+  const { item, isEditMode, itemModel } = props;
   const { title, Title } = item;
   const t = title || Title;
 
@@ -12,7 +12,7 @@ const CardTitle = (props) => {
       <ConditionalLink
         className="header-link"
         item={item}
-        condition={!isEditMode}
+        condition={!isEditMode && itemModel?.hasLink}
       >
         {t}
       </ConditionalLink>

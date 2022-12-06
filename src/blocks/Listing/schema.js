@@ -96,6 +96,7 @@ export const setCardModelSchema = (args) => {
   const itemModelSchema = schema.properties.itemModel.schema;
   itemModelSchema.fieldsets[0].fields = [
     ...itemModelSchema.fieldsets[0].fields,
+    'hasLink',
     'maxTitle',
     'hasDate',
     'hasDescription',
@@ -107,6 +108,11 @@ export const setCardModelSchema = (args) => {
   ];
   itemModelSchema.properties = {
     ...itemModelSchema.properties,
+    hasLink: {
+      title: 'Enable link',
+      description: 'Link to source content',
+      type: 'boolean',
+    },
     hasDate: {
       title: 'Publication date',
       type: 'boolean',
