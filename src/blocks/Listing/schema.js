@@ -112,6 +112,7 @@ export const setCardModelSchema = (args) => {
       title: 'Enable link',
       description: 'Link to source content',
       type: 'boolean',
+      default: true,
     },
     hasDate: {
       title: 'Publication date',
