@@ -39,9 +39,10 @@ export default ({ data }) => {
         choices: [
           ['small', 'Small'],
           ['medium', 'Medium'],
-          ['large', 'Large'],
+          ['big', 'Large'],
+          ['preview', 'Preview'],
         ],
-        default: 'small',
+        default: 'big',
       },
       icon: {
         title: 'Icon name',
@@ -51,9 +52,9 @@ export default ({ data }) => {
         choices: [
           ['small', 'Small'],
           ['medium', 'Medium'],
-          ['large', 'Large'],
+          ['big', 'Large'],
         ],
-        default: 'small',
+        default: 'big',
       },
       iconTheme: {
         title: 'Icon theme',

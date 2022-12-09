@@ -8,10 +8,10 @@ function Item({
   extra,
   header,
   icon,
-  iconSize = 'huge',
+  iconSize = 'big',
   iconTheme,
   image,
-  imageSize = 'tile',
+  imageSize = 'big',
   meta,
   mode = 'view',
   styles = {},
@@ -22,7 +22,7 @@ function Item({
       <UiItem className={cx(styles?.theme)}>
         {assetType === 'image' && image && (
           <UiItem.Image
-            src={`${image}/@@images/image/preview`}
+            src={`${image}/@@images/image/${imageSize}`}
             className={cx('ui', imageSize)}
             alt={header || 'Item image'}
           />
