@@ -37,6 +37,7 @@ export default ({ data }) => {
       imageSize: {
         title: 'Image size',
         choices: [
+          ['tiny', 'Tiny'],
           ['small', 'Small'],
           ['medium', 'Medium'],
           ['big', 'Large'],
@@ -50,6 +51,7 @@ export default ({ data }) => {
       iconSize: {
         title: 'Icon size',
         choices: [
+          ['tiny', 'Tiny'],
           ['small', 'Small'],
           ['medium', 'Medium'],
           ['big', 'Large'],
