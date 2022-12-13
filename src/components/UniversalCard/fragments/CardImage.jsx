@@ -27,7 +27,7 @@ const CardImage = (props) => {
       item={item}
       condition={!isEditMode && itemModel?.hasLink}
     >
-      {!isEditMode ? (
+      {!isEditMode && itemModel?.hasLink ? (
         <PreviewImage
           item={item}
           preview_image={preview_image}
