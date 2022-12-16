@@ -231,6 +231,24 @@ each(range(5), {
 
 // Search item listing
 
+.listing-item.result-item:not(.rounded) {
+  .listing-body {
+    flex: auto;
+  }
+
+  .left-image {
+    .listing-body {
+      flex: 1;
+    }
+  }
+
+  .right-image {
+    .ui.image {
+      width: auto;
+    }
+  }
+}
+
 .result-item .listing-body {
   display: flex;
   //flex: auto; breaks rounded image size, re-enable if trully needed
