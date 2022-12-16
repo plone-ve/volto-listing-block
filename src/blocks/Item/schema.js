@@ -37,17 +37,13 @@ export default ({ data }) => {
       imageSize: {
         title: 'Image size',
         choices: [
-          // commented as they were too small to use as item icons
-          // ['mini', 'Mini'],
-          // ['tile', 'Tile'],
-          // ['tiny', 'Tiny'],
-          // ['small', 'Small'],
-          ['large', 'Large'],
-          ['big', 'Big'],
-          ['huge', 'Huge'],
-          ['massive', 'Massive'],
+          ['tiny', 'Tiny'],
+          ['small', 'Small'],
+          ['medium', 'Medium'],
+          ['big', 'Large'],
+          ['preview', 'Preview'],
         ],
-        default: 'tile',
+        default: 'big',
       },
       icon: {
         title: 'Icon name',
@@ -55,15 +51,12 @@ export default ({ data }) => {
       iconSize: {
         title: 'Icon size',
         choices: [
-          ['mini', 'Mini'],
           ['tiny', 'Tiny'],
           ['small', 'Small'],
-          ['large', 'Large'],
-          ['big', 'Big'],
-          ['huge', 'Huge'],
-          ['massive', 'Massive'],
+          ['medium', 'Medium'],
+          ['big', 'Large'],
         ],
-        default: 'huge',
+        default: 'big',
       },
       iconTheme: {
         title: 'Icon theme',
