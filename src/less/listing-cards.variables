@@ -1,5 +1,7 @@
 @categoryFontSize: 12px;
 
+@imageWrapperDisplay: flex;
+
 @primaryColor         : #004B7F;
 @secondaryColor       : #007B6C;
 @tertiaryColor        : #3D5265;
