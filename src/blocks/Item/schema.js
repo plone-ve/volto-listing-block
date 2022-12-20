@@ -6,7 +6,7 @@ export default ({ data }) => {
       {
         id: 'default',
         title: 'Default',
-        fields: ['assetType'],
+        fields: ['assetType', 'theme', 'verticalAlign'],
       },
       ...(assetType === 'image'
         ? [{ id: 'image', title: 'Image', fields: ['image', 'imageSize'] }]
@@ -16,7 +16,7 @@ export default ({ data }) => {
             {
               id: 'icon',
               title: 'Icon',
-              fields: ['icon', 'iconSize', 'iconTheme'],
+              fields: ['icon', 'iconSize'],
             },
           ]
         : []),
@@ -58,34 +58,8 @@ export default ({ data }) => {
         ],
         default: 'big',
       },
-      iconTheme: {
-        title: 'Icon theme',
-        choices: [
-          ['primary', 'Primary'],
-          ['secondary', 'Secondary'],
-          ['tertiary', 'Tertiary'],
-        ],
-      },
-    },
-    required: [],
-  };
-};
-
-export const setItemStyling = ({ intl, schema }) => {
-  // TODO: this should be an enhancer, don't overwrite the schema
-  schema.properties.styles.schema = {
-    title: 'Item style',
-    block: 'item',
-    fieldsets: [
-      {
-        id: 'default',
-        title: 'Default',
-        fields: ['theme', 'verticalAlign'],
-      },
-    ],
-    properties: {
       theme: {
-        title: 'Theme',
+        title: 'Item theme',
         choices: [
           ['primary', 'Primary'],
           ['secondary', 'Secondary'],
@@ -99,6 +73,7 @@ export const setItemStyling = ({ intl, schema }) => {
           ['middle', 'Middle'],
           ['bottom', 'Bottom'],
         ],
+        default: 'middle',
       },
     },
     required: [],

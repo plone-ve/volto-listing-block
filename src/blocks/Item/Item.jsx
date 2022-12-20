@@ -9,17 +9,16 @@ function Item({
   header,
   icon,
   iconSize = 'big',
-  iconTheme,
+  theme,
+  verticalAlign,
   image,
   imageSize = 'big',
   meta,
   mode = 'view',
-  styles = {},
 }) {
-  const { verticalAlign } = styles;
   return (
     <UiItem.Group unstackable className="row">
-      <UiItem className={cx(styles?.theme)}>
+      <UiItem className={cx(theme)}>
         {assetType === 'image' && image && (
           <UiItem.Image
             src={`${image}/@@images/image/${imageSize}`}
@@ -28,7 +27,7 @@ function Item({
           />
         )}
         {assetType === 'icon' && icon && (
-          <Icon className={cx(icon, iconTheme)} size={iconSize} />
+          <Icon className={cx(icon, theme)} size={iconSize} />
         )}
         <UiItem.Content verticalAlign={verticalAlign}>
           {header && <UiItem.Header>{header}</UiItem.Header>}
