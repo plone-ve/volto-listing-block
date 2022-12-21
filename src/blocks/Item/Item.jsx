@@ -22,12 +22,15 @@ function Item({
         {assetType === 'image' && image && (
           <UiItem.Image
             src={`${image}/@@images/image/${imageSize}`}
-            className={cx('ui', imageSize)}
+            className={cx('ui', imageSize, verticalAlign, 'aligned')}
             alt={header || 'Item image'}
           />
         )}
         {assetType === 'icon' && icon && (
-          <Icon className={cx(icon, theme)} size={iconSize} />
+          <Icon
+            className={cx(icon, theme, verticalAlign, 'aligned')}
+            size={iconSize}
+          />
         )}
         <UiItem.Content verticalAlign={verticalAlign}>
           {header && <UiItem.Header>{header}</UiItem.Header>}
