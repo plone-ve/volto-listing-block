@@ -47,6 +47,18 @@ export default ({ data }) => {
       },
       icon: {
         title: 'Icon name',
+        description: (
+          <>
+            See{' '}
+            <a
+              target="_blank"
+              rel="noopener noreferrer"
+              href="https://remixicon.com"
+            >
+              Remix icon cheatsheet
+            </a>
+          </>
+        ),
       },
       iconSize: {
         title: 'Icon size',
