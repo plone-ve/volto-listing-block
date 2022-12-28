@@ -13,15 +13,15 @@ const CardMeta = (props) => {
 
   // TODO: <EEAFormattedDate data={EffectiveDate} />
 
-  return (
+  return showMeta || showDate ? (
     <UiCard.Meta>
       {showMeta && (
         <span className="text-left">{head_title || item['Type']}</span>
       )}
 
-      <span className="text-right date">
-        {showDate &&
-          formatDate({
+      {showDate && (
+        <span className="text-right date">
+          {formatDate({
             date: EffectiveDate,
             format: {
               year: 'numeric',
@@ -30,9 +30,10 @@ const CardMeta = (props) => {
             },
             locale: locale,
           })}
-      </span>
+        </span>
+      )}
     </UiCard.Meta>
-  );
+  ) : null;
 };
 
 export default CardMeta;
