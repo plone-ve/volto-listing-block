@@ -1,5 +1,6 @@
 export default ({ data }) => {
   const { assetType = 'image' } = data;
+  console.log(data, 'data');
   return {
     title: 'Item',
     fieldsets: [
@@ -72,10 +73,11 @@ export default ({ data }) => {
       },
       theme: {
         title: 'Item theme',
-        choices: [
-          ['primary', 'Primary'],
-          ['secondary', 'Secondary'],
-          ['tertiary', 'Tertiary'],
+        widget: 'color_picker',
+        colors: [
+          { name: 'primary', label: 'Primary' },
+          { name: 'secondary', label: 'Secondary' },
+          { name: 'tertiary', label: 'Tertiary' },
         ],
       },
       verticalAlign: {
