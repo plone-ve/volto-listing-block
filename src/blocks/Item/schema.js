@@ -1,6 +1,5 @@
 export default ({ data }) => {
   const { assetType = 'image' } = data;
-  console.log(data, 'data');
   return {
     title: 'Item',
     fieldsets: [
