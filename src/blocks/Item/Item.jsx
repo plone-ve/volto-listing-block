@@ -18,7 +18,10 @@ function Item({
 }) {
   return (
     <UiItem.Group unstackable className="row">
-      <UiItem className={cx(theme)}>
+      <UiItem
+        className={cx(theme)}
+        style={theme && theme.startsWith('#') ? { color: theme } : {}}
+      >
         {assetType === 'image' && image && (
           <UiItem.Image
             src={`${image}/@@images/image/${imageSize}`}
@@ -30,6 +33,7 @@ function Item({
           <Icon
             className={cx(icon, theme, verticalAlign, 'aligned')}
             size={iconSize}
+            style={theme && theme.startsWith('#') ? { color: theme } : {}}
           />
         )}
         <UiItem.Content verticalAlign={verticalAlign}>

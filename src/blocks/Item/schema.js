@@ -1,4 +1,15 @@
+import config from '@plone/volto/registry';
+import { combineSiteColors } from '@eeacms/volto-widget-theme-picker/helpers';
+
 export default ({ data }) => {
+  const combined =
+    config.settings?.available_colors && config.settings?.pluggableStyles
+      ? combineSiteColors(
+          config.settings.available_colors,
+          config.settings.pluggableStyles,
+        )
+      : [];
+
   const { assetType = 'image' } = data;
   return {
     title: 'Item',
@@ -72,12 +83,8 @@ export default ({ data }) => {
       },
       theme: {
         title: 'Item theme',
-        widget: 'color_picker',
-        colors: [
-          { name: 'primary', label: 'Primary' },
-          { name: 'secondary', label: 'Secondary' },
-          { name: 'tertiary', label: 'Tertiary' },
-        ],
+        widget: 'theme_picker',
+        colors: combined,
       },
       verticalAlign: {
         title: 'Vertical align',
