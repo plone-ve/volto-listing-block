@@ -15,7 +15,7 @@ function UniversalCard(props) {
     config.blocks.blocksConfig.listing.extensions.cardTemplates,
     itemModel,
   );
-  const styles = buildStyleClassNamesFromData(itemModel.styles);
+  const styles = buildStyleClassNamesFromData(itemModel?.styles);
 
   const CardTemplate = extension.template;
 

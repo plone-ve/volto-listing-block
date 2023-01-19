@@ -11,14 +11,14 @@ const getCallToAction = (item, options) => {
     : options.href?.[0]?.['@id'] || item['@id'];
 };
 
-const CallToAction = ({ item, itemModel, styles }) => (
+const CallToAction = ({ item, itemModel }) => (
   <Button
     as="a"
     href={getCallToAction(item, itemModel.callToAction)}
     className={
-      itemModel?.styles['theme:noprefix']
-        ? itemModel?.styles['inverted:bool']
-          ? itemModel?.styles['theme:noprefix'] + ' inverted'
+      itemModel.styles?.['theme:noprefix']
+        ? itemModel.styles?.['inverted:bool']
+          ? itemModel.styles?.['theme:noprefix'] + ' inverted'
           : 'inverted'
         : 'tertiary inverted'
     }
