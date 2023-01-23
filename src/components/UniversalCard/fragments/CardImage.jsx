@@ -1,5 +1,6 @@
 import React from 'react';
 import { ConditionalLink } from '@plone/volto/components';
+import { Card } from 'semantic-ui-react';
 
 import PreviewImage from '@eeacms/volto-listing-block/PreviewImage';
 
@@ -17,6 +18,15 @@ const getLabel = (props) => {
     : null;
 };
 
+const CardTitleOnImage = (props) => {
+  const { item, itemModel = {} } = props;
+  return itemModel?.titleOnImage ? (
+    <div className="gradient">
+      <Card.Header>{item.title}</Card.Header>
+    </div>
+  ) : null;
+};
+
 const CardImage = (props) => {
   const { item, isEditMode, preview_image, itemModel } = props;
   const label = getLabel(props);
@@ -28,12 +38,15 @@ const CardImage = (props) => {
       condition={!isEditMode && itemModel?.hasLink}
     >
       {!isEditMode && itemModel?.hasLink ? (
-        <PreviewImage
-          item={item}
-          preview_image={preview_image}
-          alt={item.title}
-          label={label}
-        />
+        <>
+          <PreviewImage
+            item={item}
+            preview_image={preview_image}
+            alt={item.title}
+            label={label}
+          />
+          <CardTitleOnImage {...props} />
+        </>
       ) : (
         <div className={'image'}>
           <PreviewImage
@@ -42,6 +55,7 @@ const CardImage = (props) => {
             alt={item.title}
             label={label}
           />
+          <CardTitleOnImage {...props} />
         </div>
       )}
     </ConditionalLink>

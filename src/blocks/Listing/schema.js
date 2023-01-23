@@ -97,6 +97,7 @@ export const setCardModelSchema = (args) => {
   itemModelSchema.fieldsets[0].fields = [
     ...itemModelSchema.fieldsets[0].fields,
     'hasLink',
+    'titleOnImage',
     'maxTitle',
     'hasDate',
     'hasDescription',
@@ -108,6 +109,11 @@ export const setCardModelSchema = (args) => {
   ];
   itemModelSchema.properties = {
     ...itemModelSchema.properties,
+    titleOnImage: {
+      title: 'Display title on image',
+      type: 'boolean',
+      default: false,
+    },
     hasLink: {
       title: 'Enable link',
       description: 'Link to source content',
