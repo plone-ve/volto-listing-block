@@ -7,7 +7,7 @@ const CardTitle = (props) => {
   const { title, Title } = item;
   const t = title || Title;
 
-  return t ? (
+  return t && !itemModel?.titleOnImage ? (
     <UiCard.Header>
       <ConditionalLink
         className="header-link"
