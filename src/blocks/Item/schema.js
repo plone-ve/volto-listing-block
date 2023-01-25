@@ -1,3 +1,5 @@
+import config from '@plone/volto/registry';
+
 export default ({ data }) => {
   const { assetType = 'image' } = data;
   return {
@@ -72,11 +74,15 @@ export default ({ data }) => {
       },
       theme: {
         title: 'Item theme',
-        widget: 'color_picker',
+        widget: 'theme_picker',
         colors: [
-          { name: 'primary', label: 'Primary' },
-          { name: 'secondary', label: 'Secondary' },
-          { name: 'tertiary', label: 'Tertiary' },
+          ...(config.settings && config.settings.pluggableStyles
+            ? config.settings.pluggableStyles.map((style) => ({
+                name: style.title.toLowerCase(),
+                label: style.title,
+              }))
+            : []),
+          //and add extra ones here
         ],
       },
       verticalAlign: {
