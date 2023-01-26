@@ -1,4 +1,5 @@
 import messages from '@eeacms/volto-listing-block/messages';
+import config from '@plone/volto/registry';
 
 import alignLeftSVG from '@plone/volto/icons/align-left.svg';
 import alignCenterSVG from '@plone/volto/icons/align-center.svg';
@@ -248,11 +249,15 @@ export const setCardStylingSchema = ({ schema, intl }) => {
     'theme:noprefix': {
       title: intl.formatMessage(messages.Theme),
       description: intl.formatMessage(messages.ThemeHelp),
-      choices: [
-        ['', intl.formatMessage(messages.ThemeDefault)],
-        ['primary', intl.formatMessage(messages.ThemePrimary)],
-        ['secondary', intl.formatMessage(messages.ThemeSecondary)],
-        ['tertiary', intl.formatMessage(messages.ThemeTertiary)],
+      widget: 'theme_picker',
+      colors: [
+        ...(config.settings && config.settings.themeColors
+          ? config.settings.themeColors.map(({ value, title }) => ({
+              name: value,
+              label: title,
+            }))
+          : []),
+        //and add extra ones here
       ],
     },
     'inverted:bool': {
