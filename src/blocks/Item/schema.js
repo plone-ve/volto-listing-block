@@ -76,10 +76,10 @@ export default ({ data }) => {
         title: 'Item theme',
         widget: 'theme_picker',
         colors: [
-          ...(config.settings && config.settings.pluggableStyles
-            ? config.settings.pluggableStyles.map((style) => ({
-                name: style.title.toLowerCase(),
-                label: style.title,
+          ...(config.settings && config.settings.themeColors
+            ? config.settings.themeColors.map(({ value, title }) => ({
+                name: value,
+                label: title,
               }))
             : []),
           //and add extra ones here
