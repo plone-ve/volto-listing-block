@@ -18,10 +18,10 @@
   },
   "addons": [],
   "dependencies": {
+    "@eeacms/volto-widget-theme-picker": "^1.0.1",
     "react-resize-detector": "7.1.2",
     "react-slick": "0.29.0",
-    "slick-carousel": "1.8.1",
-    "@eeacms/volto-widget-theme-picker": "1.0.0"
+    "slick-carousel": "1.8.1"
   },
   "devDependencies": {
     "@cypress/code-coverage": "^3.10.0",
