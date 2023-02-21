@@ -1,6 +1,5 @@
 // TODO: see if possible to replace with Volto's PreviewImage component
 import React from 'react';
-import PropTypes from 'prop-types';
 
 import { Image } from 'semantic-ui-react';
 import { flattenToAppURL } from '@plone/volto/helpers';
@@ -66,13 +65,13 @@ function PreviewImage(props) {
   );
 }
 
-PreviewImage.propTypes = {
-  size: PropTypes.string,
-  item: PropTypes.shape({
-    '@id': PropTypes.string.isRequired,
-    image_field: PropTypes.string,
-    title: PropTypes.string.isRequired,
-  }),
-};
+// PreviewImage.propTypes = {
+//   size: PropTypes.string,
+//   item: PropTypes.shape({
+//     '@id': PropTypes.string.isRequired,
+//     image_field: PropTypes.string,
+//     title: PropTypes.string.isRequired,
+//   }),
+// };
 
 export default PreviewImage;
