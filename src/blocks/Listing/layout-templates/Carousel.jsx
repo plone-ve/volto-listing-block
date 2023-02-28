@@ -11,6 +11,7 @@ import ResponsiveContainer from '@eeacms/volto-listing-block/components/Responsi
 const Slider = loadable(() => import('react-slick'));
 
 const tabletBreakpoint = 768;
+const mobileLargeBreakpoint = 767;
 const mobileBreakpoint = 480;
 
 const getSlidesToShow = (items, _slidesToShow) => {
@@ -65,6 +66,7 @@ const CardsCarousel = ({ block, items, ...rest }) => {
     dots: true,
     infinite: true,
     arrows: false,
+    initialSlide: 0,
     lazyLoad: 'progressive',
     slidesToShow: getSlidesToShow(items, rest.slidesToShow || 4),
     slidesToScroll: getSlidesToScroll(
@@ -77,8 +79,14 @@ const CardsCarousel = ({ block, items, ...rest }) => {
         breakpoint: tabletBreakpoint,
         settings: {
           slidesToShow: 3,
-          slidesToScroll: 1,
-          arrows: false,
+          slidesToScroll: 3,
+        },
+      },
+      {
+        breakpoint: mobileLargeBreakpoint,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
         },
       },
       {
@@ -86,7 +94,6 @@ const CardsCarousel = ({ block, items, ...rest }) => {
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
-          arrows: false,
         },
       },
     ],
