@@ -249,6 +249,8 @@ export const setCardStylingSchema = ({ schema, intl }) => {
     'inverted:bool',
     'rounded:bool',
     'text',
+    'objectfit',
+    'objectposition',
   );
   styleSchema.properties = {
     ...styleSchema.properties,
@@ -281,6 +283,28 @@ export const setCardStylingSchema = ({ schema, intl }) => {
       widget: 'style_text_align',
       actions: Object.keys(ALIGN_INFO_MAP),
       actionsInfoMap: ALIGN_INFO_MAP,
+    },
+    objectfit: {
+      title: intl.formatMessage(messages.ObjectFit),
+      description: intl.formatMessage(messages.ObjectFitHelp),
+      choices: [
+        ['cover', 'cover'],
+        ['contain', 'contain'],
+        ['fill', 'fill'],
+        ['scale-down', 'scale-down'],
+        ['none', 'none'],
+      ],
+    },
+    objectposition: {
+      title: intl.formatMessage(messages.ObjectPosition),
+      description: intl.formatMessage(messages.ObjectPositionHelp),
+      choices: [
+        ['top', 'top'],
+        ['bottom', 'bottom'],
+        ['left', 'left'],
+        ['right', 'right'],
+        ['center', 'center'],
+      ],
     },
   };
 
