@@ -17,6 +17,8 @@ function UniversalCard(props) {
   );
   const styles = buildStyleClassNamesFromData(itemModel?.styles);
 
+  const lowerCaseClasses = styles.map((className) => className.toLowerCase());
+
   const CardTemplate = extension.template;
 
   return (
@@ -24,7 +26,7 @@ function UniversalCard(props) {
       item={new Item(item)}
       itemModel={itemModel}
       {...rest}
-      className={cx([rest.className, ...styles])}
+      className={cx([rest.className, ...lowerCaseClasses])}
     />
   );
 }

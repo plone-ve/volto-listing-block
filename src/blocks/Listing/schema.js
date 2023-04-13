@@ -249,8 +249,8 @@ export const setCardStylingSchema = ({ schema, intl }) => {
     'inverted:bool',
     'rounded:bool',
     'text',
-    'objectfit',
-    'objectposition',
+    'objectFit',
+    'objectPosition',
   );
   styleSchema.properties = {
     ...styleSchema.properties,
@@ -284,7 +284,7 @@ export const setCardStylingSchema = ({ schema, intl }) => {
       actions: Object.keys(ALIGN_INFO_MAP),
       actionsInfoMap: ALIGN_INFO_MAP,
     },
-    objectfit: {
+    objectFit: {
       title: intl.formatMessage(messages.ObjectFit),
       description: intl.formatMessage(messages.ObjectFitHelp),
       choices: [
@@ -295,7 +295,7 @@ export const setCardStylingSchema = ({ schema, intl }) => {
         ['none', 'none'],
       ],
     },
-    objectposition: {
+    objectPosition: {
       title: intl.formatMessage(messages.ObjectPosition),
       description: intl.formatMessage(messages.ObjectPositionHelp),
       choices: [
