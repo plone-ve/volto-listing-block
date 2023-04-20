@@ -124,6 +124,7 @@ export const setCardModelSchema = (args) => {
     hasDate: {
       title: 'Publication date',
       type: 'boolean',
+      default: false,
     },
     hasDescription: {
       title: 'Description',
