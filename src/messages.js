@@ -49,6 +49,22 @@ const messages = defineMessages({
     id: 'InvertedHelp',
     defaultMessage: 'Inverted theme',
   },
+  ObjectFit: {
+    id: 'Object fit',
+    defaultMessage: 'Object fit',
+  },
+  ObjectFitHelp: {
+    id: 'ObjectFitHelp',
+    defaultMessage: 'Css property object-fit applied on Card image',
+  },
+  ObjectPosition: {
+    id: 'ObjectPosition',
+    defaultMessage: 'Object position',
+  },
+  ObjectPositionHelp: {
+    id: 'ObjectPositionHelp',
+    defaultMessage: 'Css property object-position applied on Card image',
+  },
 });
 
 export default messages;
