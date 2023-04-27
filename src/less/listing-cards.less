@@ -113,16 +113,17 @@ each(range(5), {
 }
 
 .listing .listing-item .ui.image {
-  width: var(--image-width, auto);
-  height: var(--image-height, auto);
+  //width: var(--image-width, auto);
+  //height: var(--image-height, auto);
   max-height: var(--image-max-height, auto);
   border-radius: var(--border-radius, 0);
 }
 
 .image-wrapper {
   display: @imageWrapperDisplay;
-  width: var(--image-max-width, auto);
-  height: var(--image-max-height, auto);
+  //width: var(--image-max-width, auto);
+  //height: var(--image-max-height, auto);
+  margin-left: auto;
 }
 
 .listing-item.rounded {
@@ -159,23 +160,23 @@ each(range(5), {
   color: var(--text-color, @tertiaryColor);
 }
 
-.listing-body {
-  flex: 1;
-}
+//.listing-body {
+//  flex: 1;
+//}
 
 .listing-item:not(.rounded) {
-  .listing-body {
-    flex: 1;
-  }
+  //.listing-body {
+  //  flex: 1;
+  //}
 
-  .left-image .image-wrapper {
-    margin-right: 24px;
-  }
+  //.left-image .image-wrapper {
+  //  margin-right: 24px;
+  //}
 
   .ui.image {
     width: 100%;
-    margin-right: auto;
-    object-fit: cover;
+    //margin-right: auto;
+    object-fit: contain;
   }
 }
 
@@ -184,7 +185,7 @@ each(range(5), {
 
   .image-wrapper {
     margin-right: 0;
-    margin-left: 24px;
+    //margin-left: 24px;
 
     .ui.image {
       margin-left: auto;
@@ -234,7 +235,8 @@ each(range(5), {
 
 .listing-item.result-item:not(.rounded) {
   .listing-body {
-    flex: auto;
+    //flex: auto;
+    margin-right: 24px;
   }
 
   .left-image {
