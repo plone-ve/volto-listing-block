@@ -154,6 +154,10 @@ each(range(5), {
   --background-color: #fff;
 }
 
+.simple-listing-item.inverted {
+  --theme-padding: 0.3rem 0;
+}
+
 .listing.summary {
   background-color: var(--bg-color, transparent);
   color: var(--text-color, @tertiaryColor);
@@ -189,6 +193,19 @@ each(range(5), {
     .ui.image {
       margin-left: auto;
     }
+  }
+}
+
+.u-item.listing-item.simple-listing-item {
+  padding: var(--theme-padding, 0.3rem);
+  border-bottom: none;
+  margin: 0;
+  background-color: var(--bg-color, #fff);
+  color: var(--text-color, @tertiaryColor);
+
+  .slot-head,
+  .listing-header {
+    margin-bottom: 0;
   }
 }
 
