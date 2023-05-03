@@ -16,11 +16,8 @@ const getStyles = (props) => {
 };
 
 const BasicItem = (props) => {
-  const { item, className, itemModel = {}, isEditMode = false } = props;
-  //   const { hasImage, imageOnRightSide, hasDate, hasDescription } = itemModel;
+  const { item, className, isEditMode = false } = props;
   const styles = getStyles(props);
-
-  console.log('sss', props);
 
   return (
     <div
@@ -30,7 +27,7 @@ const BasicItem = (props) => {
         className,
       )}
     >
-      <div className={`wrapper `}>
+      <div className="wrapper">
         <div className="slot-top">
           <ConditionalLink item={item} condition={!isEditMode}>
             <div className="listing-body">
