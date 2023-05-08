@@ -113,7 +113,7 @@ each(range(5), {
 
 // span listing item full width in order for images to line up when
 // we have small titles
-.listing-item .wrapper  {
+.listing-item .wrapper {
   width: 100%;
 }
 
@@ -132,13 +132,13 @@ each(range(5), {
 
 .listing .listing-item .ui.image {
   width: var(--image-width, 100%);
-  height: var(--image-height, auto);
   max-width: var(--image-max-width, 100%);
+  height: var(--image-height, auto);
   max-height: var(--image-max-height, auto);
-  border-radius: var(--border-radius, 0);
-  object-position: var(--image-object-position, top);
-  object-fit: var(--image-object-fit, cover);
   aspect-ratio: var(--image-aspect-ratio, initial);
+  border-radius: var(--border-radius, 0);
+  object-fit: var(--image-object-fit, cover);
+  object-position: var(--image-object-position, top);
 }
 
 // override block.less from pastanaga
@@ -150,7 +150,7 @@ each(range(5), {
   display: @imageWrapperDisplay;
 }
 
-@media screen and (min-width:480px) {
+@media screen and (min-width: 480px) {
   // without a fixed width wrapper some images are smaller with 100% width value
   .listing-item .image-wrapper {
     width: var(--image-max-width, auto);
@@ -237,4 +237,3 @@ each(range(5), {
     }
   }
 }
-
