@@ -91,6 +91,11 @@ each(range(5), {
     margin-bottom: 8px;
   }
 
+  // shrink and grow listing body in order to fit the left or right image
+  .listing-body {
+    flex: 1;
+  }
+
   .meta .date {
     margin-left: auto;
   }
@@ -106,29 +111,55 @@ each(range(5), {
   }
 }
 
+// span listing item full width in order for images to line up when
+// we have small titles
+.listing-item .wrapper  {
+  width: 100%;
+}
+
+// Search item listing
+.result-item .listing-body {
+  display: flex;
+  flex-direction: column;
+}
+
 // listing theme styling alongside inverse options
 .listing-item:not(.rounded) {
-  --image-max-width: 350px;
-  --image-max-height: 235px;
+  --image-max-width: @imageMaxWidth;
+  --image-max-height: @imageMaxHeight;
+  --image-aspect-ratio: @imageAspectRatio;
 }
 
 .listing .listing-item .ui.image {
-  //width: var(--image-width, auto);
-  //height: var(--image-height, auto);
+  width: var(--image-width, 100%);
+  height: var(--image-height, auto);
+  max-width: var(--image-max-width, 100%);
   max-height: var(--image-max-height, auto);
   border-radius: var(--border-radius, 0);
+  object-position: var(--image-object-position, top);
+  object-fit: var(--image-object-fit, cover);
+  aspect-ratio: var(--image-aspect-ratio, initial);
 }
 
-.image-wrapper {
+// override block.less from pastanaga
+.listing .listing-item img {
+  margin-right: 0;
+}
+
+.listing-item .image-wrapper {
   display: @imageWrapperDisplay;
-  //width: var(--image-max-width, auto);
-  //height: var(--image-max-height, auto);
-  margin-left: auto;
+}
+
+@media screen and (min-width:480px) {
+  // without a fixed width wrapper some images are smaller with 100% width value
+  .listing-item .image-wrapper {
+    width: var(--image-max-width, auto);
+  }
 }
 
 .listing-item.rounded {
-  --image-width: 176px !important;
-  --image-height: 176px !important;
+  --image-width: @imageRoundedWidth !important;
+  --image-height: @imageRoundedWidth !important;
   --border-radius: 50%;
 }
 
@@ -160,37 +191,13 @@ each(range(5), {
   color: var(--text-color, @tertiaryColor);
 }
 
-//.listing-body {
-//  flex: 1;
-//}
-
-.listing-item:not(.rounded) {
-  //.listing-body {
-  //  flex: 1;
-  //}
-
-  //.left-image .image-wrapper {
-  //  margin-right: 24px;
-  //}
-
-  .ui.image {
-    width: 100%;
-    //margin-right: auto;
-    object-fit: contain;
-  }
+.left-image .image-wrapper {
+  margin-right: @imageWrapperMargin;
 }
 
-.right-image {
-  width: 100%;
-
-  .image-wrapper {
-    margin-right: 0;
-    //margin-left: 24px;
-
-    .ui.image {
-      margin-left: auto;
-    }
-  }
+.right-image .image-wrapper {
+  margin-right: 0;
+  margin-left: @imageWrapperMargin;
 }
 
 .u-item.listing-item {
@@ -231,29 +238,3 @@ each(range(5), {
   }
 }
 
-// Search item listing
-
-.listing-item.result-item:not(.rounded) {
-  .listing-body {
-    //flex: auto;
-    margin-right: 24px;
-  }
-
-  .left-image {
-    .listing-body {
-      flex: 1;
-    }
-  }
-
-  .right-image {
-    .ui.image {
-      width: auto;
-    }
-  }
-}
-
-.result-item .listing-body {
-  display: flex;
-  //flex: auto; breaks rounded image size, re-enable if trully needed
-  flex-direction: column;
-}

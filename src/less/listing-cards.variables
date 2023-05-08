@@ -1,6 +1,12 @@
 @categoryFontSize: 12px;
 
+@imageAspectRatio: 16/9;
+@imageMaxWidth: 350px;
+@imageMaxHeight: 235px;
+@imageRoundedWidth: 176px;
+
 @imageWrapperDisplay: flex;
+@imageWrapperMargin: 24px;
 
 @primaryColor         : #004B7F;
 @secondaryColor       : #007B6C;
