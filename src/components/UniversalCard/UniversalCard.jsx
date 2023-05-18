@@ -17,6 +17,11 @@ function UniversalCard(props) {
   );
   const styles = buildStyleClassNamesFromData(itemModel?.styles);
 
+  // replace camelCase with hyphens ex objectFit -> object-fit
+  const hyphenClasses = styles.map((className) =>
+    className.replace(/([a-zA-Z])(?=[A-Z])/g, '$1-').toLowerCase(),
+  );
+
   const CardTemplate = extension.template;
 
   return (
@@ -24,7 +29,7 @@ function UniversalCard(props) {
       item={new Item(item)}
       itemModel={itemModel}
       {...rest}
-      className={cx([rest.className, ...styles])}
+      className={cx([rest.className, ...hyphenClasses])}
     />
   );
 }
