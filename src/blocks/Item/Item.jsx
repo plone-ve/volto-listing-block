@@ -28,8 +28,10 @@ function Item({
         )}
         {assetType === 'icon' && icon && (
           <Icon
-            className={cx(icon, theme, verticalAlign, 'aligned')}
-            size={iconSize}
+            className={cx(icon, theme, verticalAlign, 'aligned', {
+              medium: iconSize === 'medium' ?? false,
+            })}
+            size={iconSize === 'medium' ? null : iconSize}
           />
         )}
         <UiItem.Content verticalAlign={verticalAlign}>
