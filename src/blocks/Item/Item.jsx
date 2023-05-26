@@ -1,5 +1,6 @@
 import cx from 'classnames';
 import { Item as UiItem, Icon } from 'semantic-ui-react';
+import { getFieldURL } from '@eeacms/volto-listing-block/helpers';
 
 function Item({
   assetType,
@@ -11,11 +12,12 @@ function Item({
   iconSize = 'big',
   theme,
   verticalAlign,
-  image,
   imageSize = 'big',
   meta,
   mode = 'view',
+  ...props
 }) {
+  const image = getFieldURL(props.image);
   return (
     <UiItem.Group unstackable className="row">
       <UiItem className={cx(theme)}>
