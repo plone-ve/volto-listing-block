@@ -34,5 +34,12 @@ export default (config) => {
     config.blocks.blocksConfig.teaserGrid.title = 'Teaser (Cards)';
   }
 
+  if (config.blocks.blocksConfig.__grid && config.blocks.blocksConfig.teaser) {
+    //because grid uses teaser from blocksConfig.__grid.blocksConfig.teaser
+    //and we need that teaser overriden as well
+    config.blocks.blocksConfig.__grid.blocksConfig.teaser =
+      config.blocks.blocksConfig.teaser;
+  }
+
   return config;
 };
