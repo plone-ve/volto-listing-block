@@ -8,8 +8,10 @@ import Listing from './layout-templates/Listing';
 import {
   // setBasicStylingSchema,
   setCardStylingSchema,
+  setSimpleItemStylingSchema,
   setCardModelSchema,
   setItemModelSchema,
+  setSimpleItemModelSchema,
 } from './schema';
 
 import {
@@ -21,6 +23,7 @@ import {
 
 import { DefaultItemLayout } from './item-templates/ItemTemplates';
 import { SearchItemLayout } from './item-templates/SearchItemTemplate';
+import { SimpleItemLayout } from './item-templates/SimpleItemTemplates';
 
 const applyConfig = (config) => {
   // moment date locale. See https://momentjs.com/ - Multiple Locale Support
@@ -121,6 +124,16 @@ const applyConfig = (config) => {
         title: 'Search Item',
         template: SearchItemLayout,
         schemaEnhancer: composeSchema(setItemModelSchema, setCardStylingSchema),
+      },
+      {
+        id: 'simpleItem',
+        isDefault: false,
+        title: 'Simple Item',
+        template: SimpleItemLayout,
+        schemaEnhancer: composeSchema(
+          setSimpleItemModelSchema,
+          setSimpleItemStylingSchema,
+        ),
       },
     ],
   };
