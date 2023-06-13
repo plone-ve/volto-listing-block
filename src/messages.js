@@ -49,6 +49,10 @@ const messages = defineMessages({
     id: 'InvertedHelp',
     defaultMessage: 'Inverted theme',
   },
+  Bordered: {
+    id: 'Bordered',
+    defaultMessage: 'Bordered',
+  },
   ObjectFit: {
     id: 'Object fit',
     defaultMessage: 'Object fit',

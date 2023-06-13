@@ -124,6 +124,7 @@ export const setCardModelSchema = (args) => {
     hasDate: {
       title: 'Publication date',
       type: 'boolean',
+      default: false,
     },
     hasDescription: {
       title: 'Description',
@@ -236,6 +237,76 @@ export const setItemModelSchema = (args) => {
     //   type: 'boolean',
     // },
   };
+  return schema;
+};
+
+export const setSimpleItemModelSchema = (args) => {
+  const { schema } = args;
+  const itemModelSchema = schema.properties.itemModel.schema;
+
+  itemModelSchema.fieldsets[0].fields = [
+    ...itemModelSchema.fieldsets[0].fields,
+    'maxTitle',
+  ];
+  itemModelSchema.properties = {
+    ...itemModelSchema.properties,
+    maxTitle: {
+      title: 'Title max lines',
+      description:
+        "Limit title to a maximum number of lines by adding trailing '...'",
+      type: 'number',
+      default: 2,
+      minimum: 0,
+      maximum: 5,
+    },
+  };
+  return schema;
+};
+
+export const setSimpleItemStylingSchema = ({ schema, intl }) => {
+  // populate the 'styling' fieldset of the cards
+  const itemModelSchema = schema.properties.itemModel;
+  const styleSchema = itemModelSchema.schema.properties.styles.schema;
+  const fieldset = styleSchema.fieldsets.find(({ id }) => id === 'default');
+  fieldset.fields.push(
+    'theme:noprefix',
+    'inverted:bool',
+    'bordered:bool',
+    'text',
+  );
+  styleSchema.properties = {
+    ...styleSchema.properties,
+    'theme:noprefix': {
+      title: intl.formatMessage(messages.Theme),
+      description: intl.formatMessage(messages.ThemeHelp),
+      widget: 'theme_picker',
+      colors: [
+        ...(config.settings && config.settings.themeColors
+          ? config.settings.themeColors.map(({ value, title }) => ({
+              name: value,
+              label: title,
+            }))
+          : []),
+        //and add extra ones here
+      ],
+    },
+    'inverted:bool': {
+      title: intl.formatMessage(messages.Inverted),
+      description: intl.formatMessage(messages.InvertedHelp),
+      type: 'boolean',
+    },
+    'bordered:bool': {
+      title: intl.formatMessage(messages.Bordered),
+      type: 'boolean',
+    },
+    text: {
+      title: 'Text align',
+      widget: 'style_text_align',
+      actions: Object.keys(ALIGN_INFO_MAP),
+      actionsInfoMap: ALIGN_INFO_MAP,
+    },
+  };
+
   return schema;
 };
 
