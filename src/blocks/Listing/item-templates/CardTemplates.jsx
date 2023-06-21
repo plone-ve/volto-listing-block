@@ -40,17 +40,11 @@ const BasicCard = (props) => {
 export const DefaultCardLayout = BasicCard;
 
 export const LeftImageCardLayout = (props) => (
-  <BasicCard
-    {...props}
-    className={cx(props.className || 'left-image-card', '')}
-  />
+  <BasicCard {...props} className={cx(props.className, ' left-image-card')} />
 );
 
 export const RightImageCardLayout = (props) => (
-  <BasicCard
-    {...props}
-    className={cx(props.className || 'right-image-card', '')}
-  />
+  <BasicCard {...props} className={cx(props.className, ' right-image-card')} />
 );
 
 export const ImageCardLayout = (props) => {
