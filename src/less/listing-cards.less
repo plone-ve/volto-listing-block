@@ -83,7 +83,7 @@ each(range(5), {
 
 .listing-item {
   padding-bottom: 16px;
-  border-bottom: 1px solid #bcbec0;
+  border-bottom: @listingCardBorderBottom;
   margin-bottom: 32px;
 
   .slot-head,
@@ -123,16 +123,44 @@ each(range(5), {
   flex-direction: column;
 }
 
-.listing.summary .u-card {
+.listing.summary .card.u-card {
   display: grid;
-  grid-template-columns: minmax(200px, 350px) auto;
+  padding: @listingCardPadding;
+  border-bottom: @listingCardBorderBottom;
 }
 
 .listing.summary .ui.card .extra {
-  margin-top: -3.5rem;
-  display: flex;
-  grid-column-start: 2;
-  grid-column-end: 3;
+  padding-bottom: 0;
+}
+
+@media screen and (min-width: 480px) {
+  // bring the extra section closer to the content area
+  .listing.summary .ui.card .extra {
+    display: flex;
+    margin-top: -@listingCardExtraTopMargin;
+  }
+
+  .listing.summary .left-image-card {
+    grid-template-columns: minmax(var(--image-min-width, @imageMinWidth), var(--image-max-width, @imageMaxWidth)) auto;
+  }
+
+  .listing.summary .right-image-card {
+    grid-template-columns: auto minmax(var(--image-min-width, @imageMinWidth), var(--image-max-width, @imageMaxWidth));
+  }
+  .listing.summary .rounded {
+    --image-min-width: @imageRoundedWidth;
+    --image-max-width: @imageRoundedWidth;
+  }
+
+  .listing.summary .ui.left-image-card .extra {
+    grid-column-end: 3;
+    grid-column-start: 2;
+  }
+
+  .listing.summary .ui.right-image-card .image {
+    grid-column-start: 2;
+    grid-row-start: 1;
+  }
 }
 
 // listing theme styling alongside inverse options
@@ -247,14 +275,6 @@ each(range(5), {
 
   .description {
     .useMaxLines();
-  }
-
-  &.left-image-card {
-    flex-direction: row;
-  }
-
-  &.right-image-card {
-    flex-direction: row-reverse;
   }
 }
 

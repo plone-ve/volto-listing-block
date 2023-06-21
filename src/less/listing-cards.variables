@@ -1,12 +1,17 @@
 @categoryFontSize: 12px;
 
 @imageAspectRatio: 16/9;
+@imageMinWidth: 200px;
 @imageMaxWidth: 350px;
 @imageMaxHeight: 235px;
 @imageRoundedWidth: 176px;
 
 @imageWrapperDisplay: flex;
 @imageWrapperMargin: 24px;
+
+@listingCardBorderBottom: 1px solid #bcbec0;
+@listingCardExtraTopMargin: -1.5rem;
+@listingCardPadding: 2rem 1rem 2rem 0;
 
 @primaryColor         : #004B7F;
 @secondaryColor       : #007B6C;
