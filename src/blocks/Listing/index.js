@@ -82,7 +82,6 @@ const applyConfig = (config) => {
       ),
     },
   ];
-
   listing.extensions = {
     ...listing.extensions,
     cardTemplates: [
@@ -104,12 +103,14 @@ const applyConfig = (config) => {
         title: 'Image on left',
         template: LeftImageCardLayout,
         schemaEnhancer: composeSchema(setCardModelSchema, setCardStylingSchema),
+        excludedFromVariations: ['cardsCarousel', 'cardsGallery'],
       },
       {
         id: 'imageOnRight',
         title: 'Image on right',
         template: RightImageCardLayout,
         schemaEnhancer: composeSchema(setCardModelSchema, setCardStylingSchema),
+        excludedFromVariations: ['cardsCarousel', 'cardsGallery'],
       },
       {
         id: 'item',
@@ -117,6 +118,7 @@ const applyConfig = (config) => {
         title: 'Listing Item',
         template: DefaultItemLayout,
         schemaEnhancer: composeSchema(setItemModelSchema, setCardStylingSchema),
+        excludedFromVariations: ['cardsCarousel', 'cardsGallery'],
       },
       {
         id: 'searchItem',
@@ -124,6 +126,7 @@ const applyConfig = (config) => {
         title: 'Search Item',
         template: SearchItemLayout,
         schemaEnhancer: composeSchema(setItemModelSchema, setCardStylingSchema),
+        excludedFromVariations: ['cardsCarousel', 'cardsGallery'],
       },
       {
         id: 'simpleItem',
