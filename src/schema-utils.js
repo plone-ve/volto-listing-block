@@ -12,7 +12,7 @@ export const addTypeSelect = ({
   const field = '@type';
   const extensions = config.blocks.blocksConfig.listing.extensions;
   const variations = extensions[extensionName];
-  const selectedVariation = formData.variation;
+  const selectedVariation = formData?.variation || 'default';
   const filteredVariations = variations.filter((entry) => {
     return entry.excludedFromVariations
       ? entry.excludedFromVariations.indexOf(selectedVariation) === -1
