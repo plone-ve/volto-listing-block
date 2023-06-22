@@ -17,10 +17,14 @@ const getStyles = (props) => {
   return res;
 };
 
-const BodyText = ({ item, hasDate, hasDescription }) => {
+const BodyText = ({ item, hasDate, hasDescription, isEditMode }) => {
   return (
     <div className="listing-body">
-      <h3 className={'listing-header'}>{item.title ? item.title : item.id}</h3>
+      <ConditionalLink item={item} condition={!isEditMode}>
+        <h3 className={'listing-header'}>
+          {item.title ? item.title : item.id}
+        </h3>
+      </ConditionalLink>
       {hasDate && item.effective && (
         <p className={'listing-date'}>
           <FormattedDate
@@ -54,39 +58,44 @@ const BasicItem = (props) => {
         className={`wrapper ${imageOnRightSide ? 'right-image' : 'left-image'}`}
       >
         <div className="slot-top">
-          <ConditionalLink item={item} condition={!isEditMode}>
-            {hasImage ? (
-              imageOnRightSide ? (
-                <>
-                  <BodyText
-                    item={item}
-                    hasDescription={hasDescription}
-                    hasDate={hasDate}
-                  />
-                  <div className="image-wrapper">
+          {hasImage ? (
+            imageOnRightSide ? (
+              <>
+                <BodyText
+                  item={item}
+                  hasDescription={hasDescription}
+                  hasDate={hasDate}
+                  isEditMode={isEditMode}
+                />
+                <div className="image-wrapper">
+                  <ConditionalLink item={item} condition={!isEditMode}>
                     <PreviewImage item={item} />
-                  </div>
-                </>
-              ) : (
-                <>
-                  <div className="image-wrapper">
-                    <PreviewImage item={item} />
-                  </div>
-                  <BodyText
-                    item={item}
-                    hasDescription={hasDescription}
-                    hasDate={hasDate}
-                  />
-                </>
-              )
+                  </ConditionalLink>
+                </div>
+              </>
             ) : (
-              <BodyText
-                item={item}
-                hasDescription={hasDescription}
-                hasDate={hasDate}
-              />
-            )}
-          </ConditionalLink>
+              <>
+                <div className="image-wrapper">
+                  <ConditionalLink item={item} condition={!isEditMode}>
+                    <PreviewImage item={item} />
+                  </ConditionalLink>
+                </div>
+                <BodyText
+                  item={item}
+                  hasDescription={hasDescription}
+                  hasDate={hasDate}
+                  isEditMode={isEditMode}
+                />
+              </>
+            )
+          ) : (
+            <BodyText
+              item={item}
+              hasDescription={hasDescription}
+              hasDate={hasDate}
+              isEditMode={isEditMode}
+            />
+          )}
         </div>
         <div className="slot-bottom">{item?.extra}</div>
       </div>
