@@ -1,6 +1,9 @@
 import cx from 'classnames';
-import { ConditionalLink, FormattedDate } from '@plone/volto/components';
+import { ConditionalLink } from '@plone/volto/components';
 
+import { formatDate } from '@plone/volto/helpers/Utils/Date';
+
+import config from '@plone/volto/registry';
 import { getVoltoStyles } from '@eeacms/volto-listing-block/schema-utils';
 
 import PreviewImage from '@eeacms/volto-listing-block/PreviewImage';
@@ -18,6 +21,9 @@ const getStyles = (props) => {
 };
 
 const BodyText = ({ item, hasDate, hasDescription, isEditMode }) => {
+  const locale = config.settings.dateLocale || 'en-gb';
+  const showDate = hasDate !== false && item.EffectiveDate !== 'None';
+
   return (
     <div className="listing-body">
       <ConditionalLink item={item} condition={!isEditMode}>
@@ -25,17 +31,17 @@ const BodyText = ({ item, hasDate, hasDescription, isEditMode }) => {
           {item.title ? item.title : item.id}
         </h3>
       </ConditionalLink>
-      {hasDate && item.effective && (
+      {showDate && (
         <p className={'listing-date'}>
-          <FormattedDate
-            date={item.effective}
-            format={{
+          {formatDate({
+            date: item.EffectiveDate,
+            format: {
               year: 'numeric',
               month: 'short',
               day: '2-digit',
-            }}
-            locale={'en-gb'}
-          />
+            },
+            locale: locale,
+          })}
         </p>
       )}
       {hasDescription && (
