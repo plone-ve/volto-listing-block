@@ -104,6 +104,7 @@ each(range(5), {
   .slot-top {
     display: flex;
     width: 100%;
+    gap: @imageWrapperMargin;
 
     @media only screen and (max-width: (@largestMobileScreen)) {
       flex-direction: column;
@@ -233,15 +234,6 @@ each(range(5), {
 .listing.summary {
   background-color: var(--bg-color, transparent);
   color: var(--text-color, @tertiaryColor);
-}
-
-.left-image .image-wrapper {
-  margin-right: @imageWrapperMargin;
-}
-
-.right-image .image-wrapper {
-  margin-right: 0;
-  margin-left: @imageWrapperMargin;
 }
 
 .u-item.listing-item.simple-listing-item {
