@@ -142,10 +142,12 @@ each(range(5), {
   }
 
   .listing.summary .left-image-card {
-    grid-template-columns: minmax(
+    grid-template-columns:
+      minmax(
         var(--image-min-width, @imageMinWidth),
         var(--image-max-width, @imageMaxWidth)
-      ) auto;
+      )
+      auto;
   }
 
   .listing.summary .right-image-card {
@@ -154,6 +156,7 @@ each(range(5), {
         var(--image-max-width, @imageMaxWidth)
       );
   }
+
   .listing.summary .rounded {
     --image-min-width: @imageRoundedWidth;
     --image-max-width: @imageRoundedWidth;
