@@ -142,11 +142,17 @@ each(range(5), {
   }
 
   .listing.summary .left-image-card {
-    grid-template-columns: minmax(var(--image-min-width, @imageMinWidth), var(--image-max-width, @imageMaxWidth)) auto;
+    grid-template-columns: minmax(
+        var(--image-min-width, @imageMinWidth),
+        var(--image-max-width, @imageMaxWidth)
+      ) auto;
   }
 
   .listing.summary .right-image-card {
-    grid-template-columns: auto minmax(var(--image-min-width, @imageMinWidth), var(--image-max-width, @imageMaxWidth));
+    grid-template-columns: auto minmax(
+        var(--image-min-width, @imageMinWidth),
+        var(--image-max-width, @imageMaxWidth)
+      );
   }
   .listing.summary .rounded {
     --image-min-width: @imageRoundedWidth;
