@@ -124,53 +124,54 @@ each(range(5), {
   flex-direction: column;
 }
 
-.listing.summary .card.u-card {
+.card.u-card.item-card {
   display: grid;
   padding: @listingCardPadding;
   border-bottom: @listingCardBorderBottom;
 }
 
-.listing.summary .ui.card .extra {
+//.listing.summary
+.ui.card.u-card.item-card .extra {
   padding-bottom: 0;
 }
 
 @media screen and (min-width: 480px) {
   // bring the extra section closer to the content area
-  .listing.summary .ui.card .extra {
-    display: flex;
-    margin-top: -@listingCardExtraTopMargin;
+  .left-image-card {
+    grid-template-areas: "image body"
+                         ".     extra";
   }
 
-  .listing.summary .left-image-card {
+  .right-image-card {
+    grid-template-areas: "body image"
+                         "extra .";
+  }
+
+  .item-card .image {
+    grid-area: image;
+  }
+
+  .ui.item-card .extra.content {
+    grid-area: extra;
+    margin-top: @listingCardExtraTopMargin;
+  }
+
+  .u-card.item-card .description {
+    margin-bottom: @listingCardGridDescriptionMarginBottom;
+  }
+
+  .left-image-card {
     grid-template-columns:
-      minmax(
-        var(--image-min-width, @imageMinWidth),
-        var(--image-max-width, @imageMaxWidth)
-      )
+      minmax(var(--image-min-width, @imageMinWidth),
+      var(--image-max-width, @imageMaxWidth))
       auto;
   }
 
-  .listing.summary .right-image-card {
-    grid-template-columns: auto minmax(
-        var(--image-min-width, @imageMinWidth),
-        var(--image-max-width, @imageMaxWidth)
-      );
+  .right-image-card {
+    grid-template-columns: auto minmax(var(--image-min-width, @imageMinWidth),
+    var(--image-max-width, @imageMaxWidth));
   }
 
-  .listing.summary .rounded {
-    --image-min-width: @imageRoundedWidth;
-    --image-max-width: @imageRoundedWidth;
-  }
-
-  .listing.summary .ui.left-image-card .extra {
-    grid-column-end: 3;
-    grid-column-start: 2;
-  }
-
-  .listing.summary .ui.right-image-card .image {
-    grid-column-start: 2;
-    grid-row-start: 1;
-  }
 }
 
 // listing theme styling alongside inverse options
@@ -180,7 +181,7 @@ each(range(5), {
   --image-aspect-ratio: @imageAspectRatio;
 }
 
-.listing .listing-item .ui.image {
+.u-item.listing-item .ui.image {
   width: var(--image-width, 100%);
   max-width: var(--image-max-width, 100%);
   height: var(--image-height, auto);
@@ -192,7 +193,7 @@ each(range(5), {
 }
 
 // override block.less from pastanaga
-.listing .listing-item img {
+.u-item.listing-item img {
   margin-right: 0;
 }
 
@@ -207,9 +208,10 @@ each(range(5), {
   }
 }
 
+.card.rounded,
 .listing-item.rounded {
-  --image-width: @imageRoundedWidth !important;
-  --image-height: @imageRoundedWidth !important;
+  --image-width: @imageRoundedWidth;
+  --image-height: @imageRoundedWidth;
   --border-radius: 50%;
 }
 

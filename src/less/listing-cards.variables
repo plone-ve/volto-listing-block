@@ -10,9 +10,10 @@
 @imageWrapperMargin: 24px;
 
 @listingCardBorderBottom: 1px solid #bcbec0;
-@listingCardExtraTopMargin: -1.5rem;
+@listingCardExtraTopMargin: -3rem;
 @listingCardPadding: 2rem 1rem 2rem 0;
+@listingCardGridDescriptionMarginBottom: 2.5rem;
 
-@primaryColor         : #004B7F;
-@secondaryColor       : #007B6C;
-@tertiaryColor        : #3D5265;
+@primaryColor: #004B7F;
+@secondaryColor: #007B6C;
+@tertiaryColor: #3D5265;
