@@ -124,6 +124,14 @@ each(range(5), {
   flex-direction: column;
 }
 
+// ensure default card model on listing is part of a grid
+// of cards instead of one giant card
+.card-items {
+  display: grid;
+  gap: @listingCardGridGap;
+  grid-template-columns: repeat(auto-fit, @listingCardGridMinMax);
+}
+
 .card.u-card.item-card {
   display: grid;
   padding: @listingCardPadding;
