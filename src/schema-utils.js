@@ -12,7 +12,7 @@ export const addTypeSelect = ({
   const field = '@type';
   const extensions = config.blocks.blocksConfig.listing.extensions;
   const variations = extensions[extensionName];
-  const selectedVariation = formData?.variation || 'default';
+  const selectedVariation = formData?.variation || 'summary';
   const filteredVariations = variations.filter((entry) => {
     return entry.excludedFromVariations
       ? entry.excludedFromVariations.indexOf(selectedVariation) === -1
@@ -21,7 +21,7 @@ export const addTypeSelect = ({
   schema.properties[field] = {
     title: intl.formatMessage(messages.title),
     choices: filteredVariations.map(({ id, title }) => [id, title]),
-    defaultValue: filteredVariations.find(({ isDefault }) => isDefault).id,
+    default: filteredVariations.find(({ isDefault }) => isDefault).id,
   };
   schema.fieldsets[0].fields.unshift(field);
 

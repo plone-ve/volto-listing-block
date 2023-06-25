@@ -173,14 +173,18 @@ each(range(5), {
 
   .left-image-card {
     grid-template-columns:
-      minmax(var(--image-min-width, @imageMinWidth),
-      var(--image-max-width, @imageMaxWidth))
+      minmax(
+        var(--image-min-width, @imageMinWidth),
+        var(--image-max-width, @imageMaxWidth)
+      )
       auto;
   }
 
   .right-image-card {
-    grid-template-columns: auto minmax(var(--image-min-width, @imageMinWidth),
-    var(--image-max-width, @imageMaxWidth));
+    grid-template-columns: auto minmax(
+        var(--image-min-width, @imageMinWidth),
+        var(--image-max-width, @imageMaxWidth)
+      );
   }
 }
 
