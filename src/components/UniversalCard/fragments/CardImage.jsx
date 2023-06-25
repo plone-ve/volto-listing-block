@@ -11,7 +11,7 @@ const getLabel = (props) => {
   return itemModel?.hasLabel && text
     ? {
         text,
-        side: 'left',
+        side: true,
         // TODO: set the colors from css?
         color: item.isExpired ? 'yellow' : 'green',
       }
