@@ -138,13 +138,15 @@ each(range(5), {
 @media screen and (min-width: 480px) {
   // bring the extra section closer to the content area
   .left-image-card {
-    grid-template-areas: "image body"
-                         ".     extra";
+    grid-template-areas:
+      'image body'
+      '.     extra';
   }
 
   .right-image-card {
-    grid-template-areas: "body image"
-                         "extra .";
+    grid-template-areas:
+      'body image'
+      'extra .';
   }
 
   .item-card .image {
@@ -152,8 +154,8 @@ each(range(5), {
   }
 
   .ui.item-card .extra.content {
-    grid-area: extra;
     margin-top: @listingCardExtraTopMargin;
+    grid-area: extra;
   }
 
   .u-card.item-card .description {
@@ -162,16 +164,19 @@ each(range(5), {
 
   .left-image-card {
     grid-template-columns:
-      minmax(var(--image-min-width, @imageMinWidth),
-      var(--image-max-width, @imageMaxWidth))
+      minmax(
+        var(--image-min-width, @imageMinWidth),
+        var(--image-max-width, @imageMaxWidth)
+      )
       auto;
   }
 
   .right-image-card {
-    grid-template-columns: auto minmax(var(--image-min-width, @imageMinWidth),
-    var(--image-max-width, @imageMaxWidth));
+    grid-template-columns: auto minmax(
+        var(--image-min-width, @imageMinWidth),
+        var(--image-max-width, @imageMaxWidth)
+      );
   }
-
 }
 
 // listing theme styling alongside inverse options
