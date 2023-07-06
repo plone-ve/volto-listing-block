@@ -7,7 +7,9 @@ import { flattenToAppURL } from '@plone/volto/helpers';
 import DefaultImageSVG from './default-image.svg';
 
 const getSrc = (item, size) =>
-  flattenToAppURL(`${item['@id']}/@@images/${item.image_field}/${size}`);
+  flattenToAppURL(
+    `${item['@id']}/@@images/${item.image_field || 'image'}/${size}`,
+  );
 
 // TODO: do we still need volto-depiction compatibility?
 // import DefaultImageSVG from '@plone/volto/components/manage/Blocks/Listing/default-image.svg';
