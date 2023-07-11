@@ -74,17 +74,13 @@ const BasicItem = (props) => {
                   isEditMode={isEditMode}
                 />
                 <div className="image-wrapper">
-                  <ConditionalLink item={item} condition={!isEditMode}>
-                    <PreviewImage item={item} />
-                  </ConditionalLink>
+                  <PreviewImage item={item} />
                 </div>
               </>
             ) : (
               <>
                 <div className="image-wrapper">
-                  <ConditionalLink item={item} condition={!isEditMode}>
-                    <PreviewImage item={item} />
-                  </ConditionalLink>
+                  <PreviewImage item={item} />
                 </div>
                 <BodyText
                   item={item}
