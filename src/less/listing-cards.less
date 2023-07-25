@@ -112,6 +112,10 @@ each(range(5), {
   }
 }
 
+.listing-item:last-child {
+  border-bottom: none;
+}
+
 // span listing item full width in order for images to line up when
 // we have small titles
 .listing-item .wrapper {
@@ -137,6 +141,9 @@ each(range(5), {
   display: grid;
   padding: @listingCardPadding;
   border-bottom: @listingCardBorderBottom;
+}
+.card.u-card.item-card:last-child {
+  border-bottom: none;
 }
 
 //.listing.summary
