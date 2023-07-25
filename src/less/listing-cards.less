@@ -83,7 +83,6 @@ each(range(5), {
 
 .listing-item {
   padding-bottom: 16px;
-  border-bottom: @listingCardBorderBottom;
   margin-bottom: 32px;
 
   .slot-head,
@@ -112,8 +111,8 @@ each(range(5), {
   }
 }
 
-.listing-item:last-child {
-  border-bottom: none;
+.listing-item:not(:last-child) {
+  border-bottom: @listingCardBorderBottom;
 }
 
 // span listing item full width in order for images to line up when
@@ -140,11 +139,10 @@ each(range(5), {
 .card.u-card.item-card {
   display: grid;
   padding: @listingCardPadding;
-  border-bottom: @listingCardBorderBottom;
 }
 
-.card.u-card.item-card:last-child {
-  border-bottom: none;
+.card.u-card.item-card:not(:last-child) {
+  border-bottom: @listingCardBorderBottom;
 }
 
 //.listing.summary
