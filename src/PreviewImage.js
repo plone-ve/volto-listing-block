@@ -1,7 +1,7 @@
 // TODO: see if possible to replace with Volto's PreviewImage component
 import React from 'react';
 
-import { Image } from 'semantic-ui-react';
+import { Image, Label } from 'semantic-ui-react';
 import { flattenToAppURL } from '@plone/volto/helpers';
 
 import DefaultImageSVG from './default-image.svg';
@@ -49,21 +49,14 @@ function PreviewImage(props) {
     : DefaultImageSVG;
 
   return (
-    <Image
-      src={preview_image_url || src}
-      alt={item.title}
-      {...rest}
-      label={
-        label
-          ? {
-              as: 'a',
-              ribbon: label.side,
-              content: label.text,
-              color: label.color,
-            }
-          : null
-      }
-    />
+    <>
+      {label ? (
+        <Label ribbon={label.side} color={label.color}>
+          {label.text}
+        </Label>
+      ) : null}
+      <Image src={preview_image_url || src} alt={item.title} {...rest} />
+    </>
   );
 }
 
