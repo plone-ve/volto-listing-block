@@ -43,12 +43,15 @@ const PrevArrow = (props) => {
 };
 
 const NextArrow = (props) => {
-  const { onClick } = props;
+  const { className, onClick } = props;
 
   return (
     <Button
       aria-label="Next slide"
-      className="slider-arrow next-arrow tablet or lower hidden"
+      className={
+        (className.indexOf('slick-disabled') !== -1 ? 'slick-disabled' : '') +
+        ' slider-arrow next-arrow tablet or lower hidden'
+      }
       icon
       onClick={onClick}
     >
