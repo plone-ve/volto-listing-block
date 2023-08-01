@@ -132,6 +132,8 @@ const CardsCarousel = ({ block, items, ...rest }) => {
           <div
             className="cards-carousel"
             style={{ width: `${parentWidth}px`, margin: '0 auto' }}
+            role={'region'}
+            aria-label={'carousel'}
           >
             <Slider {...settings} ref={slider}>
               {items.map((item, index) => (
