@@ -5,7 +5,6 @@ import messages from '@eeacms/volto-listing-block/messages';
 import UniversalCard from '@eeacms/volto-listing-block/components/UniversalCard/UniversalCard';
 import config from '@plone/volto/registry';
 
-
 const Gallery = ({
   block,
   items,

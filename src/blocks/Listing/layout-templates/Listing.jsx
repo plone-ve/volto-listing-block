@@ -33,7 +33,12 @@ const Listing = (props) => {
             />
           ))
         ) : (
-          <p><FormattedMessage id="There are no items to show in this view." defaultMessage="There are no items to show in this view." /></p>
+          <p>
+            <FormattedMessage
+              id="There are no items to show in this view."
+              defaultMessage="There are no items to show in this view."
+            />
+          </p>
         )}
       </div>
 

@@ -9,7 +9,6 @@ import messages from '@eeacms/volto-listing-block/messages';
 
 import imageBlockSVG from '@plone/volto/components/manage/Blocks/Image/block-image.svg';
 
-
 const TeaserCardTemplate = (props) => {
   const { data, isEditMode, ...rest } = props;
   const intl = useIntl();

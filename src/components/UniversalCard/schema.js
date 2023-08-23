@@ -5,7 +5,6 @@ import {
 } from '@eeacms/volto-listing-block/schema-utils';
 import messages from '@eeacms/volto-listing-block/messages';
 
-
 export default function universalCardSchemaEnhancer(args) {
   const props = { ...args };
   const { schema } = props;

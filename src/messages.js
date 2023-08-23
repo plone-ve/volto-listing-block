@@ -296,7 +296,8 @@ const messages = defineMessages({
   },
   ActionURLTemplateHelp: {
     id: 'Enter a path. Available placeholders: $URL, $PORTAL_URL. If empty, the result URL will be used.',
-    defaultMessage: 'Enter a path. Available placeholders: $URL, $PORTAL_URL. If empty, the result URL will be used.',
+    defaultMessage:
+      'Enter a path. Available placeholders: $URL, $PORTAL_URL. If empty, the result URL will be used.',
   },
   DisplayTitleOnImage: {
     id: 'Display title on image',
@@ -316,7 +317,8 @@ const messages = defineMessages({
   },
   TitleMaxLinesHelp: {
     id: 'Limit title to a maximum number of lines by adding trailing "..."',
-    defaultMessage: 'Limit title to a maximum number of lines by adding trailing "..."',
+    defaultMessage:
+      'Limit title to a maximum number of lines by adding trailing "..."',
   },
   DescriptionMaxLines: {
     id: 'Description max lines',
@@ -324,7 +326,8 @@ const messages = defineMessages({
   },
   DescriptionMaxLinesHelp: {
     id: 'Limit description to a maximum number of lines by adding trailing "..."',
-    defaultMessage: 'Limit description to a maximum number of lines by adding trailing "..."',
+    defaultMessage:
+      'Limit description to a maximum number of lines by adding trailing "..."',
   },
   HasMetaType: {
     id: 'Show portal type',

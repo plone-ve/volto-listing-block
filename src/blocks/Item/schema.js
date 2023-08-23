@@ -12,7 +12,13 @@ export default ({ data }) => {
         fields: ['assetType', 'theme', 'verticalAlign'],
       },
       ...(assetType === 'image'
-        ? [{ id: 'image', title: intl.formatMessage(messages.Image), fields: ['image', 'imageSize'] }]
+        ? [
+            {
+              id: 'image',
+              title: intl.formatMessage(messages.Image),
+              fields: ['image', 'imageSize'],
+            },
+          ]
         : []),
       ...(assetType === 'icon'
         ? [
@@ -58,7 +64,10 @@ export default ({ data }) => {
               rel="noopener noreferrer"
               href="https://remixicon.com"
             >
-              <FormattedMessage id="Remix icon cheatsheet" defaultMessage="Remix icon cheatsheet" />
+              <FormattedMessage
+                id="Remix icon cheatsheet"
+                defaultMessage="Remix icon cheatsheet"
+              />
             </a>
           </>
         ),

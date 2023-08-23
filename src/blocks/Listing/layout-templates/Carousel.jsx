@@ -83,7 +83,10 @@ const CardsCarousel = ({ block, items, ...rest }) => {
     customPaging: (i) => (
       <button className={'slider-dots-button'} aria-current={i === 0}>
         <span className="slick-dot-icon" aria-hidden="true" />
-        <span className="slick-sr-only"><FormattedMessage id="Go to slide" defaultMessage="Go to slide" /> {i + 1}</span>
+        <span className="slick-sr-only">
+          <FormattedMessage id="Go to slide" defaultMessage="Go to slide" />{' '}
+          {i + 1}
+        </span>
       </button>
     ),
     appendDots: (dots) => (

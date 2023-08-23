@@ -45,8 +45,7 @@ const CallToActionSchema = ({ formData }) => {
       },
       urlTemplate: {
         title: intl.formatMessage(messages.ActionURLTemplate),
-        description:
-          intl.formatMessage(messages.ActionURLTemplateHelp),
+        description: intl.formatMessage(messages.ActionURLTemplateHelp),
       },
     },
     required: [],
@@ -94,8 +93,7 @@ export const setCardModelSchema = (args) => {
     },
     maxTitle: {
       title: intl.formatMessage(messages.TitleMaxLines),
-      description:
-        intl.formatMessage(messages.TitleMaxLinesHelp),
+      description: intl.formatMessage(messages.TitleMaxLinesHelp),
       type: 'number',
       default: 2,
       minimum: 0,
@@ -103,8 +101,7 @@ export const setCardModelSchema = (args) => {
     },
     maxDescription: {
       title: intl.formatMessage(messages.DescriptionMaxLines),
-      description:
-        intl.formatMessage(messages.DescriptionMaxLinesHelp),
+      description: intl.formatMessage(messages.DescriptionMaxLinesHelp),
       type: 'number',
       default: 2,
       minimum: 0,
@@ -161,8 +158,7 @@ export const setItemModelSchema = (args) => {
     },
     maxTitle: {
       title: intl.formatMessage(messages.TitleMaxLines),
-      description:
-        intl.formatMessage(messages.TitleMaxLinesHelp),
+      description: intl.formatMessage(messages.TitleMaxLinesHelp),
       type: 'number',
       default: 2,
       minimum: 0,
@@ -170,8 +166,7 @@ export const setItemModelSchema = (args) => {
     },
     maxDescription: {
       title: intl.formatMessage(messages.DescriptionMaxLines),
-      description:
-        intl.formatMessage(messages.DescriptionMaxLinesHelp),
+      description: intl.formatMessage(messages.DescriptionMaxLinesHelp),
       type: 'number',
       default: 2,
       minimum: 0,
@@ -214,8 +209,7 @@ export const setSimpleItemModelSchema = (args) => {
     ...itemModelSchema.properties,
     maxTitle: {
       title: intl.formatMessage(messages.TitleMaxLines),
-      description:
-        intl.formatMessage(messages.TitleMaxLinesHelp),
+      description: intl.formatMessage(messages.TitleMaxLinesHelp),
       type: 'number',
       default: 2,
       minimum: 0,
