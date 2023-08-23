@@ -1,5 +1,6 @@
 import { cloneDeep } from 'lodash';
 import config from '@plone/volto/registry';
+import messages from '@eeacms/volto-listing-block/messages';
 
 export const addTypeSelect = ({
   formData,
@@ -58,29 +59,29 @@ export const schemaEnhancerFactory = ({
 };
 
 export const DefaultCardModelSchema = {
-  title: 'Card Model',
+  title: intl.formatMessage(messages.CardModel),
   fieldsets: [
     {
       id: 'default',
-      title: 'Settings',
+      title: intl.formatMessage(messages.Settings),
       fields: [],
     },
     {
       id: 'styling',
-      title: 'Styling',
+      title: intl.formatMessage(messages.Styling),
       fields: ['styles'],
     },
   ],
   properties: {
     styles: {
       widget: 'object',
-      title: 'Card styling',
+      title: intl.formatMessage(messages.Cardstyling),
       schema: {
-        title: 'Card Styling',
+        title: intl.formatMessage(messages.CardStyling),
         fieldsets: [
           {
             id: 'default',
-            title: 'Default',
+            title: intl.formatMessage(messages.Default),
             fields: [],
           },
         ],
