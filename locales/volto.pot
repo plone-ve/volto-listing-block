@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2023-08-23T02:15:26.431Z\n"
+"POT-Creation-Date: 2023-08-24T06:22:34.848Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -31,6 +31,11 @@ msgstr ""
 #: messages
 # defaultMessage: Add item description...
 msgid "Add item description..."
+msgstr ""
+
+#: components/UniversalCard/fragments/CardImage
+# defaultMessage: Archived
+msgid "Archived"
 msgstr ""
 
 #: messages
@@ -241,6 +246,11 @@ msgstr ""
 #: messages
 # defaultMessage: Middle
 msgid "Middle"
+msgstr ""
+
+#: components/UniversalCard/fragments/CardImage
+# defaultMessage: New
+msgid "New"
 msgstr ""
 
 #: messages

@@ -31,6 +31,11 @@ msgstr ""
 msgid "Add item description..."
 msgstr ""
 
+#: components/UniversalCard/fragments/CardImage
+# defaultMessage: Archived
+msgid "Archived"
+msgstr ""
+
 #: messages
 # defaultMessage: Asset type
 msgid "Asset type"
@@ -239,6 +244,11 @@ msgstr ""
 #: messages
 # defaultMessage: Middle
 msgid "Middle"
+msgstr ""
+
+#: components/UniversalCard/fragments/CardImage
+# defaultMessage: New
+msgid "New"
 msgstr ""
 
 #: messages
