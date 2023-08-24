@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: Plone\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-08-20T18:38:33.091Z\n"
-"PO-Revision-Date: 2023-08-23 02:27-0400\n"
+"PO-Revision-Date: 2023-08-24 02:24-0400\n"
 "Last-Translator: Leonardo J. Caballero G. <leonardocaballero@gmail.com>\n"
 "Language: es\n"
 "Language-Team: ES <LL@li.org>\n"
@@ -39,6 +39,11 @@ msgstr "Etiqueta de acción"
 # defaultMessage: Add item description...
 msgid "Add item description..."
 msgstr "Añadir descripción del elemento..."
+
+#: components/UniversalCard/fragments/CardImage
+# defaultMessage: Archived
+msgid "Archived"
+msgstr "Archivado"
 
 #: messages
 # defaultMessage: Asset type
@@ -216,12 +221,14 @@ msgid "Large"
 msgstr "Grande"
 
 #: messages
-msgid "Limit description to a maximum number of lines by adding trailing \"...\""
-msgstr "Limitar la descripción a un número máximo de líneas añadiendo \"...\" al final"
+# defaultMessage: Limit description to a maximum number of lines by adding trailing "..."
+msgid "Limit description to a maximum number of lines by adding trailing "...""
+msgstr "Limitar la descripción a un número máximo de líneas añadiendo "..." al final"
 
 #: messages
-msgid "Limit title to a maximum number of lines by adding trailing \"...\""
-msgstr "Limitar el título a un número máximo de líneas añadiendo \"...\" al final"
+# defaultMessage: Limit title to a maximum number of lines by adding trailing "..."
+msgid "Limit title to a maximum number of lines by adding trailing "...""
+msgstr "Limitar el título a un número máximo de líneas añadiendo "..." al final"
 
 #: messages
 # defaultMessage: Link to source content
@@ -247,6 +254,11 @@ msgstr "Medio"
 # defaultMessage: Middle
 msgid "Middle"
 msgstr "Medio"
+
+#: components/UniversalCard/fragments/CardImage
+# defaultMessage: New
+msgid "New"
+msgstr "Nuevo"
 
 #: messages
 # defaultMessage: News item
