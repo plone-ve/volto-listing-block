@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: Plone\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-08-20T18:38:33.091Z\n"
-"PO-Revision-Date: 2023-08-24 02:24-0400\n"
+"PO-Revision-Date: 2023-08-25 14:41-0400\n"
 "Last-Translator: Leonardo J. Caballero G. <leonardocaballero@gmail.com>\n"
 "Language: es\n"
 "Language-Team: ES <LL@li.org>\n"
@@ -222,13 +222,13 @@ msgstr "Grande"
 
 #: messages
 # defaultMessage: Limit description to a maximum number of lines by adding trailing "..."
-msgid "Limit description to a maximum number of lines by adding trailing "...""
-msgstr "Limitar la descripción a un número máximo de líneas añadiendo "..." al final"
+msgid "Limit description to a maximum number of lines by adding trailing \"...\""
+msgstr "Limitar la descripción a un número máximo de líneas añadiendo '...' al final"
 
 #: messages
 # defaultMessage: Limit title to a maximum number of lines by adding trailing "..."
-msgid "Limit title to a maximum number of lines by adding trailing "...""
-msgstr "Limitar el título a un número máximo de líneas añadiendo "..." al final"
+msgid "Limit title to a maximum number of lines by adding trailing \"...\""
+msgstr "Limitar el título a un número máximo de líneas añadiendo '...' al final"
 
 #: messages
 # defaultMessage: Link to source content
