@@ -1,0 +1,102 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language: \n"
+"Language-Team: \n"
+"Content-Type: \n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#: messages
+# defaultMessage: Bordered
+msgid "Bordered"
+msgstr ""
+
+#: components/UniversalCard/schema
+# defaultMessage: Card type
+msgid "Card type"
+msgstr ""
+
+#: messages
+# defaultMessage: Default
+msgid "Default"
+msgstr ""
+
+#: messages
+# defaultMessage: Inverted
+msgid "Inverted"
+msgstr ""
+
+#: messages
+# defaultMessage: Inverted theme
+msgid "InvertedHelp"
+msgstr ""
+
+#: messages
+# defaultMessage: Listing
+msgid "Listing"
+msgstr ""
+
+#: messages
+# defaultMessage: Object fit
+msgid "Object fit"
+msgstr ""
+
+#: messages
+# defaultMessage: Css property object-fit applied on Card image
+msgid "ObjectFitHelp"
+msgstr ""
+
+#: messages
+# defaultMessage: Object position
+msgid "ObjectPosition"
+msgstr ""
+
+#: messages
+# defaultMessage: Css property object-position applied on Card image
+msgid "ObjectPositionHelp"
+msgstr ""
+
+#: blocks/Teaser/Card
+# defaultMessage: Please choose an existing content as source for this element
+msgid "Please choose an existing content as source for this element"
+msgstr ""
+
+#: messages
+# defaultMessage: Primary
+msgid "Primary"
+msgstr ""
+
+#: messages
+# defaultMessage: Rounded
+msgid "Rounded"
+msgstr ""
+
+#: messages
+# defaultMessage: Rounded Image
+msgid "Rounded Image"
+msgstr ""
+
+#: messages
+# defaultMessage: Secondary
+msgid "Secondary"
+msgstr ""
+
+#: messages
+# defaultMessage: Styling
+msgid "Styling"
+msgstr ""
+
+#: messages
+# defaultMessage: Tertiary
+msgid "Tertiary"
+msgstr ""
+
+#: messages
+# defaultMessage: Theme
+msgid "Theme"
+msgstr ""
